@@ -54,7 +54,7 @@ st = [
 
 
 class maingui(tkinter.Tk):
-    def __init__(self):
+    def __init__(self, studentName: list = students_name, st: list = st):
         # 全局继承
         super().__init__()
 
@@ -71,6 +71,9 @@ class maingui(tkinter.Tk):
         self.closeThread = False
         self.f = True  # 判断是否为第一次使用的变量
         self.ifExitAgain = False
+
+        self.studentName = studentName
+        self.st = st
 
         # UI基础设置
         self.title("四班专属点名器 - Professional Edition Version 2.10 [Release]")
@@ -159,7 +162,7 @@ class maingui(tkinter.Tk):
 
     def __flushUI(self):
         # 打乱姓名列表
-        random.shuffle(students_name)
+        random.shuffle(self.studentName)
         # 随机停下时间
         x = random.uniform(0.5, 1.0)
         # 姓名滚动时间隔时间
@@ -175,10 +178,10 @@ class maingui(tkinter.Tk):
             if self.closeThread:
                 self.exit()
 
-            for i in range(1, len(students_name) - 1):
-                self.preName = students_name[i - 1]
-                self.mainName = students_name[i]
-                self.afterName = students_name[i + 1]
+            for i in range(1, len(self.studentName) - 1):
+                self.preName = self.studentName[i - 1]
+                self.mainName = self.studentName[i]
+                self.afterName = self.studentName[i + 1]
                 self.preNameLabel.configure(text=self.preName)
                 self.mainNameLabel.configure(text=self.mainName)
                 self.afterNameLabel.configure(text=self.afterName)
