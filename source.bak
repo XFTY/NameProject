@@ -10,7 +10,7 @@ import tkinter
 import tkinter.ttk
 import tkinter.messagebox
 import ctypes
-import ttkbootstrap
+
 # """
 import webbrowser
 
@@ -51,8 +51,7 @@ st = [
 
 
 class maingui(tkinter.Tk):
-    def __init__(self, studentName: list, debugMode: bool, doRandom: bool, showHello: bool, topMost: bool,
-                 geometry: str):
+    def __init__(self, studentName:list, debugMode:bool, doRandom:bool, showHello:bool, topMost:bool, geometry:str):
         # 全局继承
         super().__init__()
 
@@ -98,7 +97,7 @@ class maingui(tkinter.Tk):
         self.maintitle = tkinter.Label(self, text="点名器   姓名滚动方向 >>>>>>>>", font=("Microsoft Yahei UI", 25))
         self.maintitle.place(x=0, y=0)
         tkinter.Label(self,
-                      text="-"*343,
+                      text="-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------",
                       font=("Microsoft Yahei UI", 10)).place(x=0, y=100)
 
         self.mainNameLabel = tkinter.Label(self, text=self.mainName, font=("Microsoft Yahei UI", 55),
@@ -152,8 +151,7 @@ class maingui(tkinter.Tk):
 
     def changeTitle(self):
         self.maintitle.configure(
-            text="点名器   姓名滚动方向 >>>>>>>>   窗口变更！Width={}, Height={}".format(self.winfo_width(),
-                                                                                        self.winfo_height()))
+            text="点名器   姓名滚动方向 >>>>>>>>   窗口变更！Width={}, Height={}".format(self.winfo_width(), self.winfo_height()))
         time.sleep(5)
         self.maintitle.configure(text="点名器   姓名滚动方向 >>>>>>>>")
         # time.sleep(0.01)
@@ -208,66 +206,56 @@ class maingui(tkinter.Tk):
 
                     # 程序随机事件
                     if o > x:
-                        self.handle_random_event()
+                        if self.doRandom:
+                            if random.randint(0, 20) == 5:
+                                self.maintitle.configure(text="点名器   姓名滚动方向 >>>>>>>>   站讲台上的那位！",
+                                                         background="#7FFF00",
+                                                         foreground="black")
+                                self.preNameLabel.configure(text="***")
+                                self.mainNameLabel.configure(text="站讲台上的那位！")
+                                self.afterNameLabel.configure(text="***")
+                                time.sleep(3 * 0.5)
+                                self.maintitle.configure(text="点名器   姓名滚动方向 >>>>>>>>   站讲台上的那位！",
+                                                         background="#f0f0f0",
+                                                         foreground="black")
+                                self.mainButton.configure(state="normal")
+
+                            elif random.randint(0, 200) == 4:
+                                self.maintitle.configure(text="点名器   姓名滚动方向 >>>>>>>>   原神，启动！",
+                                                         background="#7FFF00",
+                                                         foreground="black")
+                                self.preNameLabel.configure(text="***")
+                                self.mainNameLabel.configure(text="原神，启动！！")
+                                self.afterNameLabel.configure(text="***")
+                                time.sleep(3 * 0.5)
+                                self.maintitle.configure(text="点名器   姓名滚动方向 >>>>>>>>   原神，启动！",
+                                                         background="#f0f0f0",
+                                                         foreground="black")
+                                webbrowser.open_new(
+                                    "https://ys-api.mihoyo.com/event/download_porter/link/ys_cn/official/pc_default")
+                                self.mainButton.configure(state="normal")
+
+                            else:
+                                self.maintitle.configure(
+                                    text="点名器   姓名滚动方向 >>>>>>>>   就是你啦，{}!".format(self.mainName),
+                                    background="#7FFF00")  # , foreground="white")
+                                time.sleep(0.5 * 3)
+                                self.maintitle.configure(background="#f0f0f0",
+                                                         foreground="black")
+                                self.mainButton.configure(state="normal")
+
+                        else:
+                            self.maintitle.configure(text="点名器   姓名滚动方向 >>>>>>>>   就是你啦，{}!".format(self.mainName),
+                                                     background="#7FFF00")  # , foreground="white")
+                            time.sleep(0.5 * 3)
+                            self.maintitle.configure(background="#f0f0f0",
+                                                     foreground="black")
+                            self.mainButton.configure(state="normal")
+
                         break
 
             if o > x:
                 break
-
-    def handle_random_event(self):
-        random_events = [
-            {
-                "condition": lambda: random.randint(0, 20) == 5,
-                "action": self.handle_special_event_1,
-            },
-            {
-                "condition": lambda: random.randint(0, 200) == 4,
-                "action": self.handle_special_event_2,
-            },
-            # 更改默认条件为一个始终返回True的lambda函数
-            {
-                "condition": lambda: True,
-                "action": self.handle_normal_event,
-            },
-        ]
-
-        for event in random_events:
-            if event["condition"]():
-                event["action"]()
-                break
-
-    def handle_special_event_1(self):
-        self.maintitle.configure(text="点名器   姓名滚动方向 >>>>>>>>   站讲台上的那位！",
-                                 background="#7FFF00",
-                                 foreground="black")
-        self.preNameLabel.configure(text="***")
-        self.mainNameLabel.configure(text="站讲台上的那位！")
-        self.afterNameLabel.configure(text="***")
-        time.sleep(3 * 0.5)
-        self.reset_title_and_button()
-
-    def handle_special_event_2(self):
-        self.maintitle.configure(text="点名器   姓名滚动方向 >>>>>>>>   原神，启动！",
-                                 background="#7FFF00",
-                                 foreground="black")
-        self.preNameLabel.configure(text="***")
-        self.mainNameLabel.configure(text="原神，启动！！")
-        self.afterNameLabel.configure(text="***")
-        time.sleep(3 * 0.5)
-        webbrowser.open_new(
-            "https://ys-api.mihoyo.com/event/download_porter/link/ys_cn/official/pc_default"
-        )
-        self.reset_title_and_button()
-
-    def handle_normal_event(self):
-        self.maintitle.configure(text="点名器   姓名滚动方向 >>>>>>>>   就是你啦，{}!".format(self.mainName),
-                                 background="#7FFF00")
-        time.sleep(0.5 * 3)
-        self.reset_title_and_button()
-
-    def reset_title_and_button(self):
-        self.maintitle.configure(background="#f0f0f0", foreground="black")
-        self.mainButton.configure(state="normal")
 
     def flushUI(self):
         self.buttonStatus = True
