@@ -10,8 +10,7 @@ import tkinter
 import tkinter.ttk
 import tkinter.messagebox
 import ctypes
-import ttkbootstrap
-# """
+from ttkbootstrap import Style
 import webbrowser
 
 import welcome
@@ -49,12 +48,49 @@ st = [
     "停下来，停下来！！！"
 ]
 
+Style_all = {
+    # 这里存放着受Name Project支持的ttk bootstrap主题
+    # 如果你不知道下面主题呈现效果怎么养，请参考文档：
+    # 浅色主题文档：https://ttkbootstrap.readthedocs.io/en/latest/zh/themes/light/
+    # 深色主题文档：https://ttkbootstrap.readthedocs.io/en/latest/zh/themes/dark/
+    "light": [  # 浅色主题
+        "cosmo",
+        "flatly",
+        "journal",
+        "litera",
+        "lumen",
+        "minty",
+        "pulse",
+        "sandstone",
+        "united",
+        "yeti",
+        "simplex",
+    ],
+    "dark": [  # 深色主题
+        "solar",
+        "superhero",
+        "darkly",
+        "cyborg",
+    ]
+}
+
 
 class maingui(tkinter.Tk):
     def __init__(self, studentName: list, debugMode: bool, doRandom: bool, showHello: bool, topMost: bool,
-                 geometry: str):
+                 geometry: str, style: str = Style_all["light"][0]):
         # 全局继承
         super().__init__()
+
+        self.style = style
+
+        # 判断深浅主题
+        if self.style in Style_all["light"]:
+            self.styleTheme = "light"
+        else:
+            self.styleTheme = "dark"
+
+        self.style = Style(theme=self.style)
+
 
         # 提高DPI值
         self.debugMode = debugMode
@@ -78,6 +114,11 @@ class maingui(tkinter.Tk):
         self.debugMode = debugMode
         self.doRandom = doRandom
 
+        self.main_frame = tkinter.Frame(self)
+        self.main_frame.pack(fill='both', expand=True)
+
+        self.configure_layout()
+
         # UI基础设置
         self.title("NameProject - Professional Edition Version 2.11 [Release]")
         self.width = 2500
@@ -93,35 +134,41 @@ class maingui(tkinter.Tk):
         self.protocol("WM_DELETE_WINDOW", self.exit)
         if topMost:
             self.attributes("-topmost", "true")
+        #
+        # # 屏幕控件
+        # self.maintitle = tkinter.Label(self, text="点名器   姓名滚动方向 >>>>>>>>", font=("Microsoft Yahei UI", 25),
+        #                                pady=10)
+        # self.maintitle.place(x=0, y=0)
+        #
+        # # self.onlySep = tkinter.ttk.Separator(self, orient="horizontal")
+        # # self.onlySep.pack(fill="x", expand=True, side="top")
+        #
+        # self.onlySep = tkinter.Label(self,
+        #                              text="-" * 343,
+        #                              font=("Microsoft Yahei UI", 10))
+        # self.onlySep.place(x=0, y=100)
+        #
+        # self.mainNameLabel = tkinter.Label(self, text=self.mainName, font=("Microsoft Yahei UI", 55),
+        #                                    background="#EBDBD1")
+        # self.mainNameLabel.place(x=self.width / 2, y=self.height / 2, anchor="center")
+        #
+        # self.preNameLabel = tkinter.Label(self, text=self.preName, font=("Microsoft Yahei UI", 40), foreground="gray")
+        # self.preNameLabel.place(x=self.width - 20, y=self.height / 2, anchor="e")
+        #
+        # self.afterNameLabel = tkinter.Label(self, text=self.afterName, font=("Microsoft Yahei UI", 40),
+        #                                     foreground="gray")
+        # self.afterNameLabel.place(x=0 + 20, y=self.height / 2, anchor="w")
+        #
+        # self.mainButton = tkinter.Button(self, text="开始抽取", relief=tkinter.GROOVE, width=15, height=2,
+        #                                  command=self.flushUI, padx=5)
+        # self.mainButton.place(x=self.width / 2, y=self.height - 80, anchor="e")
+        #
+        # self.mainStopButton = tkinter.Button(self, text="停止抽取", relief=tkinter.GROOVE, width=15, height=2,
+        #                                      state="disabled", command=self.stopRandom, padx=5)
+        # self.mainStopButton.place(x=self.width / 2, y=self.height - 80, anchor="w")
 
-        # 屏幕控件
-        self.maintitle = tkinter.Label(self, text="点名器   姓名滚动方向 >>>>>>>>", font=("Microsoft Yahei UI", 25))
-        self.maintitle.place(x=0, y=0)
-        tkinter.Label(self,
-                      text="-"*343,
-                      font=("Microsoft Yahei UI", 10)).place(x=0, y=100)
-
-        self.mainNameLabel = tkinter.Label(self, text=self.mainName, font=("Microsoft Yahei UI", 55),
-                                           background="#EBDBD1")
-        self.mainNameLabel.place(x=self.width / 2, y=self.height / 2, anchor="center")
-
-        self.preNameLabel = tkinter.Label(self, text=self.preName, font=("Microsoft Yahei UI", 40), foreground="gray")
-        self.preNameLabel.place(x=self.width - 20, y=self.height / 2, anchor="e")
-
-        self.afterNameLabel = tkinter.Label(self, text=self.afterName, font=("Microsoft Yahei UI", 40),
-                                            foreground="gray")
-        self.afterNameLabel.place(x=0 + 20, y=self.height / 2, anchor="w")
-
-        self.mainButton = tkinter.Button(self, text="开始抽取", relief=tkinter.GROOVE, width=15, height=2,
-                                         command=self.flushUI)
-        self.mainButton.place(x=self.width / 2, y=self.height - 80, anchor="e")
-
-        self.mainStopButton = tkinter.Button(self, text="停止抽取", relief=tkinter.GROOVE, width=15, height=2,
-                                             state="disabled", command=self.stopRandom)
-        self.mainStopButton.place(x=self.width / 2, y=self.height - 80, anchor="w")
-
-        tkinter.Label(self, text="Python project, version 2.11 [Release], Python Version 3.11, TCL/Tk Version 3.x",
-                      font=("Microsoft Yahei UI", 9)).pack(side="bottom")
+        # tkinter.Label(self, text="Python project, version 2.11 [Release], Python Version 3.11, TCL/Tk Version 3.x",
+        #               font=("Microsoft Yahei UI", 9)).pack(side="bottom")
 
         # tkinter.Label(self,
         #               text="JavaFX Project, Java Version [openJDK17], JavaFX Version [openJFX17], develop by xfypowered.com",
@@ -133,6 +180,44 @@ class maingui(tkinter.Tk):
         # self.updateWindowThread.start()
 
         self.mainloop()
+
+    def configure_layout(self):
+        # 屏幕控件
+        self.maintitle = tkinter.Label(self.main_frame, text="NameProject",
+                                       font=("Microsoft Yahei UI", 25))
+        self.maintitle.pack(side="top", anchor="center", pady=(20, 10))
+
+        # 模拟Separator
+        self.onlySep = tkinter.ttk.Separator(self.main_frame, orient="horizontal")
+        self.onlySep.pack(side="top", fill='x')
+        # self.onlySep = tkinter.Label(self.main_frame,
+        #                              text="-" * 343,
+        #                              font=("Microsoft Yahei UI", 10), bg="#EBDBD1")  # 背景色可能需要调整以匹配
+        # self.onlySep.pack(side="top", fill='x')
+
+        self.mainNameLabel = tkinter.Label(self.main_frame, text=self.mainName, font=("Microsoft Yahei UI", 55),
+                                           background="#EBDBD1")
+        self.mainNameLabel.pack(side="top", pady=(0, 10), anchor="center")
+
+        self.preNameLabel = tkinter.Label(self.main_frame, text=self.preName, font=("Microsoft Yahei UI", 35),
+                                          foreground="gray")
+        self.preNameLabel.pack(side="right", anchor="se")
+
+        self.afterNameLabel = tkinter.Label(self.main_frame, text=self.afterName, font=("Microsoft Yahei UI", 35),
+                                            foreground="gray")
+        self.afterNameLabel.pack(side="left", anchor="sw")
+
+        self.mainButton = tkinter.Button(self.main_frame, text="开始抽取", relief=tkinter.GROOVE, width=15, height=2,
+                                         command=self.flushUI, padx=5)
+        self.mainButton.pack(side="bottom", anchor="e", pady=(10, 0))
+
+        self.mainStopButton = tkinter.Button(self.main_frame, text="停止抽取", relief=tkinter.GROOVE, width=15,
+                                             height=2,
+                                             state="disabled", command=self.stopRandom, padx=5)
+        self.mainStopButton.pack(side="bottom", anchor="w", pady=(10, 0))
+
+        # 确保所有控件都已配置好后更新窗口
+        self.update_idletasks()
 
     def updateWindow(self):
         if self.winfo_width() != self.width or self.winfo_height() != self.height:
@@ -152,10 +237,10 @@ class maingui(tkinter.Tk):
 
     def changeTitle(self):
         self.maintitle.configure(
-            text="点名器   姓名滚动方向 >>>>>>>>   窗口变更！Width={}, Height={}".format(self.winfo_width(),
-                                                                                        self.winfo_height()))
+            text="窗口变更！Width={}, Height={}".format(self.winfo_width(),
+                                                       self.winfo_height()))
         time.sleep(5)
-        self.maintitle.configure(text="点名器   姓名滚动方向 >>>>>>>>")
+        self.maintitle.configure(text="NameProject")
         # time.sleep(0.01)
 
         # self.after(10, self.updateWindow)
@@ -203,7 +288,7 @@ class maingui(tkinter.Tk):
                     pass
                 else:
                     o += 0.05
-                    self.maintitle.configure(text="点名器   姓名滚动方向 >>>>>>>>   {}".format(stt))
+                    self.maintitle.configure(text="{}".format(stt))
                     self.mainButton.configure(state="disabled")
 
                     # 程序随机事件
@@ -226,8 +311,7 @@ class maingui(tkinter.Tk):
             },
             # 更改默认条件为一个始终返回True的lambda函数
             {
-                "condition": lambda: True,
-                "action": self.handle_normal_event,
+                "condition": lambda: True,                "action": self.handle_normal_event,
             },
         ]
 
@@ -237,22 +321,20 @@ class maingui(tkinter.Tk):
                 break
 
     def handle_special_event_1(self):
-        self.maintitle.configure(text="点名器   姓名滚动方向 >>>>>>>>   站讲台上的那位！",
-                                 background="#7FFF00",
-                                 foreground="black")
+        self.maintitle.configure(text="站讲台上的那位！")
         self.preNameLabel.configure(text="***")
         self.mainNameLabel.configure(text="站讲台上的那位！")
         self.afterNameLabel.configure(text="***")
+        self.maintitle.configure(foreground="green")
         time.sleep(3 * 0.5)
         self.reset_title_and_button()
 
     def handle_special_event_2(self):
-        self.maintitle.configure(text="点名器   姓名滚动方向 >>>>>>>>   原神，启动！",
-                                 background="#7FFF00",
-                                 foreground="black")
+        self.maintitle.configure(text="原神，启动！")
         self.preNameLabel.configure(text="***")
         self.mainNameLabel.configure(text="原神，启动！！")
         self.afterNameLabel.configure(text="***")
+        self.maintitle.configure(foreground="green")
         time.sleep(3 * 0.5)
         webbrowser.open_new(
             "https://ys-api.mihoyo.com/event/download_porter/link/ys_cn/official/pc_default"
@@ -260,20 +342,25 @@ class maingui(tkinter.Tk):
         self.reset_title_and_button()
 
     def handle_normal_event(self):
-        self.maintitle.configure(text="点名器   姓名滚动方向 >>>>>>>>   就是你啦，{}!".format(self.mainName),
-                                 background="#7FFF00")
+        self.maintitle.configure(text="就是你啦，{}!".format(self.mainName))
+        self.maintitle.configure(foreground="light green")
         time.sleep(0.5 * 3)
         self.reset_title_and_button()
+        time.sleep(5)
+        self.maintitle.configure(text="NameProject")
 
     def reset_title_and_button(self):
-        self.maintitle.configure(background="#f0f0f0", foreground="black")
+        if self.styleTheme == "light":
+            self.maintitle.configure(foreground="black")
+        else:
+            self.maintitle.configure(foreground="white")
         self.mainButton.configure(state="normal")
 
     def flushUI(self):
         self.buttonStatus = True
         self.mainButton.configure(state="disabled")
         self.mainStopButton.configure(state="normal")
-        self.maintitle.configure(text="点名器   姓名滚动方向 >>>>>>>>")
+        self.maintitle.configure(text="姓名滚动方向 >>>>>>>>")
         t = threading.Thread(target=self.__flushUI, args=())
         t.start()
 
@@ -349,7 +436,8 @@ if __name__ == '__main__':
             showHello=configure["other"]["showHello"],
             topMost=configure["other"]["topMost"],
             debugMode=False,
-            geometry=configure["geometry"]
+            geometry=configure["geometry"],
+            style=Style_all["dark"][1]  # 在这里修改主题！修改方式参见Style_all变量(在50行附近)
         )
     except FileNotFoundError:
         welcome.setupUI_1()

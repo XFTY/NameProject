@@ -37,7 +37,7 @@ class SettingsUI:
                                   text="点名器基本设置",
                                   command=self.show_main_settings,
                                   width=0,  # 宽度自动填充  # 指定固定高度
-                                  # style=f'Custom.TButton'
+                                  # Style_all=f'Custom.TButton'
                                   )  # 背景色与窗口背景色一致
 
         self.name_button = Button(self.tabs_container,
