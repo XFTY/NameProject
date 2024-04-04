@@ -3,6 +3,7 @@ import tkinter.ttk
 import tkinter.messagebox
 import json
 
+# 配置文件模板
 configureFile = {
     "eula": False,
     "geometry": "",

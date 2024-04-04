@@ -1,14 +1,17 @@
 import json
 import sys
+import tkinter
 from tkinter import messagebox
 import traceback
 from ttkbootstrap import Style
 from ttkbootstrap.widgets import *
 
 
-class SettingsUI:
-    def __init__(self, master):
-        self.master = master
+class SettingsUI(tkinter.Tk):
+    def __init__(self):
+        super().__init__()
+        self.title("点名器设置")
+        self.geometry("1200x600")
 
         self.read_json_file()
 
@@ -58,12 +61,15 @@ class SettingsUI:
 
         # 初始化显示系统设置
         self.show_main_settings()
+        self.mainloop()
+
 
     def show_main_settings(self):
         if self.current_tab_content is not None:
             self.current_tab_content.pack_forget()
         self.system_settings = Frame(self.settings_container, padding=10)
-        Label(self.system_settings, text="主要设置", font=14).pack(pady=10, anchor="w")
+        Label(self.system_settings, text="主要设置", font=("simhei", 15)).pack(pady=10, anchor="w")
+        Separator(self.system_settings, orient=tk.HORIZONTAL).pack(fill=tk.X, pady=(10, 5))
         self.system_settings.pack(fill='both', expand=True)
         self.current_tab_content = self.system_settings
 
@@ -73,14 +79,14 @@ class SettingsUI:
         self.name_settings = Frame(self.settings_container, padding=10)
 
         # 使用默认字体
-        Label(self.name_settings, text="点名器名单", font=14).pack(pady=10, anchor="w")
+        Label(self.name_settings, text="点名器名单", font=("simhei", 15)).pack(pady=10, anchor="w")
         Separator(self.name_settings, orient=tk.HORIZONTAL).pack(fill=tk.X, pady=(10, 5))
         Label(self.name_settings, text="在此处修改点名器名单\n注意：一个学生姓名为一行", wraplength=400).pack(anchor="w",
                                                                                                              pady=5)
 
         # 设置Text控件的最大显示行数（例如10行）
         max_rows = 10
-        self.nameTexter = tk.Text(self.name_settings, width=20, height=max_rows)
+        self.nameTexter = tk.Text(self.name_settings, width=20, height=max_rows, font=("simhei", 20))
 
         for i in self.namelabel:
             self.nameTexter.insert("insert", i + "\n")
@@ -99,6 +105,7 @@ class SettingsUI:
         self.name_settings.pack(fill='both', expand=True)
 
         self.current_tab_content = self.name_settings
+
 
     def apply_change_button_func(self):
         get = self.nameTexter.get(0.0, "end")
@@ -145,17 +152,6 @@ class SettingsUI:
         with open("configure.json", "w", encoding="utf-8") as f:
             f.write(json.dumps(configFileJsonText, ensure_ascii=False))
 
-    def mainloop(self):
-        self.master.mainloop()
-
-
-def main():
-    root = tk.Tk()
-    app = SettingsUI(root)
-    root.geometry("1200x600")
-    root.title("点名器设置程序")
-    app.mainloop()
-
 
 if __name__ == "__main__":
-    main()
+    SettingsUI()
