@@ -4,7 +4,9 @@ import tkinter.messagebox
 import json
 
 # 配置文件模板
+# 请不要更改里面的内容，不然主程序会寄
 configureFile = {
+    "configVersion": "3.0",
     "eula": False,
     "geometry": "",
     "nameLabel": [],
@@ -12,6 +14,17 @@ configureFile = {
         "doRandom": False,
         "showHello": False,
         "topMost": False
+    },
+    "uiBasicSittings": {
+        "style": "cosmo"  # 默认ttkbootstrap样式
+    },
+    "fontSize": {
+        "maintitle": 50,
+        "mainNameLabel": 55,
+        "preNameLabel": 35,
+        "afterNameLabel": 35,
+        "mainButton": 9,
+        "mainStopButton": 9
     }
 }
 

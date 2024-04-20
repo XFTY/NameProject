@@ -10,6 +10,11 @@ import tkinter
 import tkinter.ttk
 import tkinter.messagebox
 import ctypes
+import logging
+
+import ttkbootstrap
+import ttkbootstrap.tooltip
+from ttkbootstrap.constants import *
 from ttkbootstrap import Style
 import webbrowser
 
@@ -19,7 +24,7 @@ nameProjectConfig = {
     # CN: NameProject项目配置文件，一般情况下不应该更改，除非你知道你在做什么。
     # US: NameProject project configuration file, usually should not be changed unless you know what you are doing.
     "name": "NameProject",
-    "version": "3.0[Preview]",
+    "version": "3.0[Preview2]",
     "license": "Apache License, Version 2.0"
 }
 
@@ -85,101 +90,21 @@ Style_all = {
     ]
 }
 
+logging.basicConfig(
+    filename="latest.log",
+    filemode="a",
+    format="[%(asctime)s/%(levelname)s] %(message)s",
+    level=logging.INFO,
+    datefmt="%Y-%m-%d %H:%M:%S"
+)
 
-class WarningBeforeClose(tkinter.Toplevel):
-    def __init__(self, parent, winfo_width, winfo_height, winfo_x, winfo_y, kill):
-        super().__init__(parent)
-
-        # 应用传入的参数
-        # 这里需要传入maingui中的参数，而不是WarningBeforeClose自带的参数
-        self.maingui_winfo_width = winfo_width
-        self.maingui_winfo_height = winfo_height
-        self.maingui_winfo_x = winfo_x
-        self.maingui_winfo_y = winfo_y
-        self.maingui_kill = kill
-
-        # 窗口居中显示
-        self.center_window()
-
-        # 设置窗口大小，例如：宽100像素，高100像素
-        self.geometry("400x320")
-
-        # 创建一个提示消息和两个选项按钮（退出程序、进入设置）
-        self.message_label = tkinter.Label(self, text="您确定要退出程序吗？\n请选择操作：",
-                                           font=("Noto Sans CJK SC", 15))  # 更改为“Noto Sans CJK SC”
-        self.quit_button = tkinter.Button(self, text="退出程序", font=("Noto Sans CJK SC", 15),
-                                          command=self.on_close_request)
-        self.settings_button = tkinter.Button(self, text="进入设置", font=("Noto Sans CJK SC", 15),
-                                              command=self.open_settings)
-
-        # 布局设置
-        self.message_label.pack(pady=50)  # 增加顶部间距
-
-        # 将设置按钮放在左下角
-        # print(self.winfo_width(), self.winfo_height())
-        self.settings_button.pack(side=tkinter.BOTTOM, padx=10, pady=10)
-
-        # 将退出程序按钮放在右下角
-        self.quit_button.pack(side=tkinter.BOTTOM, padx=10, pady=10)
+logging.info("NameProject is running")
 
 
-
-    def on_close_request(self):
-        """
-        处理窗口关闭请求事件。
-        弹出一个询问对话框，让用户选择是否确认退出。
-        """
-        result = tkinter.messagebox.askyesno("确认退出", "您真的要退出程序吗？")
-
-        if result:
-            with open("configure.json", "r", encoding="utf-8") as f:
-                tempLoad = json.loads(f.read())
-            tempLoad["geometry"] = "{}x{}+{}+{}".format(
-                self.maingui_winfo_width,
-                self.maingui_winfo_height,
-                self.maingui_winfo_x,
-                self.maingui_winfo_y
-            )
-            # print(tempLoad)
-            with open("configure.json", "w", encoding="utf-8") as f:
-                f.write(json.dumps(tempLoad, ensure_ascii=False))
-            self.maingui_kill()  # 关闭程序 # 确认则销毁主窗口并退出程序
-        else:
-            self.deiconify()  # 否则恢复窗口可见状态（如果之前被隐藏）
-
-    def open_settings(self):
-        """
-        打开设置界面或执行相应的设置功能。
-        这里仅作为示例，实际应用中请替换为您的具体设置逻辑。
-        """
-        # 实现打开设置界面或执行相应设置操作的代码
-
-        # settings_ui = sittings.SettingsUI(parent=self)
-
-        # tkinter.messagebox.showinfo("提示", "进入设置界面的功能尚未实现，请稍后完善！")
-
-    def center_window(self):
-        """
-        将窗口居中显示在屏幕上。
-        """
-        screen_width = self.winfo_screenwidth()
-        screen_height = self.winfo_screenheight()
-
-        # 获取窗口尺寸
-        window_width = self.winfo_reqwidth()
-        window_height = self.winfo_reqheight()
-
-        # 计算居中位置坐标
-        x = (screen_width // 2) - (window_width // 2)
-        y = (screen_height // 2) - (window_height // 2)
-
-        # 设置窗口位置
-        self.geometry(f"+{x+100}+{y+100}")
-
-
+def logging(Func):
+    pass
 class maingui(tkinter.Tk):
-    def __init__(self, studentName: list, debugMode: bool, doRandom: bool, showHello: bool, topMost: bool,
-                 geometry: str, style: str = Style_all["light"][0]):
+    def __init__(self, **kwargs):
         """
         初始化窗口程序。
 
@@ -191,12 +116,13 @@ class maingui(tkinter.Tk):
         topMost: bool, 窗口是否始终保持在最顶层。
         geometry: str, 窗口的尺寸和位置。
         style: str, 程序的主题风格，默认为浅色风格。
+        fontSize: str, 程序字体大小
         """
         # 全局继承
         super().__init__()
 
-        self.style = style
-
+        self.style = kwargs["style"]
+        self.fontSize = kwargs["fontSize"]
 
         # 判断深浅主题
         if self.style in Style_all["light"]:
@@ -207,14 +133,14 @@ class maingui(tkinter.Tk):
         self.style = Style(theme=self.style)
 
         # 提高DPI值，适配高分屏
-        self.debugMode = debugMode
+        self.debugMode = kwargs["debugMode"]
         ctypes.windll.shcore.SetProcessDpiAwareness(1)
         ScaleFactor = ctypes.windll.shcore.GetScaleFactorForDevice(0)
         self.tk.call('tk', 'scaling', ScaleFactor / 75)
 
         # 初始化基础变量
         self.preName = "***"
-        if self.debugMode or not showHello:
+        if self.debugMode or not kwargs["showHello"]:
             self.mainName = "欢迎使用！"
         else:
             self.mainName = showHelloAll[random.randint(0, len(showHelloAll) - 1)]
@@ -224,9 +150,9 @@ class maingui(tkinter.Tk):
         self.f = True  # 判断是否为第一次使用的变量
         self.ifExitAgain = False
 
-        self.studentName = studentName
-        self.debugMode = debugMode
-        self.doRandom = doRandom
+        self.studentName = kwargs["studentName"]
+        self.debugMode = kwargs["debugMode"]
+        self.doRandom = kwargs["doRandom"]
 
         # 创建主框架并设置布局
         self.main_frame = tkinter.Frame(self)
@@ -241,15 +167,15 @@ class maingui(tkinter.Tk):
         self.x_way = 10
         self.left = (self.winfo_screenwidth() - self.width) / 2 + self.width / 2
         self.top = (self.winfo_screenheight() - self.height) / 2 + self.height / 2
-        if geometry != "":
-            self.geometry(geometry)
+        if kwargs["geometry"] != "":
+            self.geometry(kwargs["geometry"])
         else:
             self.geometry("{}x{}+{}+{}".format(int(self.width), int(self.height), int(self.left), int(self.top)))
         # 禁止窗口大小调整
         # self.resizable(False, False)
         # 设置窗口关闭行为
         self.protocol("WM_DELETE_WINDOW", self.exit)
-        if topMost:
+        if kwargs["topMost"]:
             self.attributes("-topmost", "true")
 
         # 更新窗口显示，确保内容正确显示
@@ -269,7 +195,7 @@ class maingui(tkinter.Tk):
         """
         # 设置主标题
         self.maintitle = tkinter.Label(self.main_frame, text="NameProject",
-                                       font=("Microsoft Yahei UI", 25))
+                                       font=("Microsoft Yahei UI", self.fontSize["maintitle"]))
         self.maintitle.pack(side="top", anchor="center", pady=(20, 10))
 
         # 添加水平分割线
@@ -277,30 +203,34 @@ class maingui(tkinter.Tk):
         self.onlySep.pack(side="top", fill='x')
 
         # 设置主名称显示
-        self.mainNameLabel = tkinter.Label(self.main_frame, text=self.mainName, font=("Microsoft Yahei UI", 55),
+        self.mainNameLabel = tkinter.Label(self.main_frame, text=self.mainName, font=("Microsoft Yahei UI", self.fontSize["mainNameLabel"]),
                                            background="#EBDBD1")
         self.mainNameLabel.pack(side="top", pady=(0, 10), anchor="center")
 
         # 设置前置名称显示
-        self.preNameLabel = tkinter.Label(self.main_frame, text=self.preName, font=("Microsoft Yahei UI", 35),
+        self.preNameLabel = tkinter.Label(self.main_frame, text=self.preName, font=("Microsoft Yahei UI", self.fontSize["preNameLabel"]),
                                           foreground="gray")
         self.preNameLabel.pack(side="right", anchor="se")
 
         # 设置后置名称显示
-        self.afterNameLabel = tkinter.Label(self.main_frame, text=self.afterName, font=("Microsoft Yahei UI", 35),
+        self.afterNameLabel = tkinter.Label(self.main_frame, text=self.afterName, font=("Microsoft Yahei UI", self.fontSize["afterNameLabel"]),
                                             foreground="gray")
         self.afterNameLabel.pack(side="left", anchor="sw")
 
         # 设置开始按钮
         self.mainButton = tkinter.Button(self.main_frame, text="开始抽取", relief=tkinter.GROOVE, width=15, height=2,
-                                         command=self.flushUI, padx=5)
+                                         command=self.flushUI, padx=5, font=("Microsoft Yahei UI", self.fontSize["mainButton"]))
         self.mainButton.pack(side="bottom", anchor="e", pady=(10, 0))
 
         # 设置停止按钮（初始状态为禁用）
         self.mainStopButton = tkinter.Button(self.main_frame, text="停止抽取", relief=tkinter.GROOVE, width=15,
                                              height=2,
-                                             state="disabled", command=self.stopRandom, padx=5)
+                                             state="disabled", command=self.stopRandom, padx=5,
+                                             font=("Microsoft Yahei UI", self.fontSize["mainStopButton"]))
         self.mainStopButton.pack(side="bottom", anchor="w", pady=(10, 0))
+
+        ttkbootstrap.tooltip.ToolTip(self.mainButton, text="按下按钮后，点名器名单将被打乱，并以每0.09秒一次的速度滚动")
+        ttkbootstrap.tooltip.ToolTip(self.mainStopButton, text="按下按钮后，点名器将依靠惯性停止滚动，并显示当前点名结果")
 
         # 更新窗口以确保所有控件都已正确显示
         self.update_idletasks()
@@ -586,7 +516,7 @@ if __name__ == '__main__':
     - `topMost`: 窗口是否总在最前（布尔值）
     - `debugMode`: 调试模式开关（目前固定为False）
     - `geometry`: 窗口布局几何信息
-    - `style`: 界面风格，取自`Style_all["dark"][1]`，可在此处修改主题。详细主题列表及修改方式参见约第50行的`Style_all`变量定义。
+    - `style`: 界面风格，取自`Style_all["dark"][1]`，可在此处修改主题。详细主题列表及修改方式参见约第60行的`Style_all`变量定义。
     
     这些设置项在configure.json文件中进行修改。
 
@@ -595,6 +525,15 @@ if __name__ == '__main__':
     try:
         with open("configure.json", "r", encoding="utf-8") as f:
             configure = json.loads(f.read())  # 从JSON文件中加载配置数据
+
+        if not configure["eula"]:
+            eula = tkinter.messagebox.askquestion("使用许可协议",
+                                                  "您在配置文件中未同意使用许可协议，选择‘是’同意许可协议，否则将退出程序。")
+            if eula == "yes":
+                configure["eula"] = True
+            else:
+                configure["eula"] = False
+                exit()
         maingui(
             studentName=configure["nameLabel"],  # 学生姓名标签文本
             doRandom=configure["other"]["doRandom"],  # 随机功能开关
@@ -602,7 +541,8 @@ if __name__ == '__main__':
             topMost=configure["other"]["topMost"],  # 窗口总在最前开关
             debugMode=False,  # 调试模式（固定为False）
             geometry=configure["geometry"],  # 窗口布局几何信息
-            style=Style_all["dark"][1]  # 主题选择（参考`Style_all`变量进行修改）
+            style=configure["uiBasicSittings"]["style"],  # 主题选择（参考`Style_all`变量进行修改）
+            fontSize=configure["fontSize"]  # 字体大小
         )  # 初始化并展示主界面
 
     except FileNotFoundError:

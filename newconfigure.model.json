@@ -1,0 +1,19 @@
+{
+  "version": "3.x",
+  "eula": true,
+  "geometry": "",
+  "nameLabel": [
+    "asaada",
+    "bbbb",
+    "sdfsa",
+    "asdasd"
+  ],
+  "other": {
+    "doRandom": true,
+    "showHello": true,
+    "topMost": false
+  },
+  "uiBasicSittings": {
+    "style": "superhero"
+  }
+}
