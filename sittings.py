@@ -284,10 +284,30 @@ class SettingsUI(tkinter.Tk):
 
         self.displaySittings = Frame(self.settings_container, padding=10)
 
-        Label(self.displaySittings, text="功能完善中", font=("微软雅黑", 20)).pack(pady=10, anchor="w")
+        Label(self.displaySittings, text="字体设置", font=("微软雅黑", 20)).pack(pady=10, anchor="w")
+        Separator(self.displaySittings, orient=tk.HORIZONTAL).pack(fill=tk.X, pady=(5, 5))
+        Label(self.displaySittings, text="请通过滑块调整需要增加的字体大小，上限为10，下限为-10").pack(pady=10, anchor="w")
+
+        self.showWhere = Label(self.displaySittings, text="当前值为：{}".format("null"))
+        self.showWhere.pack(pady=10, anchor="w")
+
+        self.scale = Scale(self.displaySittings, from_=-10, to=10, orient=tk.HORIZONTAL)
+        self.scale.set(0)
+        self.scale.pack(fill=tk.X)
 
         self.displaySittings.pack(fill=tk.BOTH, expand=True)
+
+        self.checkDisplaySittings()
+
         self.current_tab_content = self.displaySittings
+
+    def checkDisplaySittings(self):
+        self.showWhere.configure(text="当前值为：{}".format(int(self.scale.get())))
+
+        globalConfigureFile = self.globalConfigureFile
+        
+
+        self.after(100, self.checkDisplaySittings)
 
     def show_about_settings(self):
         if self.current_tab_content is not None:
