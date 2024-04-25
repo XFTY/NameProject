@@ -28,7 +28,8 @@ configureFile = {
         "mainStopButton": 9
     },
     # 修改字体缩放大小
-    "fontScaleSize": 0
+    "fontScaleSize": 0,
+    "stopNow": True
 }
 
 
@@ -36,7 +37,7 @@ class setupUI_1(tkinter.Tk):
     def __init__(self):
         super().__init__()
         self.title("点名器安装和配置程序")
-        # self.geometry(f"800x600+{int(self.winfo_screenwidth() / 2)}+{int(self.winfo_screenheight() / 2)}")
+        self.geometry(f"+{int(self.winfo_screenwidth() / 2)}+{int(self.winfo_screenheight() / 2)}")
         tkinter.Label(self, text="欢迎使用NameProject安装和配置程序！", font=("simhei", 20)).pack()
         tkinter.Label(self, text="安装和配置程序将会为您引导您完成下一步的配置，").pack()
         tkinter.Label(self, text="请点击'下一步'继续").pack()
@@ -54,6 +55,7 @@ class setupUI_2(tkinter.Tk):
     def __init__(self):
         super().__init__()
         self.title("点名器安装和配置程序")
+        self.geometry(f"+{int(self.winfo_screenwidth() / 2)}+{int(self.winfo_screenheight() / 2)}")
         tkinter.Label(self, text="开源软件用户许可和软件协议", font=("simhei", 20)).pack()
         tkinter.Label(self, text="请认真阅读以下文字，继续使用此软件即表示您同意此协议").pack()
         self.texter = tkinter.Text(self, width=80, height=10)
@@ -78,6 +80,7 @@ class setupUI_3(tkinter.Tk):
     def __init__(self):
         super().__init__()
         self.title("点名器安装和配置程序")
+        self.geometry(f"+{int(self.winfo_screenwidth() / 2)}+{int(self.winfo_screenheight() / 2)}")
         tkinter.Label(self, text="导入学生/员工姓名", font=("simhei", 20)).pack()
         tkinter.Label(text="请在下面的文本框中输入学生/员工的姓名，以便完成接下来的设置").pack()
         tkinter.Label(text="注意：每一行为一个学生或员工姓名，设置完成后请点击'下一步'继续。").pack()
@@ -115,6 +118,7 @@ class setupUI_4(tkinter.Tk):
     def __init__(self):
         super().__init__()
         self.title("点名器安装和配置程序")
+        self.geometry(f"+{int(self.winfo_screenwidth() / 2)}+{int(self.winfo_screenheight() / 2)}")
         tkinter.Label(self, text="功能性配置和其他设置", font=("simhei", 20)).pack()
         tkinter.Label(self, text="配置其他的功能和设置\n设置完成后，点击'完成配置'。\n").pack()
 

@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 import ctypes
 import json
-import logging
+# import logging
 import os
 import random
 import subprocess
@@ -90,15 +90,15 @@ Style_all = {
     ]
 }
 
-logging.basicConfig(
-    filename="latest.log",
-    filemode="a",
-    format="[%(asctime)s/%(levelname)s] %(message)s",
-    level=logging.INFO,
-    datefmt="%Y-%m-%d %H:%M:%S"
-)
-
-logging.info("NameProject is running")
+# logging.basicConfig(
+#     filename="latest.log",
+#     filemode="a",
+#     format="[%(asctime)s/%(levelname)s] %(message)s",
+#     level=logging.INFO,
+#     datefmt="%Y-%m-%d %H:%M:%S"
+# )
+#
+# logging.info("NameProject is running")
 
 
 def logging(Func):
@@ -154,6 +154,7 @@ class maingui(tkinter.Tk):
         self.studentName = kwargs["studentName"]
         self.debugMode = kwargs["debugMode"]
         self.doRandom = kwargs["doRandom"]
+        self.stopNow = kwargs["stopNow"]
 
         # 创建主框架并设置布局
         self.main_frame = tkinter.Frame(self)
@@ -323,21 +324,30 @@ class maingui(tkinter.Tk):
                 time.sleep(o)
 
                 # 如果按钮处于激活状态，则不进行下面的操作
-                if self.buttonStatus:
-                    pass
-                else:
-                    o += 0.05  # 增加时间间隔
-                    self.maintitle.configure(text="{}".format(stt))  # 更新标题
-                    self.mainButton.configure(state="disabled")  # 禁用主按钮
+                if not self.buttonStatus:
+                    if self.stopNow:
+                        self.handle_random_event()
+                        return 0
+                    else:
+                        o += 0.05  # 增加时间间隔
+                        self.maintitle.configure(text="{}".format(stt))  # 更新标题
+                        self.mainButton.configure(state="disabled")  # 禁用主按钮
 
                     # 当时间间隔超过x时，触发随机事件，并结束当前循环
-                    if o > x:
+                    # 话说为什么，注释掉下面6行代码程序会抽风？因为我的电脑？
+                    if self.stopNow:
                         self.handle_random_event()
-                        break
+                        return 0
+                    elif o > x:
+                        self.handle_random_event()
+                        return 0
 
             # 如果时间间隔超过x，退出循环
-            if o > x:
-                break
+            # if self.stopNow:
+            #     self.handle_random_event()
+            #     break
+            # elif o > x:
+            #     break
 
     def handle_random_event(self):
         random_events = [
@@ -557,7 +567,8 @@ if __name__ == '__main__':
             geometry=configure["geometry"],  # 窗口布局几何信息
             style=configure["uiBasicSittings"]["style"],  # 主题选择（参考`Style_all`变量进行修改）
             fontSize=configure["fontSize"],  # 字体大小
-            fontScaleSize=configure["fontScaleSize"]  # 字体缩放比例
+            fontScaleSize=configure["fontScaleSize"],  # 字体缩放比例
+            stopNow=configure["stopNow"]
         )  # 初始化并展示主界面
 
     except FileNotFoundError:

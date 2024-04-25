@@ -137,6 +137,7 @@ class SettingsUI(tkinter.Tk):
         Separator(self.main_settings_1, orient=tk.HORIZONTAL).pack(fill=tk.X, pady=5)
 
         Label(self.main_settings_1, text="在下方的列表中选择主题", font=("微软雅黑", 10)).pack(pady=1, anchor="w")
+        # Label(self.main_settings_1, text="由ttkbootstrap提供主题，", font=("微软雅黑", 10)).pack(pady=1, anchor="w")
         self.styleCombobox = Combobox(self.main_settings_1, values=["------浅色主题------", "cosmo", "flatly", "journal", "litera", "lumen", "minty", "pulse", "sandstone", "united", "yeti", "simplex", "------深色主题------", "solar", "superhero", "darkly", "cyborg"], font=("微软雅黑", 10), state="readonly")
 
         try:
@@ -189,7 +190,18 @@ class SettingsUI(tkinter.Tk):
         setTopButton = Checkbutton(setTopFrame, bootstyle="success-round-toggle", variable=self.setTopBlVar)
         setTopButton.pack(side=tk.RIGHT)
 
+        # 立即停止抽取
+        self.stopNowFrame = Frame(self.main_settings_1)
+        self.stopNowFrame.pack(pady=5, anchor="w", fill="x")
 
+        self.stopNowBlVar = tkinter.BooleanVar()
+        self.stopNowBlVar.set(self.globalConfigureFile["stopNow"])
+
+        Label(self.stopNowFrame, text="立即停止抽取", font=("微软雅黑", 10)).pack(side=tk.LEFT)
+
+        self.stopNowButton = Checkbutton(self.stopNowFrame, bootstyle="success-round-toggle", variable=self.stopNowBlVar)
+        self.stopNowButton.pack(side=tk.RIGHT)
+        Label(self.main_settings_1, text="释义：在用户按下“停止抽取”按钮后立即停止抽取，不依靠惯性滚动", font=("微软雅黑", 10)).pack(anchor="w")
 
 
         self.applyChangeButton = Button(self.main_settings_1, text="保存更改", command=self.mainApplyChangeButtonFunc)
@@ -206,6 +218,7 @@ class SettingsUI(tkinter.Tk):
         globalConfigureFile["other"]["doRandom"] = self.setRandomEventBlVar.get()
         globalConfigureFile["other"]["showHello"] = self.setHelloBlVar.get()
         globalConfigureFile["other"]["topMost"] = self.setTopBlVar.get()
+        globalConfigureFile["stopNow"] = self.stopNowBlVar.get()
 
         globalConfigureFile["uiBasicSittings"]["style"] = self.styleCombobox.get()
 
@@ -331,8 +344,10 @@ class SettingsUI(tkinter.Tk):
 
         Label(self.aboutSittings, text="关于NameProject", font=("微软雅黑", 20)).pack(pady=10)
         Separator(self.aboutSittings, orient=tk.HORIZONTAL).pack(fill=tk.X, pady=(5, 5))
+        Label(self.aboutSittings, text="一个普普通通的点名器").pack(fill=tk.X)
         Label(self.aboutSittings, text="版本：{}".format(self.globalConfigureFile["version"]), font=("微软雅黑", 10)).pack(fill=tk.X)
         Label(self.aboutSittings, text="Python运行版本：{}".format(sys.version)).pack(fill=tk.X)
+        Label(self.aboutSittings, text="感谢ttkbootstrap项目提供的主题！！！").pack(fill=tk.X)
         Label(self.aboutSittings, text="2024, XFTY, 遵循Apache Version 2.0 开源").pack(side=tk.BOTTOM)
 
         self.aboutSittings.pack(fill=tk.BOTH, expand=True)
