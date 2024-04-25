@@ -286,20 +286,34 @@ class SettingsUI(tkinter.Tk):
 
         Label(self.displaySittings, text="字体设置", font=("微软雅黑", 20)).pack(pady=10, anchor="w")
         Separator(self.displaySittings, orient=tk.HORIZONTAL).pack(fill=tk.X, pady=(5, 5))
-        Label(self.displaySittings, text="请通过滑块调整需要增加的字体大小，上限为10，下限为-10").pack(pady=10, anchor="w")
+        Label(self.displaySittings, text="请通过滑块调整需要增加的字体大小，上限为20，下限为-20").pack(pady=10, anchor="w")
 
         self.showWhere = Label(self.displaySittings, text="当前值为：{}".format("null"))
         self.showWhere.pack(pady=10, anchor="w")
 
-        self.scale = Scale(self.displaySittings, from_=-10, to=10, orient=tk.HORIZONTAL)
-        self.scale.set(0)
+        self.scale = Scale(self.displaySittings, from_=-20, to=20, orient=tk.HORIZONTAL)
+        self.scale.set(self.globalConfigureFile["fontScaleSize"])
         self.scale.pack(fill=tk.X)
 
+        Label(self.displaySittings, text="注意：‘设置’中的字体不受此处设置影响", foreground="red").pack(pady=10, anchor="w")
+
         self.displaySittings.pack(fill=tk.BOTH, expand=True)
+
+        Button(self.displaySittings, text="应用更改", command=self.displayApplyChangeButtonFunc).pack(side="bottom", anchor="e")
 
         self.checkDisplaySittings()
 
         self.current_tab_content = self.displaySittings
+
+    def displayApplyChangeButtonFunc(self):
+        final = int(self.scale.get())
+        globalConfigureFile = self.globalConfigureFile
+        globalConfigureFile["fontScaleSize"] = final
+        try:
+            self.change_json_file(globalConfigureFile)
+            messagebox.showinfo("成功", "更改已保存，重启软件以生效更改")
+        except:
+            messagebox.showerror("错误", "无法保存更改，请检查文件是否被占用或者其他问题\n"+traceback.format_exc())
 
     def checkDisplaySittings(self):
         self.showWhere.configure(text="当前值为：{}".format(int(self.scale.get())))
@@ -342,6 +356,17 @@ class SettingsUI(tkinter.Tk):
                 self.globalConfigureFile = r
                 self.namelabel = r["nameLabel"]
                 isOpen = True
+
+                try:
+                    if self.globalConfigureFile["configVersion"] != 3.1:
+                        tkinter.messagebox.showerror("配置文件版本错误",
+                                                     "配置文件版本错误\n要求版本：3.1或者更高版本\n当前版本：" + str(
+                                                         self.globalConfigureFile["configVersion"]) + "\n")
+                        sys.exit()  # 退出程序防止程序无法读取配置文件
+                except KeyError:
+                    tkinter.messagebox.showerror("配置文件版本错误",
+                                                 "配置文件版本错误\n要求版本：3.1或者更高版本\n当前版本：未找到\n是否删除了configVersion，或者配置版本过旧？")
+                    sys.exit()  # 退出程序防止程序无法读取配置文件
 
         except FileNotFoundError:
             messagebox.showerror("我们在执行‘读取配置文件时’发生了错误",

@@ -1,22 +1,22 @@
 #! usr/bin/python3
 # -*- coding:utf-8 -*-
+import ctypes
 import json
-import random
+import logging
 import os
+import random
 import subprocess
+import sys
 import threading
 import time
 import tkinter
-import tkinter.ttk
 import tkinter.messagebox
-import ctypes
-import logging
+import tkinter.ttk
+import webbrowser
 
 import ttkbootstrap
 import ttkbootstrap.tooltip
-from ttkbootstrap.constants import *
 from ttkbootstrap import Style
-import webbrowser
 
 import welcome
 
@@ -123,6 +123,7 @@ class maingui(tkinter.Tk):
 
         self.style = kwargs["style"]
         self.fontSize = kwargs["fontSize"]
+        self.fontScaleSize = kwargs["fontScaleSize"]
 
         # 判断深浅主题
         if self.style in Style_all["light"]:
@@ -195,7 +196,7 @@ class maingui(tkinter.Tk):
         """
         # 设置主标题
         self.maintitle = tkinter.Label(self.main_frame, text="NameProject",
-                                       font=("Microsoft Yahei UI", self.fontSize["maintitle"]))
+                                       font=("Microsoft Yahei UI", self.fontSize["maintitle"]+self.fontScaleSize))
         self.maintitle.pack(side="top", anchor="center", pady=(20, 10))
 
         # 添加水平分割线
@@ -203,31 +204,34 @@ class maingui(tkinter.Tk):
         self.onlySep.pack(side="top", fill='x')
 
         # 设置主名称显示
-        self.mainNameLabel = tkinter.Label(self.main_frame, text=self.mainName, font=("Microsoft Yahei UI", self.fontSize["mainNameLabel"]),
+        self.mainNameLabel = tkinter.Label(self.main_frame, text=self.mainName, font=("Microsoft Yahei UI", self.fontSize["mainNameLabel"]+self.fontScaleSize),
                                            background="#EBDBD1")
         self.mainNameLabel.pack(side="top", pady=(0, 10), anchor="center")
 
         # 设置前置名称显示
-        self.preNameLabel = tkinter.Label(self.main_frame, text=self.preName, font=("Microsoft Yahei UI", self.fontSize["preNameLabel"]),
-                                          foreground="gray")
+        self.preNameLabel = tkinter.Label(self.main_frame, text=self.preName, font=("Microsoft Yahei UI", self.fontSize["preNameLabel"]+self.fontScaleSize),
+                                          fg="gray")
         self.preNameLabel.pack(side="right", anchor="se")
 
         # 设置后置名称显示
-        self.afterNameLabel = tkinter.Label(self.main_frame, text=self.afterName, font=("Microsoft Yahei UI", self.fontSize["afterNameLabel"]),
+        self.afterNameLabel = tkinter.Label(self.main_frame, text=self.afterName, font=("Microsoft Yahei UI", self.fontSize["afterNameLabel"]+self.fontScaleSize),
                                             foreground="gray")
         self.afterNameLabel.pack(side="left", anchor="sw")
 
+        # 使用Tcl语言使按钮控件不变
+        self.tk.call('font', 'create', 'buttongroupFont', '-family', 'Microsoft Yahei UI', '-size', 20)
+
         # 设置开始按钮
         self.mainButton = tkinter.Button(self.main_frame, text="开始抽取", relief=tkinter.GROOVE, width=15, height=2,
-                                         command=self.flushUI, padx=5, font=("Microsoft Yahei UI", self.fontSize["mainButton"]))
+                                         command=self.flushUI, padx=5, pady=1, font=("Microsoft Yahei UI", self.fontSize["mainButton"]+self.fontScaleSize))
         self.mainButton.pack(side="bottom", anchor="e", pady=(10, 0))
 
         # 设置停止按钮（初始状态为禁用）
         self.mainStopButton = tkinter.Button(self.main_frame, text="停止抽取", relief=tkinter.GROOVE, width=15,
                                              height=2,
-                                             state="disabled", command=self.stopRandom, padx=5,
-                                             font=("Microsoft Yahei UI", self.fontSize["mainStopButton"]))
-        self.mainStopButton.pack(side="bottom", anchor="w", pady=(10, 0))
+                                             state="disabled", command=self.stopRandom,
+                                             font=("Microsoft Yahei UI", self.fontSize["mainStopButton"]+self.fontScaleSize))
+        self.mainStopButton.pack(side="bottom", anchor="w")
 
         ttkbootstrap.tooltip.ToolTip(self.mainButton, text="按下按钮后，点名器名单将被打乱，并以每0.09秒一次的速度滚动")
         ttkbootstrap.tooltip.ToolTip(self.mainStopButton, text="按下按钮后，点名器将依靠惯性停止滚动，并显示当前点名结果")
@@ -534,6 +538,16 @@ if __name__ == '__main__':
             else:
                 configure["eula"] = False
                 exit()
+
+        # 检测配置文件版本
+        try:
+            if configure["configVersion"] != 3.1:
+                tkinter.messagebox.showerror("配置文件版本错误", "配置文件版本错误\n要求版本：3.1或者更高版本\n当前版本：" + str(configure["configVersion"]) + "\n")
+                sys.exit()  # 退出程序防止程序无法读取配置文件
+        except KeyError:
+            tkinter.messagebox.showerror("配置文件版本错误", "配置文件版本错误\n要求版本：3.1或者更高版本\n当前版本：未找到\n是否删除了configVersion，或者配置版本过旧？")
+            sys.exit()  # 退出程序防止程序无法读取配置文件
+
         maingui(
             studentName=configure["nameLabel"],  # 学生姓名标签文本
             doRandom=configure["other"]["doRandom"],  # 随机功能开关
@@ -542,7 +556,8 @@ if __name__ == '__main__':
             debugMode=False,  # 调试模式（固定为False）
             geometry=configure["geometry"],  # 窗口布局几何信息
             style=configure["uiBasicSittings"]["style"],  # 主题选择（参考`Style_all`变量进行修改）
-            fontSize=configure["fontSize"]  # 字体大小
+            fontSize=configure["fontSize"],  # 字体大小
+            fontScaleSize=configure["fontScaleSize"]  # 字体缩放比例
         )  # 初始化并展示主界面
 
     except FileNotFoundError:

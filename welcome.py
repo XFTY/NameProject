@@ -1,12 +1,13 @@
-import tkinter
-import tkinter.ttk
-import tkinter.messagebox
 import json
+import tkinter
+import tkinter.messagebox
+import tkinter.ttk
 
 # 配置文件模板
 # 请不要更改里面的内容，不然主程序会寄
 configureFile = {
-    "configVersion": "3.0",
+    "configVersion": 3.1,
+    "version": "3.0[Preview2]",
     "eula": False,
     "geometry": "",
     "nameLabel": [],
@@ -18,14 +19,16 @@ configureFile = {
     "uiBasicSittings": {
         "style": "cosmo"  # 默认ttkbootstrap样式
     },
-    "fontSize": {
+    "fontSize": {  # 主UI字体大小配置，说实话当时脑子抽了，想出了这种辣鸡想法。该方法已弃用。
         "maintitle": 50,
         "mainNameLabel": 55,
         "preNameLabel": 35,
         "afterNameLabel": 35,
         "mainButton": 9,
         "mainStopButton": 9
-    }
+    },
+    # 修改字体缩放大小
+    "fontScaleSize": 0
 }
 
 

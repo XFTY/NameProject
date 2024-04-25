@@ -1,0 +1,216 @@
+/* 重置浏览器默认样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* background: linear-gradient(to top right, #2f4052, #BEB9BE); */
+    background-color: #2A3642;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: white;
+}
+
+/* 头部样式 */
+header {
+    background: #2F4052;
+    padding: 20px;
+    text-align: center;
+}
+
+/* 修改标题区为固定定位 */
+.header-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999; /* 确保标题始终位于最上层 */
+    background-color: #2A3642;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 添加阴影以实现悬浮效果 */
+}
+
+/* 调整标题区内容布局 */
+.header-fixed h1,
+.header-fixed p {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+}
+
+.header-fixed h1 {
+    font-size: 24px;
+    color: white;
+    margin-right: 10px;
+}
+
+.header-fixed p {
+    font-size: 16px;
+    color: #B2B9BE;
+}
+
+.header-fixed.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: #2A3642;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container img {
+    max-width: 200px;
+    height: auto;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* 特点与功能区 */
+#features {
+    padding: 10px;
+}
+
+.feature-item {
+    margin-bottom: 30px;
+}
+
+.feature-item i {
+    display: inline-block;
+    font-size: 32px;
+    margin-right: 10px;
+    color: #5cb85c;
+}
+
+.feature-item h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.feature-item p {
+    margin-bottom: 20px;
+}
+
+/* 下载、文档链接区 */
+#docs ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#docs ul li {
+    margin-bottom: 10px;
+}
+
+#docs ul a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+#docs ul a:hover {
+    text-decoration: underline;
+}
+
+/* 底部版权信息区 */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* 响应式设计（针对移动端） */
+@media (max-width: 768px) {
+    header h1,
+    header p {
+        text-align: left;
+    }
+
+    .feature-item {
+        margin-bottom: 20px;
+    }
+}
+
+/* 开始使用按钮样式 */
+#docs .btn-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.btn-container-padding {
+    padding: 10px 0;
+}
+
+.gradient-btn {
+    background: linear-gradient(to top right, #6190E8, #A7BFE8);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    border-radius: 10px; /* 添加此行以实现按钮四个角的圆弧效果 */
+}
+
+.gradient-btn:hover {
+    background: linear-gradient(to top right, #4A79D6, #8CADD0);
+}
+
+.feature-card {
+    background-color: #2F4052;
+    border-radius: 10px; /* 圆角大小可以根据需求调整 */
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 1000px; /* 设置相同的最大宽度以保持长度一致 */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); /* 增加阴影深度和模糊度 */
+    position: relative;
+    z-index: 1; /* 可能需要设置z-index以确保其显示在背景之上 */
+}
+
+/* 使用指南与文档链接区域的内容样式 */
+.feature-card h2,
+.feature-card p {
+    color: white;
+    margin-bottom: 10px;
+}
+
+/* 图片展示区样式 */
+#screenshots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* 调整图片之间的间距 */
+}
+
+.screenshot-container {
+    position: relative;
+    overflow: hidden; /* 隐藏超出边界的图片部分，以实现圆角裁剪效果 */
+}
+
+.screenshot-container img {
+    display: block;
+    width: 100%; /* 图片宽度自适应容器宽度 */
+    height: auto;
+    object-fit: cover; /* 保持图片比例并填充容器 */
+    border-radius: 10px; /* 设置图片边框圆角 */
+}
