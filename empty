@@ -1,0 +1,30 @@
+    def show_main_settings(self):
+        if self.current_tab_content is not None:
+            self.current_tab_content.pack_forget()
+        self.system_settings = Frame(self.settings_container, padding=10)
+
+        Label(self.system_settings, text="主要设置", font=("微软雅黑", 15)).pack(pady=10, anchor="w")
+        Separator(self.system_settings, orient=tk.HORIZONTAL).pack(fill=tk.X, pady=(10, 5))
+
+        Label(self.system_settings, text="NameProject 主题", font=("微软雅黑", 15)).pack(pady=(10, 5), anchor="w")
+        Label(self.system_settings, text="在下方的列表中选择主题，修改完成后不要忘记点击保存按钮", font=("微软雅黑", 10)).pack(pady=1, anchor="w")
+        styleCombobox = Combobox(self.system_settings, values=["------浅色主题------", "cosmo", "flatly", "journal", "litera", "lumen", "minty", "pulse", "sandstone", "united", "yeti", "simplex", "------深色主题------", "solar", "superhero", "darkly", "cyborg"], font=("微软雅黑", 10), state="readonly")
+        styleCombobox.current(2)
+        styleCombobox.pack(pady=(5, 5), anchor="w")
+
+        Separator(self.system_settings, orient=tk.HORIZONTAL).pack(fill=tk.X, pady=(10, 5))
+
+        Label(self.system_settings, text="NameProject 通用设置", font=("微软雅黑", 15)).pack(pady=10, anchor="w")
+
+        Separator(self.system_settings, orient=tk.HORIZONTAL).pack(fill=tk.X, pady=(0, 0))
+        setHelloFrame = Frame(self.system_settings)
+        setHelloFrame.pack(pady=5, anchor="w", fill="x")
+        Label(setHelloFrame, text="显示问候语", font=("微软雅黑", 10)).pack(side=tk.LEFT)
+        setHelloButton = Checkbutton(setHelloFrame, bootstyle="success-round-toggle")
+        setHelloButton.pack(side=tk.RIGHT)
+        self.appChangeButton = Button(self.system_settings, text="保存更改", command=self.mainApplyChangeButtonFunc)
+        self.appChangeButton.pack(pady=5, anchor="e", side="bottom")
+        Separator(self.system_settings, orient=tk.HORIZONTAL).pack(fill=tk.X, pady=(0, 0))
+
+        self.system_settings.pack(fill='both', expand=True)
+        self.current_tab_content = self.system_setting

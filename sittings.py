@@ -58,7 +58,7 @@ class SettingsUI(tkinter.Tk):
         self.tabs_container = Frame(self.paned_window, padding=10)
         self.settings_container = Frame(self.paned_window, padding=10)
 
-        self.paned_window.add(self.tabs_container, weight=1)
+        self.paned_window.add(self.tabs_container, weight=2)
         self.paned_window.add(self.settings_container, weight=4)  # 适当调整权重以满足布局需求
 
         background_color = self.style.lookup('TFrame', 'background')
@@ -102,7 +102,6 @@ class SettingsUI(tkinter.Tk):
 
         # 需要在初始化样式时定义Custom.TButton的背景色
         self.style.configure('Custom.TButton', background=background_color)
-
         self.title_label.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
         self.main_button.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
         self.name_button.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
@@ -112,13 +111,23 @@ class SettingsUI(tkinter.Tk):
         self.paned_window.pack(side=tk.TOP, fill=tk.BOTH, padx=10, pady=10)
 
         # 初始化显示系统设置
-        self.show_main_settings()
-
-        # 检查设置是否正确
-        self.checkSittingsIsCurrect()
+        self.show_hello_settings()
 
         self.mainloop()
 
+
+    def show_hello_settings(self):
+        if self.current_tab_content is not None:
+            self.current_tab_content.pack_forget()
+
+        self.main_settings_0 = Frame(self.settings_container, padding=10)
+
+        Label(self.main_settings_0, text="欢迎使用NameProject设置程序！", font=("微软雅黑", 25)).pack(pady=10, anchor="center")
+        Label(self.main_settings_0, text="轻点左边的按钮开始设置", font=("微软雅黑", 12)).pack(pady=10, anchor="center")
+
+        self.main_settings_0.pack(fill=tk.BOTH, expand=True)
+
+        self.current_tab_content = self.main_settings_0
 
     def show_main_settings(self):
 
@@ -209,6 +218,9 @@ class SettingsUI(tkinter.Tk):
 
         self.main_settings_1.pack(fill='both', expand=True)
         self.current_tab_content = self.main_settings_1
+
+        # 检查设置是否正确
+        self.checkSittingsIsCurrect()
 
     def mainApplyChangeButtonFunc(self):
         # 备份全局配置文件
@@ -384,8 +396,10 @@ class SettingsUI(tkinter.Tk):
                     sys.exit()  # 退出程序防止程序无法读取配置文件
 
         except FileNotFoundError:
-            messagebox.showerror("我们在执行‘读取配置文件时’发生了错误",
-                                 "您的配置文件似乎丢失或损坏\n\n详情信息：\n" + traceback.format_exc())
+            with open("configure.json", "w", encoding="utf-8") as f:
+                f.write(json.dumps("", ensure_ascii=False))
+            # messagebox.showerror("我们在执行‘读取配置文件时’发生了错误",
+            #                      "您的配置文件似乎丢失或损坏\n\n详情信息：\n" + traceback.format_exc())
 
         except Exception:  # 用于处理未知异常
             messagebox.showerror("我们在执行‘读取配置文件时’发生了错误",

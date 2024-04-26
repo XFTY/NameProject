@@ -224,7 +224,7 @@ class maingui(tkinter.Tk):
 
         # 设置开始按钮
         self.mainButton = tkinter.Button(self.main_frame, text="开始抽取", relief=tkinter.GROOVE, width=15, height=2,
-                                         command=self.flushUI, padx=5, pady=1, font=("Microsoft Yahei UI", self.fontSize["mainButton"]+self.fontScaleSize))
+                                         command=self.flushUI, font=("Microsoft Yahei UI", self.fontSize["mainButton"]+self.fontScaleSize))
         self.mainButton.pack(side="bottom", anchor="e", pady=(10, 0))
 
         # 设置停止按钮（初始状态为禁用）
@@ -267,23 +267,16 @@ class maingui(tkinter.Tk):
         self.after(100, self.updateWindow)
 
     def changeTitle(self):
-        self.maintitle.configure(
-            text="窗口变更！Width={}, Height={}".format(self.winfo_width(),
-                                                       self.winfo_height()))
-        time.sleep(5)
-        self.maintitle.configure(text="NameProject")
+        pass
+        # self.maintitle.configure(
+        #     text="窗口变更！Width={}, Height={}".format(self.winfo_width(),
+        #                                                self.winfo_height()))
+        # time.sleep(5)
+        # self.maintitle.configure(text="NameProject")
+
         # time.sleep(0.01)
 
         # self.after(10, self.updateWindow)
-
-    #    def changeWindow(self):
-    #        while True:
-    #            a = self.winfo_width()
-    #            b = self.winfo_height()
-    #
-    #            if self.width != a or self.height != b:
-    #                self.width = a
-    #                self.height = b
 
     def __flushUI(self):
         """
@@ -571,5 +564,5 @@ if __name__ == '__main__':
             stopNow=configure["stopNow"]
         )  # 初始化并展示主界面
 
-    except FileNotFoundError:
-        welcome.setupUI_1()  # 当"configure.json"文件未找到时，显示欢迎界面
+    except:
+        welcome.openWelcomeUI()  # 当"configure.json"文件未找到时，显示欢迎界面

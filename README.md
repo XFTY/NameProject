@@ -3,7 +3,7 @@
 
 ## 目录
  - 安全性
- - 使用说明
+ - 如何安装
  - 下载/安装
  - 改进
  - 鸣谢
@@ -13,8 +13,9 @@
 本软件 **不会收集** 您的任何数据，除非您的电脑遭到了恶意软件的攻击，您可以放心的使用此软件！
 
 
-## 使用说明
-关于软件如何使用，请访问[安装和使用指南(Install guide)](https://github.com/XFTY/NameProject/docs/install.md)
+## 如何安装
+访问[软件发行版](https://github.com/XFTY/NameProject/docs/install_guide/install.md)下载软件版本。  
+然后，解压.zip文件，运行.exe文件。
 
 ## 下载/安装
 访问[软件发行版](https://github.com/XFTY/NameProject/docs/install_guide/install.md)下载软件版本。  

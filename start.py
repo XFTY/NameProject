@@ -3,6 +3,8 @@ import subprocess
 import tkinter
 import ttkbootstrap
 import threading
+import tkinter.messagebox
+import traceback
 
 class startWindow(tkinter.Tk):
     def __init__(self):
@@ -24,10 +26,22 @@ class startWindow(tkinter.Tk):
         sittingsButton = tkinter.Button(self, text="启动设置程序", font=("simhei", 15), command=self.sittingsButtonFunc)
         sittingsButton.pack(side="top", fill="x", pady=(5, 0), ipady=10)
 
+        self.gotoWelcomeUI()
+
         self.center_window()
         self.autoRun()
 
         self.mainloop()
+
+    def gotoWelcomeUI(self):
+        try:
+            with open("configure.json", "r", encoding="utf-8") as f: pass
+            return
+        except FileNotFoundError:
+            subprocess.call("venv/Scripts/python.exe source.py", creationflags=subprocess.CREATE_NO_WINDOW)
+
+        except:
+            tkinter.messagebox.showerror("错误", traceback.format_exc())
 
     def autoRun(self):
         self.activiteLabel.configure(
@@ -41,7 +55,7 @@ class startWindow(tkinter.Tk):
     def mainButtonFunc(self):
         self.destroy()
         def open():
-            subprocess.call("venv\Scripts\python.exe source.py", creationflags=subprocess.CREATE_NO_WINDOW)
+            subprocess.call("venv/Scripts/python.exe source.py", creationflags=subprocess.CREATE_NO_WINDOW)
 
         t = threading.Thread(target=open)
         t.start()
@@ -49,7 +63,7 @@ class startWindow(tkinter.Tk):
     def sittingsButtonFunc(self):
         self.destroy()
         def open():
-            subprocess.call("venv\Scripts\python.exe sittings.py", creationflags = subprocess.CREATE_NO_WINDOW)
+            subprocess.call("venv/Scripts/python.exe sittings.py", creationflags = subprocess.CREATE_NO_WINDOW)
 
         t = threading.Thread(target=open)
         t.start()
