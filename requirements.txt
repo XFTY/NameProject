@@ -1,6 +1,2 @@
-pip~=24.0
-wheel~=0.41.2
-setuptools~=68.2.0
 pillow>=10.3.0
 ttkbootstrap~=1.10.1
-pyinstaller~=6.5.0
