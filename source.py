@@ -24,7 +24,7 @@ nameProjectConfig = {
     # CN: NameProject项目配置文件，一般情况下不应该更改，除非你知道你在做什么。
     # US: NameProject project configuration file, usually should not be changed unless you know what you are doing.
     "name": "NameProject",
-    "version": "3.0[Preview2]",
+    "version": "3.0.1",
     "license": "Apache License, Version 2.0"
 }
 

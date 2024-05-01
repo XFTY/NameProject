@@ -11,7 +11,7 @@ from ttkbootstrap.widgets import *
 # 请不要更改里面的内容，不然主程序会寄
 configureFile = {
     "configVersion": 3.1,
-    "version": "3.0[Preview2]",
+    "version": "3.0.1",
     "eula": True,
     "geometry": "",
     "nameLabel": [],
