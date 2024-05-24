@@ -3,3 +3,5 @@ requests~=2.31.0
 markdown~=3.6
 tkwebview2~=3.5.0
 wget~=3.2
+pyqt5-sip==12.11.0
+pyqt5~=5.15.10

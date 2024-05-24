@@ -1,3 +1,12 @@
+#! /usr/bin/env python3
+# --------------------------------------------------------------------------------------------------
+# | 版权所有 XFTY，保留所有权利。
+# | 代码遵循Apache 2.0开源协议，浏览在根目录的LICENSE文件以获取更多信息。
+# |
+# | Copyright (c) 2021-2022 XFTY, All Rights Reserved.
+# | Licensed under the Apache License 2.0. See LICENSE in the project root for license information.
+# --------------------------------------------------------------------------------------------------
+
 import json
 import sys
 import tkinter
@@ -93,6 +102,13 @@ class SettingsUI(tkinter.Tk):
 
         self.about_label = Label(self.tabs_container, text="关于NameProject", width=0)
 
+        self.update_button = Button(self.tabs_container,
+                                    text="检查更新[有新的软件更新可用]",
+                                    command=self.show_update_settings,
+                                    width=0,  # 宽度自动填充 # 指定固定高度
+                                    bootstyle='error',
+                                    )
+
         self.about_button = Button(self.tabs_container,
                                    text="关于NameProject",
                                    command=self.show_about_settings,
@@ -107,6 +123,7 @@ class SettingsUI(tkinter.Tk):
         self.name_button.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
         self.display_button.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
         self.about_label.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
+        self.update_button.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
         self.about_button.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
         self.paned_window.pack(side=tk.TOP, fill=tk.BOTH, padx=10, pady=10)
 
@@ -347,6 +364,21 @@ class SettingsUI(tkinter.Tk):
         
 
         self.after(100, self.checkDisplaySittings)
+
+    def show_update_settings(self):
+        if self.current_tab_content is not None:
+            self.current_tab_content.pack_forget()
+
+        self.updateSittings = Frame(self.settings_container, padding=10)
+
+        Label(self.updateSittings, text="软件更新", font=("微软雅黑", 20)).pack(pady=10, anchor="w")
+        Separator(self.updateSittings, orient=tk.HORIZONTAL).pack(fill=tk.X, pady=(5, 5))
+        Label(self.updateSittings, text="在此处显示软件的更新信息").pack(pady=10,
+                                                                                                     anchor="w")
+
+        self.updateSittings.pack(fill=tk.BOTH, expand=True)
+
+        self.current_tab_content = self.updateSittings
 
     def show_about_settings(self):
         if self.current_tab_content is not None:
