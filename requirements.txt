@@ -1,5 +1,5 @@
 ttkbootstrap~=1.10.1
-requests~=2.31.0
+requests~=2.32.0
 markdown~=3.6
 tkwebview2~=3.5.0
 wget~=3.2
