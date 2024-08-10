@@ -5,20 +5,78 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nameproject.v5.nameproject5.NameProjectController">
-   <children>
-      <Pane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="330.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Label text="NameProject 5">
-               <font>
-                  <Font name="Arial" size="34.0" />
-               </font>
-               <padding>
-                  <Insets right="10.0" top="15.0" />
-               </padding>
-            </Label>
-         </children>
-      </Pane>
-   </children>
-</AnchorPane>
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+  <tabs>
+    <Tab text="  Main  ">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <top>
+                        <AnchorPane prefHeight="90.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Separator prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                              <Label fx:id="version" text="Version: Unknown" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="60.0">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="main_title1" alignment="CENTER" contentDisplay="CENTER" text="NameProject 5" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+                                 <font>
+                                    <Font name="Arial" size="37.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </top></BorderPane>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+     <Tab text="   Mode   ">
+        <content>
+           <AnchorPane>
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="Welcome!" textFill="#000000aa" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="14.0">
+                     <font>
+                        <Font name="Arial" size="37.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="62.0" text="Set up your mode and use it!" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="60.0">
+                     <font>
+                        <Font name="Arial" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="400.0" text="NameProject V5" textFill="#00000065" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="14.0">
+                     <font>
+                        <Font name="Arial" size="34.0" />
+                     </font>
+                  </Label>
+                  <Label text="Codename:  Airplane Ticket" textFill="#00000065" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="60.0">
+                     <font>
+                        <Font name="Arial" size="15.0" />
+                     </font>
+                  </Label>
+                  <Separator prefWidth="200.0" style="-fx-background-color: brown;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0" />
+               </children></AnchorPane>
+        </content>
+     </Tab>
+    <Tab text="  Sittings  ">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="under construction..." textFill="#00000091" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="Arial" size="32.0" />
+                     </font>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></AnchorPane>
+      </content>
+    </Tab>
+  </tabs>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</TabPane>
