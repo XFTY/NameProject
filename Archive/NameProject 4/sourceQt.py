@@ -7,6 +7,9 @@
 # | Licensed under the Apache License 2.0. See LICENSE in the project root for license information.
 # --------------------------------------------------------------------------------------------------
 # sourceQt.py 主要负责处理项目逻辑
+import os
+
+os.system("pip install -r requirements.txt")
 
 import sys
 import random
