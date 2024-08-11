@@ -15,6 +15,11 @@
                      <top>
                         <AnchorPane prefHeight="90.0" BorderPane.alignment="CENTER">
                            <children>
+                              <Label fx:id="welcomeTitle" text="Welcome Title" textFill="#000000bf" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+                                 <font>
+                                    <Font name="Arial" size="45.0" />
+                                 </font>
+                              </Label>
                               <Separator prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                               <Label fx:id="version" text="Version: Unknown" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="60.0">
                                  <font>
