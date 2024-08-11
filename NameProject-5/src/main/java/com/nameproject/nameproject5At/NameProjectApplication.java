@@ -1,6 +1,7 @@
 package com.nameproject.nameproject5At;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -19,6 +20,8 @@ public class NameProjectApplication extends Application {
 
         // 读取 yaml 文件
         Map<String, Object> sysinfo = GetSysInfo();
+
+
         ConfigCreator configCreator = new ConfigCreator();
         Map<String, Object> configureFile = configCreator.getOrCreateConfigFile();
 

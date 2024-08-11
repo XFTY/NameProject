@@ -60,7 +60,7 @@
                            <children>
                               <Button fx:id="startButton" layoutX="308.0" layoutY="48.0" mnemonicParsing="false" stylesheets="@css/button.css" text="   开始   " AnchorPane.leftAnchor="280.0">
                                  <font>
-                                    <Font name="Microsoft YaHei" size="17.0" />
+                                    <Font name="Microsoft YaHei" size="16.0" />
                                  </font></Button>
                               <Button fx:id="stopButton" layoutX="425.0" layoutY="48.0" mnemonicParsing="false" stylesheets="@css/button-stop.css" text="   停止   " AnchorPane.rightAnchor="280.0">
                                  <font>
@@ -129,6 +129,22 @@
                      </font>
                   </Label>
                   <Separator prefWidth="200.0" style="-fx-background-color: brown;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0" />
+                  <ScrollPane layoutY="93.0" prefHeight="200.0" prefWidth="200.0" style="-fx-hbar-policy: never; -fx-border-color: #2a3642;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="10000.0" prefHeight="10000.0" style="-fx-background-color: #2a3642; -fx-border-color: #2a3642;">
+                           <children>
+                              <Label text="功能设置" textFill="WHITE" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                 <font>
+                                    <Font name="Microsoft YaHei Bold" size="25.0" />
+                                 </font>
+                              </Label>
+                              <Label text="测试版警告！UI界面所有设置内容暂时不起效！" textFill="#f5ff00" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                           <padding>
+                              <Insets top="4.0" />
+                           </padding></AnchorPane>
+                    </content>
+                  </ScrollPane>
                </children></AnchorPane>
         </content>
      </Tab>

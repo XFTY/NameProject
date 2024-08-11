@@ -1,6 +1,8 @@
 package com.nameproject.nameproject5At;
 
+import javafx.application.Platform;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.IOException;
@@ -9,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
+import java.util.Optional;
 
 public class ConfigCreator {
     public Map<String, Object> getOrCreateConfigFile() {
@@ -24,13 +27,19 @@ public class ConfigCreator {
                 return yamlData;
             }
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("请求-文件写入");
 
             alert.setHeaderText("NameProject5 需要在您的文档文件夹中创建配置文件\nNameProject5 needs to create a configuration file in your Documents folder.");
-            alert.setContentText("点击“确定”将写入文件，如果您不同意写入，也可在“文档”文件夹中删除文件\nClick \"OK\" to write the file. If you do not agree to write the file, you can also delete it from the \"Documents\" folder.\n");
+            alert.setContentText("点击“确定”将写入文件，如果您不同意写入，程序将无法运行\nClick \"OK\" to write the file. If you do not agree to write the file, the program cannot run successfully.");
 
-            alert.showAndWait();
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+
+            } else {
+                Platform.exit();
+                System.exit(0);
+            }
 
             // 文件不存在，创建文件夹
             createFolder(npDir);
