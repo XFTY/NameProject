@@ -12,11 +12,14 @@ import java.io.IOException;
 import java.util.Map;
 
 public class NameProjectApplication extends Application {
+
     @Override
     public void start(Stage stage) throws IOException {
 
         // 读取 yaml 文件
         Map<String, Object> sysinfo = GetSysInfo();
+        ConfigCreator configCreator = new ConfigCreator();
+        Map<String, Object> configureFile = configCreator.getOrCreateConfigFile();
 
         // 设置 fxml
         FXMLLoader fxmlLoader = new FXMLLoader(NameProjectApplication.class.getResource("mainWindow-classic.fxml"));
@@ -30,6 +33,7 @@ public class NameProjectApplication extends Application {
         stage.setScene(scene);
         stage.show();
 
+        // 设置版本号在软件窗口内
         try {
             Label versionLabel = (Label) root.lookup("#versionLabel");
             versionLabel.setText("Version: " + sysinfo.get("version").toString());
