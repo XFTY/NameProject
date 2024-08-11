@@ -6,6 +6,8 @@ module com.nameproject.v5.nameproject5 {
     requires org.yaml.snakeyaml;
 
     opens com.nameproject.nameproject5At to javafx.fxml;
+    opens com.nameproject.nameproject5At.controller to javafx.fxml;
+
     exports com.nameproject.nameproject5At;
     exports com.nameproject.nameproject5At.controller;
     exports com.nameproject.nameproject5At.flusher;

@@ -16,8 +16,7 @@ public class NameProjectApplication extends Application {
     public void start(Stage stage) throws IOException {
 
         // 读取 yaml 文件
-        Yaml yaml = new Yaml();
-        Map<String, Object> sysinfo = yaml.load(NameProjectApplication.class.getResourceAsStream("config/SoftwareInfo.yaml"));
+        Map<String, Object> sysinfo = GetSysInfo();
 
         // 设置 fxml
         FXMLLoader fxmlLoader = new FXMLLoader(NameProjectApplication.class.getResource("mainWindow-classic.fxml"));
@@ -32,12 +31,18 @@ public class NameProjectApplication extends Application {
         stage.show();
 
         try {
-            Label versionLabel = (Label) root.lookup("#version");
+            Label versionLabel = (Label) root.lookup("#versionLabel");
             versionLabel.setText("Version: " + sysinfo.get("version").toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+    }
+
+    public Map<String, Object> GetSysInfo() {
+        Yaml yaml = new Yaml();
+        Map<String, Object> sysinfo = yaml.load(NameProjectApplication.class.getResourceAsStream("config/SoftwareInfo.yaml"));
+        return sysinfo;
     }
 
     public static void main(String[] args) {

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nameproject.nameproject5At.controller.MainWindowController">
   <tabs>
     <Tab text="  Main  ">
       <content>
@@ -21,7 +21,7 @@
                                  </font>
                               </Label>
                               <Separator prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                              <Label fx:id="version" text="Version: Unknown" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="60.0">
+                              <Label fx:id="versionLabel" onMouseClicked="#onVersionLabelClick" text="Version: Unknown" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="60.0">
                                  <font>
                                     <Font name="Arial" size="14.0" />
                                  </font>
