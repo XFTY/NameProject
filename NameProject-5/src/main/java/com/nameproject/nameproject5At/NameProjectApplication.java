@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.yaml.snakeyaml.Yaml;
@@ -24,7 +25,11 @@ public class NameProjectApplication extends Application {
         // 设置 fxml
         FXMLLoader fxmlLoader = new FXMLLoader(NameProjectApplication.class.getResource("mainWindow-classic.fxml"));
         Parent root = fxmlLoader.load();
+
+        // 设置窗体
         Scene scene = new Scene(root, 800, 500);
+        stage.setMinWidth(800);
+        stage.setMinHeight(500);
 
         // 设置标题
         String title ="NameProject " + sysinfo.get("version").toString();
@@ -40,6 +45,9 @@ public class NameProjectApplication extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        Button stopButton = (Button) root.lookup("#stopButton");
+        stopButton.setDisable(true);
 
     }
 

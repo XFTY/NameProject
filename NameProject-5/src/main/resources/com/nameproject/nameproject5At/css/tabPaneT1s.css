@@ -21,7 +21,7 @@
 }
 /* tab选中时设置背景颜色 */
 .tab:selected {
-    -fx-background-color: #990000ff;
+    -fx-background-color: #2bb6ff;
 }
 /* Tab选中的时候选中其边框并修改样式 */
 .tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {

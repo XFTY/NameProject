@@ -1,0 +1,8 @@
+.dev-fx-body {
+    -fx-background-color:  #0d1117;
+    -fx-background-position: center;
+
+
+    -fx-pref-width: 1104;
+    -fx-pref-height: 670;
+}
