@@ -5,7 +5,8 @@ module com.nameproject.v5.nameproject5 {
     requires org.kordamp.bootstrapfx.core;
     requires org.yaml.snakeyaml;
 
-    opens com.nameproject.v5.nameproject5 to javafx.fxml;
-    exports com.nameproject.v5.nameproject5;
-    exports com.nameproject.v5.nameproject5.controller;
+    opens com.nameproject.nameproject5At to javafx.fxml;
+    exports com.nameproject.nameproject5At;
+    exports com.nameproject.nameproject5At.controller;
+    exports com.nameproject.nameproject5At.flusher;
 }

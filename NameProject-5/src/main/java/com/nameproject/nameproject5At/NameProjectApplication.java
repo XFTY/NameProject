@@ -1,10 +1,9 @@
-package com.nameproject.v5.nameproject5;
+package com.nameproject.nameproject5At;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.yaml.snakeyaml.Yaml;
@@ -21,7 +20,7 @@ public class NameProjectApplication extends Application {
         Map<String, Object> sysinfo = yaml.load(NameProjectApplication.class.getResourceAsStream("config/SoftwareInfo.yaml"));
 
         // 设置 fxml
-        FXMLLoader fxmlLoader = new FXMLLoader(NameProjectApplication.class.getResource("mainWindow.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(NameProjectApplication.class.getResource("mainWindow-classic.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root, 800, 500);
 
