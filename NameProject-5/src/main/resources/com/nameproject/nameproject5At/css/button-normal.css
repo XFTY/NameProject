@@ -1,0 +1,23 @@
+/* buttonStyle.css */
+
+.button {
+    -fx-background-color: #2a3642; /* 柔和的绿色背景 */
+    -fx-text-fill: white; /* 文本颜色 */
+    /*-fx-font-size: 16px; !* 字体大小 *!*/
+    /*-fx-padding: 5px 20px; !* 内边距 *!*/
+    -fx-border-color: white;
+    -fx-border-radius: 20px; /* 边框圆角 */
+    -fx-background-radius: 20px; /* 背景圆角 */
+}
+
+
+.button:hover {
+    -fx-background-color: #2f4052; /* 鼠标悬停时的背景色 */
+}
+
+.button:pressed {
+    -fx-background-color: #c93756; /* 按下时的背景色 */
+}
+.button:disabled {
+    -fx-background-color: #696969;
+}

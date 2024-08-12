@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #2a3642;" stylesheets="@css/tabPaneT1s.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nameproject.nameproject5At.controller.MainWindowController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="800.0" style="-fx-background-color: #2a3642;" stylesheets="@css/tabPaneT1s.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nameproject.nameproject5At.controller.MainWindowController">
   <tabs>
     <Tab text="  Classic Mode  ">
       <content>
@@ -18,7 +18,7 @@
                            <children>
                               <Label fx:id="welcomeTitle" text="Welcome Title" textFill="WHITE" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
                                  <font>
-                                    <Font name="Arial" size="45.0" />
+                                    <Font name="Microsoft YaHei" size="45.0" />
                                  </font>
                               </Label>
                               <Separator prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
@@ -43,7 +43,7 @@
                            <children>
                               <Label alignment="CENTER" contentDisplay="CENTER" layoutX="110.0" layoutY="123.0" text="LNS" textFill="#fffcfc" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
                                  <font>
-                                    <Font name="Arial" size="35.0" />
+                                    <Font name="Microsoft YaHei" size="35.0" />
                                  </font>
                               </Label>
                            </children>
@@ -77,7 +77,7 @@
                            <children>
                               <Label alignment="CENTER" text="CNS" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
                                  <font>
-                                    <Font name="Arial Bold" size="60.0" />
+                                    <Font name="Microsoft YaHei Bold" size="60.0" />
                                  </font>
                               </Label>
                            </children>
@@ -88,7 +88,7 @@
                            <children>
                               <Label alignment="CENTER" text="RNS" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
                                  <font>
-                                    <Font name="Arial" size="35.0" />
+                                    <Font name="Microsoft YaHei" size="35.0" />
                                  </font>
                               </Label>
                            </children>
@@ -131,7 +131,7 @@
                   <Separator prefWidth="200.0" style="-fx-background-color: brown;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0" />
                   <ScrollPane layoutY="93.0" prefHeight="200.0" prefWidth="200.0" style="-fx-hbar-policy: never; -fx-border-width: 0; -fx-padding: 0; -fx-background-insets: 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="10000.0" prefHeight="10000.0" style="-fx-background-color: #2a3642; -fx-border-color: #2a3642;">
+                      <AnchorPane minHeight="0.0" minWidth="10000.0" prefHeight="700.0" style="-fx-background-color: #2a3642; -fx-border-color: #2a3642;">
                            <children>
                               <Label text="点名器名单" textFill="WHITE" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
                                  <font>
@@ -139,21 +139,53 @@
                                  </font>
                               </Label>
                               <Label text="测试版警告！UI界面所有设置内容暂时不起效！" textFill="#f5ff00" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="0.0" />
-                              <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-hbar-policy: never; -fx-padding: 0; -fx-background-insets: 0;" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="9400.0" AnchorPane.topAnchor="60.0">
+                              <Label text="在这里设置点名器成员姓名，一个姓名一行" textFill="WHITE" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="55.0">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label text="更多功能" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="300.0">
+                                 <font>
+                                    <Font name="Microsoft YaHei Bold" size="25.0" />
+                                 </font>
+                              </Label>
+                              <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-hbar-policy: never; -fx-padding: 0; -fx-background-insets: 0;" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="9400.0" AnchorPane.topAnchor="80.0">
                                 <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="10000.0" prefWidth="600.0" style="-fx-background-color: #2a3642;">
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="600.0" style="-fx-background-color: #2a3642;">
                                        <children>
-                                          <TextArea prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #2a3642; -fx-border-color: #2a3642; -fx-border-width: 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                          <TextArea fx:id="projectName" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #2a3642; -fx-border-color: #2a3642; -fx-border-width: 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
                                 </content>
                               </ScrollPane>
+                              <AnchorPane layoutX="3.0" layoutY="403.0" prefHeight="70.0" prefWidth="200.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="403.0">
+                                 <children>
+                                    <TextField prefWidth="600.0" promptText="您选择的文件路径将会在这里显示" style="-fx-background-color: #2a3642; -fx-border-color: white; -fx-border-radius: 10px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="105.0" />
+                                    <Label text="导入配置文件" textFill="WHITE" AnchorPane.leftAnchor="25.0">
+                                       <font>
+                                          <Font name="Microsoft YaHei Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Button mnemonicParsing="false" prefWidth="80.0" stylesheets="@css/button-normal.css" text="选择" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="25.0" />
+                                    <Label layoutX="25.0" layoutY="28.0" text="如果您打算使用自己的配置文件，请在这里导入" textFill="WHITE" AnchorPane.topAnchor="21.0">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <Label layoutX="391.0" layoutY="678.0" text="NameProject 5 版权所有 (c)， XFTY， 保留所有权利" textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="25.0" />
                            </children>
                            <padding>
                               <Insets top="4.0" />
                            </padding></AnchorPane>
                     </content>
                   </ScrollPane>
+                  <Label alignment="CENTER" text="看什么看，看我长得帅？" textFill="#2a3642" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
                </children></AnchorPane>
         </content>
      </Tab>
