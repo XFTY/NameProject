@@ -60,6 +60,11 @@ public class NameProjectApplication extends Application {
         return sysinfo;
     }
 
+    public Map<String, Object> GetUsrInfo() {
+        ConfigCreator configCreator = new ConfigCreator();
+        return configCreator.getOrCreateConfigFile();
+    }
+
     public static void main(String[] args) {
         launch();
     }

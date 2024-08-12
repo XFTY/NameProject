@@ -131,36 +131,17 @@
                   <Separator prefWidth="200.0" style="-fx-background-color: brown;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0" />
                   <ScrollPane layoutY="93.0" prefHeight="200.0" prefWidth="200.0" style="-fx-hbar-policy: never; -fx-border-width: 0; -fx-padding: 0; -fx-background-insets: 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="10000.0" prefHeight="700.0" style="-fx-background-color: #2a3642; -fx-border-color: #2a3642;">
+                      <AnchorPane minHeight="0.0" minWidth="10000.0" prefHeight="600.0" style="-fx-background-color: #2a3642; -fx-border-color: #2a3642;">
                            <children>
-                              <Label text="点名器名单" textFill="WHITE" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
-                                 <font>
-                                    <Font name="Microsoft YaHei Bold" size="25.0" />
-                                 </font>
-                              </Label>
                               <Label text="测试版警告！UI界面所有设置内容暂时不起效！" textFill="#f5ff00" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="0.0" />
-                              <Label text="在这里设置点名器成员姓名，一个姓名一行" textFill="WHITE" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="55.0">
-                                 <font>
-                                    <Font name="Microsoft YaHei" size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label text="更多功能" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="300.0">
+                              <Label layoutX="14.0" layoutY="105.0" text="更多功能" textFill="WHITE" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="105.0">
                                  <font>
                                     <Font name="Microsoft YaHei Bold" size="25.0" />
                                  </font>
                               </Label>
-                              <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-hbar-policy: never; -fx-padding: 0; -fx-background-insets: 0;" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="9400.0" AnchorPane.topAnchor="80.0">
-                                <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="600.0" style="-fx-background-color: #2a3642;">
-                                       <children>
-                                          <TextArea fx:id="projectName" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #2a3642; -fx-border-color: #2a3642; -fx-border-width: 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                       </children>
-                                    </AnchorPane>
-                                </content>
-                              </ScrollPane>
-                              <AnchorPane layoutX="3.0" layoutY="403.0" prefHeight="70.0" prefWidth="200.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="403.0">
+                              <AnchorPane layoutX="6.0" layoutY="20.0" prefHeight="70.0" prefWidth="200.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="20.0">
                                  <children>
-                                    <TextField prefWidth="600.0" promptText="您选择的文件路径将会在这里显示" style="-fx-background-color: #2a3642; -fx-border-color: white; -fx-border-radius: 10px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="105.0" />
+                                    <TextField prefWidth="600.0" promptText="您选择的文件路径将会在这里显示（暂不支持NameProject 3配置文件格式导入！）" style="-fx-background-color: #2a3642; -fx-border-color: white; -fx-border-radius: 10px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="105.0" />
                                     <Label text="导入配置文件" textFill="WHITE" AnchorPane.leftAnchor="25.0">
                                        <font>
                                           <Font name="Microsoft YaHei Bold" size="15.0" />
@@ -175,6 +156,22 @@
                                  </children>
                               </AnchorPane>
                               <Label layoutX="391.0" layoutY="678.0" text="NameProject 5 版权所有 (c)， XFTY， 保留所有权利" textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="25.0" />
+                              <AnchorPane layoutX="7.0" layoutY="153.0" prefHeight="80.0" prefWidth="800.0">
+                                 <children>
+                                    <Label layoutX="26.0" layoutY="4.0" text="主题和背景颜色" textFill="WHITE" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="Microsoft YaHei Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="25.0" layoutY="20.0" text="在这里设置你需要的主题" textFill="WHITE" AnchorPane.leftAnchor="25.0">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <ChoiceBox layoutX="25.0" layoutY="47.0" prefWidth="165.0" />
+                                    <ColorPicker layoutX="190.0" layoutY="47.0" prefWidth="165.0" />
+                                 </children>
+                              </AnchorPane>
                            </children>
                            <padding>
                               <Insets top="4.0" />
