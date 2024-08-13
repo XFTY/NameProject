@@ -1,29 +1,23 @@
 package com.nameproject.nameproject5At;
 
+import com.nameproject.nameproject5At.conf.ConfManager;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import org.yaml.snakeyaml.Yaml;
 
 import java.io.IOException;
 import java.util.Map;
 
 public class NameProjectApplication extends Application {
+    private Parent root;
 
     @Override
     public void start(Stage stage) throws IOException {
-
-        // 读取 yaml 文件
-        Map<String, Object> sysinfo = GetSysInfo();
-
-
-        ConfigCreator configCreator = new ConfigCreator();
-        Map<String, Object> configureFile = configCreator.getOrCreateConfigFile();
+        Map<String, Object> sysinfo = ConfManager.ReturnSysInfo();
 
         // 设置 fxml
         FXMLLoader fxmlLoader = new FXMLLoader(NameProjectApplication.class.getResource("mainWindow-classic.fxml"));
@@ -54,18 +48,11 @@ public class NameProjectApplication extends Application {
 
     }
 
-    public Map<String, Object> GetSysInfo() {
-        Yaml yaml = new Yaml();
-        Map<String, Object> sysinfo = yaml.load(NameProjectApplication.class.getResourceAsStream("config/SoftwareInfo.yaml"));
-        return sysinfo;
-    }
-
-    public Map<String, Object> GetUsrInfo() {
-        ConfigCreator configCreator = new ConfigCreator();
-        return configCreator.getOrCreateConfigFile();
-    }
-
     public static void main(String[] args) {
         launch();
+    }
+
+    public Parent getRoot() {
+        return root;
     }
 }

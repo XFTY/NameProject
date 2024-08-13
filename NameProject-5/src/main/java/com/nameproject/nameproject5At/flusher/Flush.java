@@ -1,6 +1,6 @@
 package com.nameproject.nameproject5At.flusher;
 
-import com.nameproject.nameproject5At.ConfigCreator;
+import javafx.concurrent.Task;
 import javafx.scene.control.Label;
 
 import java.util.*;
@@ -9,16 +9,15 @@ import java.util.*;
  * Flush 类负责 UI 刷新逻辑，包括随机显示姓名列表、停止刷新和特殊事件处理。
  */
 public class Flush {
-    private boolean stopFlushUI; // 控制是否停止刷新UI的标志
+    private static boolean stopFlushUI; // 控制是否停止刷新UI的标志
 
     /**
      * 刷新UI的方法，用于显示姓名列表。
      *
      * @param nameList      包含姓名的列表
      * @param labelController 控制UI标签的列表
-     * @param args          附加参数映射
      */
-    private void FlushUI(List<String> nameList, List<Label> labelController, Map<String, Object> args) {
+    private void FlushUI(List<String> nameList, List<Label> labelController) {
         // 打乱姓名列表
         Collections.shuffle(nameList);
 
@@ -142,6 +141,26 @@ public class Flush {
         try {
             stopFlushUI = setVar;
             return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean startFlushUI(List<String> nameList, List<Label> labelList) {
+        try {
+            Task<Void> task = new Task<Void>() {
+                @Override
+                protected Void call() throws Exception {
+                    FlushUI(nameList, labelList);
+                    return null;
+                }
+            };
+
+            new Thread(task).start();
+
+            return true;
+
         } catch (Exception e) {
             e.printStackTrace();
             return false;

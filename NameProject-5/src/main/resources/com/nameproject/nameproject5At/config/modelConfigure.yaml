@@ -1,4 +1,6 @@
 
-config-version: 5
+config-version: 5.0
+
+name: [a, v, d, d, s, w]
 
 lang: zh-CN
