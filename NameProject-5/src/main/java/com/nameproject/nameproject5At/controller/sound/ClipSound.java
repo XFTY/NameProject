@@ -1,14 +1,12 @@
-package com.nameproject.nameproject5At.controller;
+package com.nameproject.nameproject5At.controller.sound;
 
 
 import javafx.concurrent.Task;
-import javafx.scene.control.Label;
 
 import javax.sound.sampled.*;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
 
 public class ClipSound {
     public void play(InputStream in) {

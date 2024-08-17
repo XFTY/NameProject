@@ -17,7 +17,7 @@ public class Flush {
      * @param nameList      包含姓名的列表
      * @param labelController 控制UI标签的列表
      */
-    private void FlushUI(List<String> nameList, List<Label> labelController) {
+    private static void FlushUI(List<String> nameList, List<Label> labelController) {
         // 打乱姓名列表
         Collections.shuffle(nameList);
 
@@ -63,7 +63,7 @@ public class Flush {
      *
      * @param labelController 控制UI标签的列表
      */
-    private void final_FlushUI(List<Label> labelController) {
+    private static void final_FlushUI(List<Label> labelController) {
         Random random = new Random();
         int whatFuncShouldDo = random.nextInt(21); // 决定执行哪种特殊事件
 
@@ -90,7 +90,7 @@ public class Flush {
      *
      * @param labelController 控制UI标签的列表
      */
-    private void handle_random_event(List<Label> labelController) {
+    private static void handle_random_event(List<Label> labelController) {
         // 更改中间标签的背景颜色为浅绿色
         labelController.get(1).setStyle("-fx-background-color: lightgreen");
 
@@ -102,6 +102,8 @@ public class Flush {
 
         // 恢复标签的背景颜色
         labelController.get(1).setStyle("-fx-background-color: white");
+
+        stopFlushUI = true;
     }
 
     /**
@@ -109,8 +111,10 @@ public class Flush {
      *
      * @param labelController 控制UI标签的列表
      */
-    private void handle_special_event_1(List<Label> labelController) {
+    private static void handle_special_event_1(List<Label> labelController) {
         // 实现特殊事件1的逻辑
+
+        stopFlushUI = true;
     }
 
     /**
@@ -118,8 +122,10 @@ public class Flush {
      *
      * @param labelController 控制UI标签的列表
      */
-    private void handle_special_event_2(List<Label> labelController) {
+    private static void handle_special_event_2(List<Label> labelController) {
         // 实现特殊事件2的逻辑
+
+        stopFlushUI = true;
     }
 
     /**
@@ -127,8 +133,10 @@ public class Flush {
      *
      * @param labelController 控制UI标签的列表
      */
-    private void handle_special_event_3(List<Label> labelController) {
+    private static void handle_special_event_3(List<Label> labelController) {
         // 实现特殊事件3的逻辑
+
+        stopFlushUI = true;
     }
 
     /**
@@ -137,7 +145,7 @@ public class Flush {
      * @param setVar 是否停止刷新的布尔值
      * @return 如果设置成功返回 true，否则返回 false
      */
-    public boolean stopFlushUiIo(boolean setVar) {
+    public static boolean stopFlushUiIo(boolean setVar) {
         try {
             stopFlushUI = setVar;
             return true;
@@ -147,7 +155,7 @@ public class Flush {
         }
     }
 
-    public boolean startFlushUI(List<String> nameList, List<Label> labelList) {
+    public static boolean startFlushUI(List<String> nameList, List<Label> labelList) {
         try {
             Task<Void> task = new Task<Void>() {
                 @Override

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="800.0" style="-fx-background-color: #2a3642;" stylesheets="@css/tabPaneT1s.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nameproject.nameproject5At.controller.MainWindowController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="800.0" style="-fx-background-color: #2a3642;" stylesheets="@../com/nameproject/nameproject5At/css/tabPaneT1s.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nameproject.nameproject5At.controller.MainWindowController">
   <tabs>
     <Tab text="  Classic Mode  ">
       <content>
@@ -58,11 +58,11 @@
                               <Insets top="-108.0" />
                            </padding>
                            <children>
-                              <Button fx:id="startButton" layoutX="308.0" layoutY="48.0" mnemonicParsing="false" onMouseClicked="#onStartButtonClick" stylesheets="@css/button.css" text="   开始   " AnchorPane.leftAnchor="280.0">
+                              <Button fx:id="startButton" layoutX="308.0" layoutY="48.0" mnemonicParsing="false" onMouseClicked="#onStartButtonClick" stylesheets="@../com/nameproject/nameproject5At/css/button.css" text="   开始   " AnchorPane.leftAnchor="280.0">
                                  <font>
                                     <Font name="Microsoft YaHei" size="16.0" />
                                  </font></Button>
-                              <Button fx:id="stopButton" layoutX="425.0" layoutY="48.0" mnemonicParsing="false" stylesheets="@css/button-stop.css" text="   停止   " AnchorPane.rightAnchor="280.0">
+                              <Button fx:id="stopButton" layoutX="425.0" layoutY="48.0" mnemonicParsing="false" onMouseClicked="#onStopButtonClick" stylesheets="@../com/nameproject/nameproject5At/css/button-stop.css" text="   停止   " AnchorPane.rightAnchor="280.0">
                                  <font>
                                     <Font name="Microsoft YaHei" size="17.0" />
                                  </font>
@@ -134,12 +134,12 @@
                       <AnchorPane minHeight="0.0" minWidth="10000.0" prefHeight="600.0" style="-fx-background-color: #2a3642; -fx-border-color: #2a3642;">
                            <children>
                               <Label text="测试版警告！UI界面所有设置内容暂时不起效！" textFill="#f5ff00" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="0.0" />
-                              <Label layoutX="14.0" layoutY="105.0" text="更多功能" textFill="WHITE" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="105.0">
+                              <Label layoutX="14.0" layoutY="14.0" text="更多功能" textFill="WHITE" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
                                  <font>
                                     <Font name="Microsoft YaHei Bold" size="25.0" />
                                  </font>
                               </Label>
-                              <AnchorPane layoutX="6.0" layoutY="20.0" prefHeight="70.0" prefWidth="200.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="20.0">
+                              <AnchorPane fx:id="conf" layoutY="233.0" prefHeight="70.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="233.0">
                                  <children>
                                     <TextField prefWidth="600.0" promptText="您选择的文件路径将会在这里显示（暂不支持NameProject 3配置文件格式导入！）" style="-fx-background-color: #2a3642; -fx-border-color: white; -fx-border-radius: 10px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="105.0" />
                                     <Label text="导入配置文件" textFill="WHITE" AnchorPane.leftAnchor="25.0">
@@ -147,7 +147,7 @@
                                           <Font name="Microsoft YaHei Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Button mnemonicParsing="false" prefWidth="80.0" stylesheets="@css/button-normal.css" text="选择" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="25.0" />
+                                    <Button mnemonicParsing="false" prefWidth="80.0" stylesheets="@../com/nameproject/nameproject5At/css/button-normal.css" text="选择" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="25.0" />
                                     <Label layoutX="25.0" layoutY="28.0" text="如果您打算使用自己的配置文件，请在这里导入" textFill="WHITE" AnchorPane.topAnchor="21.0">
                                        <font>
                                           <Font size="15.0" />
@@ -155,7 +155,6 @@
                                     </Label>
                                  </children>
                               </AnchorPane>
-                              <Label layoutX="391.0" layoutY="678.0" text="NameProject 5 版权所有 (c)， XFTY， 保留所有权利" textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="25.0" />
                               <AnchorPane layoutX="7.0" layoutY="153.0" prefHeight="80.0" prefWidth="800.0">
                                  <children>
                                     <Label layoutX="26.0" layoutY="4.0" text="主题和背景颜色" textFill="WHITE" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="0.0">
@@ -172,6 +171,7 @@
                                     <ColorPicker layoutX="190.0" layoutY="47.0" prefWidth="165.0" />
                                  </children>
                               </AnchorPane>
+                              <Label layoutX="391.0" layoutY="678.0" text="NameProject 5 版权所有 (c)， XFTY， 保留所有权利" textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="25.0" />
                            </children>
                            <padding>
                               <Insets top="4.0" />

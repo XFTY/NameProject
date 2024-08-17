@@ -1,6 +1,7 @@
 package com.nameproject.nameproject5At.controller;
 
 import com.nameproject.nameproject5At.NameProjectApplication;
+import com.nameproject.nameproject5At.controller.sound.ClipSound;
 import com.nameproject.nameproject5At.flusher.Flush;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -13,12 +14,24 @@ import java.util.Map;
 
 public class MainWindowController {
     @FXML
-    private Label versionLabel;
+    private Label versionLabel;// 版本号
     @FXML
-    private Label sittingsWelcomeTitle;
+    private Label sittingsWelcomeTitle;// 设置界面欢迎标语
     @FXML
-    private Label sittingsSubTitle;
+    private Label sittingsSubTitle;// 设置界面副标语
+    @FXML
+    private Label welcomeTitle;// 欢迎面板
 
+    // classic-mode 御三家
+    @FXML
+    private Label clns;
+    @FXML
+    private Label ccns;
+    @FXML
+    private Label crns;
+
+    // 上面三货打包成列表
+    private List<Label> labelController = new ArrayList<>();
 
     // 版本页
     private int versionPage = 0;
@@ -64,16 +77,31 @@ public class MainWindowController {
 
     @FXML
     protected void onStartButtonClick() {
-        Flush flush = new Flush();
         NameProjectApplication nameProjectApplication = new NameProjectApplication();
+
+        // 改代码仅在测试时使用，在用于正式环境时应当禁用
         List<String> list = new ArrayList<>();
-
         Collections.addAll(list, "a", "b", "c", "d", "e");
+        // 标记测试代码区域结束
 
-//        flush.startFlushUI(list, );
+        Collections.addAll(labelController, clns, ccns, crns, welcomeTitle);
 
+        Flush.startFlushUI(list, labelController);
     }
 
+    @FXML
+    protected void onStopButtonClick() {
+        Flush.stopFlushUiIo(false);
+    }
+
+    public boolean setLabelControllerText(Label Controller, String s) {
+        try {
+            Controller.setText(s);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
     private Map<String, Object> GetSysInfo() {
         Yaml yaml = new Yaml();

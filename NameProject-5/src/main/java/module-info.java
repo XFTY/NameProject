@@ -14,4 +14,6 @@ module com.nameproject.v5.nameproject5 {
     exports com.nameproject.nameproject5At.flusher;
     exports com.nameproject.nameproject5At.conf;
     opens com.nameproject.nameproject5At.conf to javafx.fxml;
+    exports com.nameproject.nameproject5At.controller.sound;
+    opens com.nameproject.nameproject5At.controller.sound to javafx.fxml;
 }

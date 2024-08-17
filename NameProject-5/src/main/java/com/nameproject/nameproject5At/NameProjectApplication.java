@@ -52,6 +52,7 @@ public class NameProjectApplication extends Application {
         launch();
     }
 
+    @Deprecated
     public Parent getRoot() {
         return root;
     }
