@@ -58,11 +58,11 @@
                               <Insets top="-108.0" />
                            </padding>
                            <children>
-                              <Button fx:id="startButton" layoutX="308.0" layoutY="48.0" mnemonicParsing="false" onMouseClicked="#onStartButtonClick" stylesheets="@../css/button.css" text="   开始   " AnchorPane.leftAnchor="280.0">
+                              <Button fx:id="startButton" layoutX="308.0" layoutY="48.0" mnemonicParsing="false" onMouseClicked="" stylesheets="@../css/button.css" text="   开始   " AnchorPane.leftAnchor="280.0">
                                  <font>
                                     <Font name="Microsoft YaHei" size="16.0" />
                                  </font></Button>
-                              <Button fx:id="stopButton" layoutX="425.0" layoutY="48.0" mnemonicParsing="false" onMouseClicked="#onStopButtonClick" stylesheets="@../css/button-stop.css" text="   停止   " AnchorPane.rightAnchor="280.0">
+                              <Button fx:id="stopButton" layoutX="425.0" layoutY="48.0" mnemonicParsing="false" onMouseClicked="" stylesheets="@../css/button-stop.css" text="   停止   " AnchorPane.rightAnchor="280.0">
                                  <font>
                                     <Font name="Microsoft YaHei" size="17.0" />
                                  </font>

@@ -8,7 +8,12 @@ import java.util.*;
 /**
  * Flush 类负责 UI 刷新逻辑，包括随机显示姓名列表、停止刷新和特殊事件处理。
  */
+@Deprecated
 public class Flush {
+     /*
+        警告！方法已经被弃用，请开发者尽快放弃该用法！！！
+     */
+
     private static boolean stopFlushUI; // 控制是否停止刷新UI的标志
 
     /**

@@ -76,6 +76,7 @@ public class MainWindowController {
     }
 
     @FXML
+    @Deprecated
     protected void onStartButtonClick() {
         NameProjectApplication nameProjectApplication = new NameProjectApplication();
 
@@ -90,6 +91,7 @@ public class MainWindowController {
     }
 
     @FXML
+    @Deprecated
     protected void onStopButtonClick() {
         Flush.stopFlushUiIo(false);
     }
