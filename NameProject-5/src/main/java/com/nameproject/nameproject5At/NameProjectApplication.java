@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.Optional;
 
 public class NameProjectApplication extends Application {
-    // private Parent root;
+    private Parent root;
 
     @Override
     public void start(Stage stage) throws IOException {
