@@ -4,3 +4,10 @@ config-version: 5.0
 name: [a, v, d, d, s, w]
 
 lang: zh-CN
+
+welcomeTitle:
+  - "测试标语1"
+  - "测试标语2"
+  - "测试标语3"
+  - "测试标语4"
+  - "测试标语5"

@@ -3,7 +3,9 @@ package com.nameproject.nameproject5At.controller;
 import com.nameproject.nameproject5At.NameProjectApplication;
 import com.nameproject.nameproject5At.controller.sound.ClipSound;
 import com.nameproject.nameproject5At.flusher.Flush;
+import com.nameproject.nameproject5At.flusher.Flush2v;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import org.yaml.snakeyaml.Yaml;
 
@@ -21,6 +23,8 @@ public class MainWindowController {
     private Label sittingsSubTitle;// 设置界面副标语
     @FXML
     private Label welcomeTitle;// 欢迎面板
+    @FXML
+    private Label main_title1;// classic-mode主标题
 
     // classic-mode 御三家
     @FXML
@@ -30,8 +34,17 @@ public class MainWindowController {
     @FXML
     private Label crns;
 
+    @FXML
+    private Button startButtonV2;
+    @FXML
+    private Button stopButton;
+
     // 上面三货打包成列表
-    private List<Label> labelController = new ArrayList<>();
+    private final List<Label> labelController = new ArrayList<>();
+    // 按钮
+    private final List<Button> buttonController = new ArrayList<>();
+
+    private static boolean ifLabelControllerSet = false;
 
     // 版本页
     private int versionPage = 0;
@@ -42,6 +55,9 @@ public class MainWindowController {
 
     // 读取软件配置文件
     private final Map<String, Object> sysInfo = GetSysInfo();
+
+    // 初始化Flush2v
+    private final Flush2v flush2v = new Flush2v();
 
     @FXML
     protected void onVersionLabelClick() {
@@ -66,7 +82,7 @@ public class MainWindowController {
 
             sittingsWelcomeTitle.setText("Playing: ");
             sittingsSubTitle.setText("Creator(Music Box Version) - Lena Raine - Minecraft 1.21");
-        }else {
+        } else {
 
             welcomeClick++;
             if (welcomeClick <= 21) {
@@ -78,16 +94,52 @@ public class MainWindowController {
     @FXML
     @Deprecated
     protected void onStartButtonClick() {
+        /*
+        该函数已废弃，请参考onStartButtonClickV2。
+         */
+        // 这个函数本是废弃之物
+        // 但这个函数就是不能删，一删便报错，不知是哪的问题。
+        clns.setText("sss");
         NameProjectApplication nameProjectApplication = new NameProjectApplication();
 
         // 改代码仅在测试时使用，在用于正式环境时应当禁用
         List<String> list = new ArrayList<>();
         Collections.addAll(list, "a", "b", "c", "d", "e");
-        // 标记测试代码区域结束
 
-        Collections.addAll(labelController, clns, ccns, crns, welcomeTitle);
+        main_title1.setText("testOk");
 
-        Flush.startFlushUI(list, labelController);
+        System.out.println("Start Button Test Ok!");
+
+    }
+
+    @FXML
+    protected void onStartButtonClickV2() {
+        clns.setText("sss");
+        NameProjectApplication nameProjectApplication = new NameProjectApplication();
+
+        // 改代码仅在测试时使用，在用于正式环境时应当禁用
+//        List<String> list = new ArrayList<>();
+//        Collections.addAll(list, "a", "b", "c", "d", "e");
+//
+//        main_title1.setText("testOk");
+
+        if (ifLabelControllerSet){
+            // 设置过了还设置一变干什么？
+            System.out.println("labelController not set!");
+        }else {
+            Collections.addAll(labelController, clns, ccns, crns);
+            Collections.addAll(buttonController, startButtonV2, stopButton);
+            System.out.println("labelController set!");
+            ifLabelControllerSet = true;
+        }
+
+        flush2v.startFlush(labelController, buttonController, welcomeTitle);
+
+    }
+
+    @FXML
+    protected void onStopButtonClickV2() {
+        flush2v.stopFlush();
     }
 
     @FXML
@@ -96,6 +148,7 @@ public class MainWindowController {
         Flush.stopFlushUiIo(false);
     }
 
+    @Deprecated
     public boolean setLabelControllerText(Label Controller, String s) {
         try {
             Controller.setText(s);

@@ -32,7 +32,7 @@ public class ConfigCreator {
             alert.setTitle("请求-文件写入");
 
             alert.setHeaderText("NameProject5 需要在您的文档文件夹中创建配置文件\nNameProject5 needs to create a configuration file in your Documents folder.");
-            alert.setContentText("点击“确定”将写入文件，如果您不同意写入，程序将无法运行\nClick \"OK\" to write the file. If you do not agree to write the file, the program cannot run successfully.");
+            alert.setContentText("点击“确定”将写入文件，如果您不同意写入，程序将无法运行\nClick \"OK\" to write the file. If you do not agree to write the file, the program cannot run.");
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK){
