@@ -18,11 +18,12 @@ private int finalGet;
  * @param labelController 标签控制器列表
  * @param btc 按钮控制器列表
  */
-private void FlushUi(List<String> nameList, List<Label> labelController, List<Button> btc) {
+private void FlushUi(List<String> nameList, List<Label> labelController, List<Button> btc, Label welcomeTitle) {
     // 修改按钮状态
     Platform.runLater(() -> {
         btc.get(0).setDisable(true); // 禁用开始按钮
         btc.get(1).setDisable(false); // 启用停止按钮
+        welcomeTitle.setText("正在滚动姓名...");
     });
 
     new Thread(() -> {
@@ -110,7 +111,7 @@ private void FlushUi(List<String> nameList, List<Label> labelController, List<Bu
         List<String> testList = new ArrayList<>();
 
         Collections.addAll(testList, "1", "2", "3", "4", "5", "6", "7", "8", "9", "A");
-        FlushUi(testList, labelController, buttonController);
+        FlushUi(testList, labelController, buttonController, welcomeTitle);
     }
 
     public void stopFlush() {

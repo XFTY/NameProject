@@ -1,6 +1,7 @@
 package com.nameproject.nameproject5At;
 
 import com.nameproject.nameproject5At.conf.ConfManager;
+import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,7 +10,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.Map;
@@ -27,6 +30,10 @@ public class NameProjectApplication extends Application {
         // 设置 fxml
         FXMLLoader fxmlLoader = new FXMLLoader(NameProjectApplication.class.getResource("fxml/mainWindow-classic.fxml"));
         Parent root = fxmlLoader.load();
+
+        // 窗口动画（加载完成前）
+        AnchorPane classicPane = (AnchorPane) root.lookup("#ClassicPane");
+        classicPane.setOpacity(0); // 内容不可见
 
         // 设置窗体
         Scene scene = new Scene(root, 800, 500);
@@ -72,6 +79,23 @@ public class NameProjectApplication extends Application {
 
         Button stopButton = (Button) root.lookup("#stopButton");
         stopButton.setDisable(true);
+
+
+        // 窗口动画
+
+        // 软件启动时
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(2), classicPane);
+        fadeTransition.setFromValue(0.0);
+        fadeTransition.setToValue(1.0);
+        fadeTransition.setCycleCount(1);
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        fadeTransition.play();
 
     }
 
