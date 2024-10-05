@@ -1,0 +1,22 @@
+/* checkbox.css */
+.checkBox {
+    -fx-font-size: 14px;
+    -fx-text-fill: white !important; /* 文本颜色为白色 */
+    -fx-font-weight: bold;
+}
+
+.checkBox .box {
+    -fx-background-color: #333 !important; /* 未选中时的背景颜色 */
+    -fx-border-color: #444 !important; /* 边框颜色 */
+    -fx-border-width: 1px;
+    -fx-background-radius: 3px;
+}
+
+.checkBox:selected .box {
+    -fx-background-color: #0078D7 !important; /* 选中时的背景颜色 */
+    -fx-border-color: #0078D7 !important; /* 选中时的边框颜色 */
+}
+
+.checkBox .box .mark {
+    -fx-background-color: white !important; /* 选中标记的颜色 */
+}
