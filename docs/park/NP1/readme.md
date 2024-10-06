@@ -2,7 +2,8 @@
 
 文章最后更新日期：2024/10/05
 
->下载地址：
+>下载地址：  
+> https://github.com/XFTY/NameProject/blob/master/Archive/NameProject%201/%E7%82%B9%E5%90%8D%E5%99%A8.py
 
 > [!warning]
 > 该版本已经停止维护，不建议用户使用！

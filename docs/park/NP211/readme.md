@@ -3,8 +3,8 @@
 文章最后更新日期：2024/10/05
 
 下载文件：
-- [已编译]()
-- [源代码]()
+- [已编译](https://github.com/XFTY/NameProject/releases/download/v2.11/NameProject.2.11.zip)
+- [源代码](https://github.com/XFTY/NameProject/archive/refs/tags/v2.11.zip)
 
 > [!warning]
 > 该版本已经停止维护，不建议用户使用！

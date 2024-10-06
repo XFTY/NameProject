@@ -4,7 +4,8 @@
 
 下载文件：
 
-- [源代码]()
+- [res](https://github.com/XFTY/NameProject/releases/download/v4-archive/NameProject4.zip)
+- [源代码](https://github.com/XFTY/NameProject/archive/refs/tags/v4-archive.zip)
 
 > [!warning]
 > 该版本已经停止维护，不建议用户使用！
