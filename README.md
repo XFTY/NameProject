@@ -1,7 +1,5 @@
 # NameProject 
-让我们一同进步！  
-
-文章最后修改日期：2024年10月12日
+让我们一同进步！
 
 欢迎使用 NameProject 点名器项目，该项目旨在为需要 **随机点名的场合** 提供一个良好地解决方案。
 
@@ -48,4 +46,6 @@ NameProject 是一款随机点名器，软件会通过将已设置的姓名 **�
 感谢所有为该项目贡献的开发者、使用者，以及开发人员！
 
 Copyright 2023-2024, XFTY, All Rights Reserved.  
-License under the Apache License 2.0. See LICENSE file on the project root to know more infomation.
+License under the Apache License 2.0. See LICENSE file on the project root to know more information.
+
+文章最后修改日期：2024年10月12日
