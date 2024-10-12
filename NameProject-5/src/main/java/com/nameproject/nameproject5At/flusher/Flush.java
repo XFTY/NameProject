@@ -3,7 +3,9 @@ package com.nameproject.nameproject5At.flusher;
 import javafx.concurrent.Task;
 import javafx.scene.control.Label;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 /**
  * Flush 类负责 UI 刷新逻辑，包括随机显示姓名列表、停止刷新和特殊事件处理。

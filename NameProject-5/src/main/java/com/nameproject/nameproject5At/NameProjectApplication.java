@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -89,14 +90,20 @@ public class NameProjectApplication extends Application {
         fadeTransition.setToValue(1.0);
         fadeTransition.setCycleCount(1);
 
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
 
         fadeTransition.play();
 
+    }
+
+    private void setGlassBlur() {
+        GaussianBlur gaussianBlur = new GaussianBlur();
+
+        
     }
 
     public static void main(String[] args) {

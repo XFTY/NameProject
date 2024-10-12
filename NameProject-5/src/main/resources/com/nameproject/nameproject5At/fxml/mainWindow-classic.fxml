@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="800.0" style="-fx-background-color: #2a3642;" stylesheets="@../css/tabPaneT1s.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nameproject.nameproject5At.controller.MainWindowController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="800.0" style="-fx-background-color: #2a3642;" stylesheets="@../css/tabPaneT1s.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nameproject.nameproject5At.controller.MainWindowController">
   <tabs>
     <Tab text="  NameProject 3 标准模式  ">
       <content>
@@ -16,7 +16,7 @@
                      <top>
                         <AnchorPane prefHeight="90.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Label fx:id="welcomeTitle" text="不是，哥们？" textFill="WHITE" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.5">
+                              <Label fx:id="welcomeTitle" text="你干嘛哈嗨哟" textFill="WHITE" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.5">
                                  <font>
                                     <Font name="Microsoft YaHei" size="45.0" />
                                  </font>
@@ -98,28 +98,28 @@
                </children></AnchorPane>
       </content>
     </Tab>
-     <Tab text="   [新]多人抽取模式   ">
-        <content>
-           <AnchorPane>
-               <children>
-                  <Label layoutX="14.0" layoutY="14.0" text="静等佳音......" textFill="WHITE">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="46.0" layoutY="63.0" text="该模式将在后续的更新中展现，请您及时关注github/gitee动态！感谢您的支持！" textFill="WHITE">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <ScrollPane layoutY="109.0" prefHeight="498.0" prefWidth="427.0" style="-fx-background-color: #2a3642; -fx-hbar-policy: never;" AnchorPane.leftAnchor="0.0">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="706.0" prefWidth="412.0" style="-fx-background-color: #2a3642;" />
-                    </content>
-                  </ScrollPane>
-               </children></AnchorPane>
-        </content>
-     </Tab>
+<!--     <Tab text="   [新]多人抽取模式   ">-->
+<!--        <content>-->
+<!--           <AnchorPane>-->
+<!--               <children>-->
+<!--                  <Label layoutX="14.0" layoutY="14.0" text="静等佳音......" textFill="WHITE">-->
+<!--                     <font>-->
+<!--                        <Font size="30.0" />-->
+<!--                     </font>-->
+<!--                  </Label>-->
+<!--                  <Label layoutX="46.0" layoutY="63.0" text="该模式将在后续的更新中展现，请您及时关注github/gitee动态！感谢您的支持！" textFill="WHITE">-->
+<!--                     <font>-->
+<!--                        <Font size="16.0" />-->
+<!--                     </font>-->
+<!--                  </Label>-->
+<!--                  <ScrollPane layoutY="109.0" prefHeight="498.0" prefWidth="427.0" style="-fx-background-color: #2a3642; -fx-hbar-policy: never;" AnchorPane.leftAnchor="0.0">-->
+<!--                    <content>-->
+<!--                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="706.0" prefWidth="412.0" style="-fx-background-color: #2a3642;" />-->
+<!--                    </content>-->
+<!--                  </ScrollPane>-->
+<!--               </children></AnchorPane>-->
+<!--        </content>-->
+<!--     </Tab>-->
      <Tab text="   设置   ">
         <content>
            <AnchorPane>
@@ -129,7 +129,7 @@
                         <Font name="Microsoft YaHei" size="37.0" />
                      </font>
                   </Label>
-                  <Label fx:id="sittingsSubTitle" layoutX="14.0" layoutY="62.0" text="设置，应用，启程！" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="60.0">
+                  <Label fx:id="sittingsSubTitle" layoutX="14.0" layoutY="62.0" text="设置，应用，起耶！" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="60.0">
                      <font>
                         <Font name="Microsoft YaHei" size="15.0" />
                      </font>
@@ -179,16 +179,23 @@
                                     </Label>
                                     <CheckBox layoutX="32.0" layoutY="62.0" mnemonicParsing="false" text="启用" textFill="WHITE" AnchorPane.topAnchor="80.0" />
                                     <Label layoutX="31.0" layoutY="65.0" text="独门妙用：在随机点名的过程中增加一些随机事件，在时间充裕的情况下可以大大提升您的氛围" textFill="WHITE" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="60.0" />
-                                    <Label layoutX="17.0" layoutY="111.0" text="立即停止" textFill="WHITE" AnchorPane.topAnchor="105.0">
+                                    <Label layoutX="17.0" layoutY="111.0" text="立即停止" textFill="WHITE" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="105.0">
                                        <font>
                                           <Font name="Microsoft YaHei" size="15.0" />
                                        </font></Label>
-                                    <Label layoutX="32.0" layoutY="125.0" text="独门妙用：大大减少每次点名所耗费的时间，但会导致随机性丢失" textFill="WHITE" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="130.0">
+                                    <Label layoutX="32.0" layoutY="125.0" text="独门妙用：大大减少每次点名所耗费的时间，但可能会导致随机性丢失" textFill="WHITE" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="130.0">
                                        <font>
                                           <Font name="Microsoft YaHei" size="12.0" />
                                        </font>
                                     </Label>
                                     <CheckBox layoutX="31.0" layoutY="147.0" mnemonicParsing="false" text="启用" textFill="WHITE" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="150.0" />
+                                    <Label layoutX="17.0" layoutY="174.0" text="置顶窗口" textFill="WHITE" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="170.0">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="27.0" layoutY="194.0" text="独门妙用：NameProject应用程序将不会被其他应用程序覆盖。" textFill="WHITE" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="195.0" />
+                                    <CheckBox layoutX="31.0" layoutY="217.0" mnemonicParsing="false" text="启用" textFill="WHITE" AnchorPane.topAnchor="215.0" />
                                  </children></AnchorPane>
                               <Separator layoutX="3.0" layoutY="84.0" prefWidth="200.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" />
                            </children>
