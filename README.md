@@ -23,7 +23,7 @@ NameProject 是一款随机点名器，软件会通过将已设置的姓名 **�
 祝您拥有良好的体验！
 
 ## 下载 & 安装
-您可以点击 [这里]() 跳转到安装说明书。  
+您可以点击 [这里] 跳转到安装说明书。  
 通常，您可以很快配置好程序并投入使用。
 
 ## 配置要求
@@ -37,7 +37,7 @@ NameProject 是一款随机点名器，软件会通过将已设置的姓名 **�
 
 ## 软件档案馆
 您可以通过访问软件档案馆获取 NameProject 发布过的所有版本及介绍。  
-点击 [这里](https://github.com/XFTY/NameProject/docs/park/readme.md) 进入。
+点击 [这里](https://github.com/XFTY/NameProject/blob/master/docs/park/readme.md) 进入。
 ## 软件反馈
 如果您在运行软件时遇到问题，您可以随时提交 [issues](https://github.com/XFTY/NameProject/issues)。   
 同时，我是一名学生，软件维护可能不及时，请您谅解！  
