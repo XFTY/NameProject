@@ -18,4 +18,4 @@
 |                                                                                                        | 50v04a(Part1)             |
 |                                                                                                        | 50v04a(Part2)             |
 |                                                                                                        | 50v05a                    |
-| [NameProject 5.0(尚未发布)]()                                                                              |
+| [NameProject 5.0(尚未发布)](https://github.com/XFTY/NameProject/blob/master/docs/park/NP5/readme.md)       |
