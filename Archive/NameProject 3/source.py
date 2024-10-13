@@ -31,7 +31,7 @@ nameProjectConfig = {
     # CN: NameProject项目配置文件，一般情况下不应该更改，除非你知道你在做什么。
     # US: NameProject project configuration file, usually should not be changed unless you know what you are doing.
     "name": "NameProject",
-    "version": "3.0.1",
+    "version": "3.0.2",
     "license": "Apache License, Version 2.0"
 }
 
@@ -44,6 +44,7 @@ students_name = [
     "老六"
 ]
 
+# 开头展示的话语
 # 开头展示的话语
 showHelloAll = [
     "不用急，我知道你很急",
@@ -59,8 +60,62 @@ showHelloAll = [
     "🚁 -> 24",
     ">>>>>>>>>>",
     "纯爱战神",
-    "想你了，劳大！"
+    "想你了，劳大！",
+
+    # 简短热梗
+    "命运开始转动！",  # Created by internet
+    "主打紧张刺激！",  # Created by internet
+    "多巴胺举手！",  # Created by internet
+    "显眼包集合！",  # Created by internet
+    "特种兵报到！",  # Created by internet
+    "村BA，准备！",  # Created by internet
+    "爱达未来，点名！",  # Created by internet
+    "数智生活，点名！",  # Created by internet
+    "热点时刻！",  # Created by internet
+    "Tree tree！",  # Created by internet
+    "热梗点名！",  # Created by internet
+    "准备迎接挑战！",  # Created by internet
+    "一起来嗨！",  # Created by internet
+    "看谁最闪亮！",  # Created by internet
+    "今天的主角是谁？"  # Created by internet
+
+    # 新增热梗
+    "点名时刻到！",  # Created by internet
+    "全员注意！",  # Created by internet
+    "准备好了吗？",  # Created by internet
+    "点名时间！",  # Created by internet
+    "精彩时刻！",  # Created by internet
+    "大家准备！",  # Created by internet
+    "精彩不容错过！",  # Created by internet
+    "今天谁最靓？"  # Created by internet
+    "一起嗨起来！",  # Created by internet
+    "谁是最亮的星？"  # Created by internet
+    "准备迎接新挑战！",  # Created by internet
+    "点名啦！",  # Created by internet
+    "大家一起来！",  # Created by internet
+    "今天的幸运儿会是谁呢？"  # Created by internet
+    "点名开始！",  # Created by internet
+    "今天谁最棒？"  # Created by internet
+    "谁是今天的焦点？"  # Created by internet
+    "准备迎接精彩！",  # Created by internet
+    "今天的明星会是谁？"  # Created by internet
+    "一起迎接点名时刻！",  # Created by internet
+    "今天谁最耀眼？"  # Created by internet
+    "谁会成为今天的焦点？"  # Created by internet
+    "今天的点名会是谁呢？"  # Created by internet
+    "一起期待今天的点名！",  # Created by internet
+    "谁会是今天的幸运儿？"  # Created by internet
+    "今天的主角会是谁？"  # Created by internet
+    "谁会成为今天的明星？"  # Created by internet
+    "今天的点名，谁最闪亮？"  # Created by internet
+    "一起期待今天的精彩！",  # Created by internet
+    "今天的点名，谁会脱颖而出？"  # Created by internet
+    "谁会成为今天的亮点？"  # Created by internet
+    "今天的点名，谁最耀眼？"  # Created by internet
+    "一起见证今天的点名！",  # Created by internet
+    "今天的点名，谁会成为焦点？"  # Created by internet
 ]
+
 
 # 当“停止抽取”按钮触发时的话语
 stopShow = [
@@ -170,7 +225,7 @@ class maingui(tkinter.Tk):
         self.configure_layout()
 
         # UI基础设置
-        self.title("NameProject - Professional, Version: {}".format(nameProjectConfig["version"]))
+        self.title("NameProject {}".format(nameProjectConfig["version"]))
         self.width = 2500
         self.height = 1200
         self.x_way = 10
@@ -398,7 +453,7 @@ class maingui(tkinter.Tk):
         time.sleep(0.5 * 3)
         self.reset_title_and_button()
         time.sleep(5)
-        self.maintitle.configure(text="NameProject")
+        # self.maintitle.configure(text="NameProject")
 
     def reset_title_and_button(self):
         if self.styleTheme == "light":

@@ -8,6 +8,7 @@
 # --------------------------------------------------------------------------------------------------
 
 import json
+import ctypes
 import sys
 import tkinter
 from tkinter import messagebox
@@ -15,6 +16,7 @@ import traceback
 
 from ttkbootstrap import Style
 from ttkbootstrap.widgets import *
+
 
 Style_all = {
     # 这里存放着受Name Project支持的ttk bootstrap主题
@@ -51,8 +53,13 @@ class SettingsUI(tkinter.Tk):
         global Style_all
 
         super().__init__()
-        self.title("点名器设置")
-        self.geometry("1200x600")
+
+        ctypes.windll.shcore.SetProcessDpiAwareness(1)
+        ScaleFactor = ctypes.windll.shcore.GetScaleFactorForDevice(0)
+        self.tk.call('tk', 'scaling', ScaleFactor / 75)
+
+        self.title("NameProject 3 设置")
+        self.geometry("1600x800")
 
         self.read_json_file()  # 该方法会生成self.globalConfigureFile变量可供读取
 
@@ -103,7 +110,7 @@ class SettingsUI(tkinter.Tk):
         self.about_label = Label(self.tabs_container, text="关于NameProject", width=0)
 
         self.update_button = Button(self.tabs_container,
-                                    text="检查更新[有新的软件更新可用]",
+                                    text="检查更新[不可用]",
                                     command=self.show_update_settings,
                                     width=0,  # 宽度自动填充 # 指定固定高度
                                     bootstyle='error',
