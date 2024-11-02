@@ -12,3 +12,8 @@ issues:
 
   - name: New Feature Suggestion
     file: ".github/ISSUE_TEMPLATE/en_f_report.md"
+
+contact_links:
+  - name: 国内镜像
+    url: https://github.com/orgs/community/discussions
+    about: Please ask and answer questions here.
