@@ -1,0 +1,108 @@
+name: 软件 Bug 反馈
+description: 向开发者反馈软件错误
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢您向软件开发者提供故障反馈！  
+        请问，是哪里出现了问题(qwq)？
+
+  - type: input
+    id: Bug-Description
+    attributes:
+      label: 软件 异常/故障 描述
+      description: 请向开发者简要说明软件故障。
+      placeholder: 请在这里输入
+    validations:
+      required: true
+
+  - type: textarea
+    id: To-Reproduce
+    attributes:
+      label: 问题复现步骤
+      description: |
+        这问题...咋弄的？？？开发者求教程...  
+        如果可以，您也可以提供软件截图。
+
+      placeholder: |
+        1. 先这样...  
+        2. 在那样...  
+        3. 最后在这样...  
+        
+        真填的时候不能怎么说哈！
+    validations:
+      required: true
+
+  - type: input
+    id: Expected-Behavior
+    attributes:
+      label: 软件预期行为
+      description: 在按照您上述方法操作完后，软件应该是怎样的？
+      placeholder: 请在这里输入
+    validations:
+      required: true
+
+  - type: dropdown
+    id: OS-Version
+    attributes:
+      label: 操作系统版本
+      description: |
+        您正在运行哪个操作系统，版本是多少？  
+        注意，NameProject 目前仅能保证在 Microsoft Windows 操作系统环境下运行。
+      options:
+        - Microsoft Windows 11
+        - Microsoft Windows 10
+        - Microsoft Windows 8.1
+        - Microsoft Windows 8
+        - Microsoft Windows 7 (SP1)
+        - Microsoft Windows 7
+        - (不支持)Microsoft Windows Vista (SP1-SP3)
+        - (不支持)Microsoft Windows XP
+        - (暂不支持)MacOS / OSX
+        - (暂不支持)Linux(Ubuntu、Debian、Deepin、UOS等)
+        - (暂不支持)Others
+    validations:
+      required: true
+
+  - type: dropdown
+    id: NP-Version
+    attributes:
+      label: NameProject版本
+      description: |
+        您正在运行哪个版本的 NameProject。  
+        由于我的疏忽，NameProject 3.0.1 的版本名称并未被修改，其可能显示为3.0[Preview2]，  
+        如果您是从正式推送版本中下载的，请选择 3.0.1，谢谢！  
+        
+        快照版、测试版的软件维护生命周期很短，仅能维持到下一版本发布，在解决软件问题的同时前一版本将停止维护。
+        所以，建议反馈 **最新的测试版本** 中的软件故障。
+      options:
+        - (正式版) 3.0.2
+        - (正式版) 3.0.1
+        - (快照版) 50v06a
+        - (正式版 - 停止维护) 2.11
+        - (快照版 - 停止维护) 50v05a
+        - (快照版 - 停止维护) 50v04a(Part 2)
+        - (快照版 - 停止维护) 50v04a(Part 1)
+        - (快照版 - 停止维护) 50v03a
+        - (快照版 - 停止维护) 50v02a
+        - (快照版 - 停止维护) 50v01a
+        - (测试版 - 停止维护) 3.0-Preview2
+        - (测试版 - 停止维护) 3.0-Preview1
+        - (测试版 - 停止维护) 2.11-beta1
+      default: 0
+    validations:
+      required: true
+
+  - type: textarea
+    id: Additional-Context
+    attributes:
+      label: 补充信息
+      description: |
+        您可以在此补充您想要说明的信息
+
+      placeholder: |
+         请在这里输入
+    validations:
+      required: false
