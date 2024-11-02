@@ -1,19 +1,14 @@
 blank_issues_enabled: false
 
-issues:
-  - name: 软件 Bug 反馈
-    file: ".github/ISSUE_TEMPLATE/cn_bug_report.md"
-
-  - name: 新功能建议
-    file: ".github/ISSUE_TEMPLATE/cn_f_report.md"
-
-  - name: Software Bug Feedback
-    file: ".github/ISSUE_TEMPLATE/en_bug_report.md"
-
-  - name: New Feature Suggestion
-    file: ".github/ISSUE_TEMPLATE/en_f_report.md"
-
 contact_links:
-  - name: 国内镜像
-    url: https://github.com/orgs/community/discussions
-    about: Please ask and answer questions here.
+  - name: NameProject 国内镜像 | China Mirror
+    url: https://gitee.com/XFTYC/NameProject
+    about: 访问国内镜像可以大大降低访问延迟
+
+  - name: NameProject 国内 issues | China Mirror
+    url: https://gitee.com/XFTYC/NameProject/issues
+    about: 访问国内镜像可以大大降低访问延迟
+
+  - name: NameProject 网站
+    url: https://xfty.github.io/NameProject
+    about: 基于 github.io 的小型网站

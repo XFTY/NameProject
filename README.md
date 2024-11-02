@@ -43,7 +43,8 @@ NameProject 是一款随机点名器，软件会通过将已设置的姓名 **�
 同时，我是一名学生，软件维护可能不及时，请您谅解！  
 
 ## 致谢
-感谢所有为该项目贡献的开发者、使用者，以及开发人员！
+感谢所有为该项目贡献的开发者、使用者，以及开发人员！  
+也同时感谢各位对 NameProject 项目的支持！
 
 Copyright 2023-2024, XFTY, All Rights Reserved.  
 License under the Apache License 2.0. See LICENSE file on the project root to know more information.
