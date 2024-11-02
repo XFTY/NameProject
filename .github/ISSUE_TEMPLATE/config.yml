@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+
+issues:
+  - name: 软件 Bug 反馈
+    file: ".github/ISSUE_TEMPLATE/cn_bug_report.md"
+
+  - name: 新功能建议
+    file: ".github/ISSUE_TEMPLATE/cn_f_report.md"
+
+  - name: Software Bug Feedback
+    file: ".github/ISSUE_TEMPLATE/en_bug_report.md"
+
+  - name: New Feature Suggestion
+    file: ".github/ISSUE_TEMPLATE/en_f_report.md"
