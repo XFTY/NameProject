@@ -1,0 +1,108 @@
+name: Software Bug Feedback
+description: Provide feedback on software errors to the developer
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for providing feedback on software issues to the developer!  
+        Could you please tell us where the problem occurred (qwq)?
+
+  - type: input
+    id: Bug-Description
+    attributes:
+      label: Software Exception/Fault Description
+      description: Please briefly describe the software fault to the developer.
+      placeholder: Please enter here
+    validations:
+      required: true
+
+  - type: textarea
+    id: To-Reproduce
+    attributes:
+      label: Steps to Reproduce the Issue
+      description: |
+        How did this issue occur??? Developers need instructions...  
+        If possible, you can also provide software screenshots.
+
+      placeholder: |
+        1. Do this first...  
+        2. Then do that...  
+        3. Finally do this...  
+        
+        Don't really say it like that when filling out!
+    validations:
+      required: true
+
+  - type: input
+    id: Expected-Behavior
+    attributes:
+      label: Expected Software Behavior
+      description: What should the software be like after performing the above steps?
+      placeholder: Please enter here
+    validations:
+      required: true
+
+  - type: dropdown
+    id: OS-Version
+    attributes:
+      label: Operating System Version
+      description: |
+        Which operating system and version are you running?  
+        Note that NameProject currently only guarantees operation under the Microsoft Windows operating system environment.
+      options:
+        - Microsoft Windows 11
+        - Microsoft Windows 10
+        - Microsoft Windows 8.1
+        - Microsoft Windows 8
+        - Microsoft Windows 7 (SP1)
+        - Microsoft Windows 7
+        - (Unsupported)Microsoft Windows Vista (SP1-SP3)
+        - (Unsupported)Microsoft Windows XP
+        - (Not Currently Supported)MacOS / OSX
+        - (Not Currently Supported)Linux (Ubuntu, Debian, Deepin, UOS, etc.)
+        - (Not Currently Supported)Others
+    validations:
+      required: true
+
+  - type: dropdown
+    id: NP-Version
+    attributes:
+      label: NameProject Version
+      description: |
+        Which version of NameProject are you running?  
+        Due to my oversight, the version name of NameProject 3.0.1 was not updated, it may display as 3.0[Preview2],  
+        if you downloaded from the official release version, please select 3.0.1, thank you!  
+        
+        The maintenance life cycle of snapshot versions and test versions is very short, lasting only until the next version is released. While solving software problems, the previous version will stop being maintained.
+        Therefore, it is recommended to report software faults in the **latest test version**.
+      options:
+        - (Official Release) 3.0.2
+        - (Official Release) 3.0.1
+        - (Snapshot) 50v06a
+        - (Official Release - No Longer Maintained) 2.11
+        - (Snapshot - No Longer Maintained) 50v05a
+        - (Snapshot - No Longer Maintained) 50v04a(Part 2)
+        - (Snapshot - No Longer Maintained) 50v04a(Part 1)
+        - (Snapshot - No Longer Maintained) 50v03a
+        - (Snapshot - No Longer Maintained) 50v02a
+        - (Snapshot - No Longer Maintained) 50v01a
+        - (Test Version - No Longer Maintained) 3.0-Preview2
+        - (Test Version - No Longer Maintained) 3.0-Preview1
+        - (Test Version - No Longer Maintained) 2.11-beta1
+      default: 0
+    validations:
+      required: true
+
+  - type: textarea
+    id: Additional-Context
+    attributes:
+      label: Additional Information
+      description: |
+        You can provide additional information or explanations here.
+
+      placeholder: |
+         Please enter here
+    validations:
+      required: false
