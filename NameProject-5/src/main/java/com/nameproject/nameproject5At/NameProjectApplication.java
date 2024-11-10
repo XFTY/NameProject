@@ -1,6 +1,7 @@
 package com.nameproject.nameproject5At;
 
 import com.nameproject.nameproject5At.conf.ConfManager;
+import com.nameproject.nameproject5At.orginAWT.toast4j;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +28,8 @@ public class NameProjectApplication extends Application {
         System.out.println("Software Start...");
         Map<String, Object> sysinfo = ConfManager.ReturnSysInfo();
         Map<String, Object> usrinfo = ConfManager.ReturnUsrInfo();
+
+
 
         // 设置 fxml
         FXMLLoader fxmlLoader = new FXMLLoader(NameProjectApplication.class.getResource("fxml/mainWindow-classic.fxml"));
@@ -97,6 +100,8 @@ public class NameProjectApplication extends Application {
 //        }
 
         fadeTransition.play();
+
+        toast4j.displayToast(String.format("NameProject Version %s", sysinfo.get("version")), "请稍后");
 
     }
 
