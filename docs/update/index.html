@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品更新日志</title>
+    <style>        body {
+            background-color: #2A3642;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            background-color: #2F4052;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            transition: all 0.3s ease;
+        }
+        .version-list {
+            width: 30%;
+            background-color: #2F4052;
+            border-radius: 5px;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+        .version-list h2 {
+            margin-top: 0;
+            color: #ff6f00;
+        }
+        .version-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .version-list li {
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .version-list li:hover {
+            background-color: #3c3c3c;
+        }
+        .update-info {
+            width: 70%;
+            margin-left: 20px;
+            background-color: #2F4052;
+            border-radius: 5px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        .update-info h3 {
+            margin-top: 0;
+        }
+        .update-info p {
+            margin: 5px 0 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="version-list">
+            <h2>选择版本</h2>
+            <ul id="version-list">
+                <li data-version="1.2.0">版本 1.2.0 - 2023-10-01</li>
+                <li data-version="1.1.0">版本 1.1.0 - 2023-09-15</li>
+                <li data-version="1.0.0">版本 1.0.0 - 2023-09-01</li>
+            </ul>
+        </div>
+        <div class="update-info" id="update-info">
+            <h3>请选择一个版本以查看更新信息</h3>
+        </div>
+    </div>
+
+    <script>        document.addEventListener('DOMContentLoaded', function() {
+            const versionList = document.getElementById('version-list');
+            const updateInfo = document.getElementById('update-info');
+
+            versionList.addEventListener('click', function(event) {
+                if (event.target.tagName === 'LI') {
+                    const version = event.target.getAttribute('data-version');
+                    updateInfo.innerHTML = getUpdateInfo(version);
+                }
+            });
+
+            function getUpdateInfo(version) {
+                switch (version) {
+                    case '1.2.0':
+                        return `                            <h3>版本 1.2.0 - 2023-10-01</h3>
+                            <p><strong>新增功能:</strong></p>
+                            <ul>
+                                <li>支持多用户登录</li>
+                                <li>增加夜间模式</li>
+                            </ul>
+                            <p><strong>修复问题:</strong></p>
+                            <ul>
+                                <li>修复了某些情况下应用崩溃的问题</li>
+                                <li>优化了启动速度</li>
+                            </ul>
+                        `;
+                    case '1.1.0':
+                        return `                            <h3>版本 1.1.0 - 2023-09-15</h3>
+                            <p><strong>新增功能:</strong></p>
+                            <ul>
+                                <li>添加了数据备份与恢复功能</li>
+                            </ul>
+                            <p><strong>优化:</strong></p>
+                            <ul>
+                                <li>改进了用户界面设计</li>
+                            </ul>
+                        `;
+                    case '1.0.0':
+                        return `                            <h3>版本 1.0.0 - 2023-09-01</h3>
+                            <p><strong>初始发布:</strong></p>
+                            <ul>
+                                <li>基础功能上线</li>
+                            </ul>
+                        `;
+                    default:
+                        return '<h3>请选择一个版本以查看更新信息</h3>';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

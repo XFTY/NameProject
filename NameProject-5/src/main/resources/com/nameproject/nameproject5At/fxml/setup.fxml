@@ -1,20 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <AnchorPane layoutX="386.0" layoutY="14.0" prefHeight="200.0" prefWidth="60.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
-         <children>
-            <Label layoutX="11.0" layoutY="36.0" rotate="90.0" text="NP - SETUP" textFill="#0000008f" AnchorPane.rightAnchor="-110.0" AnchorPane.topAnchor="95.0">
-               <font>
-                  <Font name="Arial" size="44.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-   </children>
-</AnchorPane>
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="800.0" style="-fx-background-color: #2a3642;" stylesheets="@../css/tabPaneT1s.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nameproject.nameproject5At.controller.MainWindowController">
+   <tabs>
+      <Tab text="   NameProject 安装程序(第二部分)   ">
+         <content>
+            <AnchorPane>
+               <children>
+                  <Label fx:id="sittingsWelcomeTitle" layoutX="14.0" layoutY="14.0" onMouseClicked="#onWelcomeLabelClick" text="欢迎来到设置界面！" textFill="#ffffffe0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="14.0">
+                     <font>
+                        <Font name="Microsoft YaHei" size="37.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="sittingsSubTitle" layoutX="14.0" layoutY="62.0" text="设置，应用，起耶！" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="60.0">
+                     <font>
+                        <Font name="Microsoft YaHei" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="400.0" text="NameProject V5" textFill="WHITE" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="14.0">
+                     <font>
+                        <Font name="Arial" size="34.0" />
+                     </font>
+                  </Label>
+                  <Label text="Codename:  Airplane Ticket" textFill="#fffcfc" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="60.0">
+                     <font>
+                        <Font name="Arial" size="15.0" />
+                     </font>
+                  </Label>
+                  <Separator prefWidth="200.0" style="-fx-background-color: brown;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0" />
+                  <ScrollPane layoutY="93.0" prefHeight="200.0" prefWidth="200.0" style="-fx-hbar-policy: never; -fx-border-width: 0; -fx-padding: 0; -fx-background-insets: 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="10000.0" prefHeight="600.0" style="-fx-background-color: #2a3642; -fx-border-color: #2a3642;">
+                           <children>
+                              <AnchorPane fx:id="conf" layoutX="2.0" prefHeight="70.0" prefWidth="200.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <TextField prefWidth="600.0" promptText="目前该选项不可用" style="-fx-background-color: #2a3642; -fx-border-color: white; -fx-border-radius: 10px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="105.0" />
+                                    <Label text="导入配置文件" textFill="WHITE" AnchorPane.leftAnchor="25.0">
+                                       <font>
+                                          <Font name="Microsoft YaHei Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Button mnemonicParsing="false" prefWidth="80.0" stylesheets="@../css/button-normal.css" text="选择" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="25.0" />
+                                    <Label layoutX="25.0" layoutY="28.0" text="如果您打算使用自己的配置文件，请在这里导入" textFill="WHITE" AnchorPane.topAnchor="21.0">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="3.0" layoutY="96.0" prefHeight="291.0" prefWidth="789.0">
+                                 <children>
+                                    <Label text="功能设置" textFill="WHITE" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="21.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="14.0" layoutY="41.0" text="随机事件" textFill="WHITE" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="35.0">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <CheckBox layoutX="32.0" layoutY="62.0" mnemonicParsing="false" text="启用" textFill="WHITE" AnchorPane.topAnchor="80.0" />
+                                    <Label layoutX="31.0" layoutY="65.0" text="独门妙用：在随机点名的过程中增加一些随机事件，在时间充裕的情况下可以大大提升您的氛围" textFill="WHITE" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="60.0" />
+                                    <Label layoutX="17.0" layoutY="111.0" text="立即停止" textFill="WHITE" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="105.0">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="15.0" />
+                                       </font></Label>
+                                    <Label layoutX="32.0" layoutY="125.0" text="独门妙用：大大减少每次点名所耗费的时间，但可能会导致随机性丢失" textFill="WHITE" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="130.0">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <CheckBox layoutX="31.0" layoutY="147.0" mnemonicParsing="false" text="启用" textFill="WHITE" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="150.0" />
+                                    <Label layoutX="17.0" layoutY="174.0" text="置顶窗口" textFill="WHITE" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="170.0">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="27.0" layoutY="194.0" text="独门妙用：NameProject应用程序将不会被其他应用程序覆盖。" textFill="WHITE" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="195.0" />
+                                    <CheckBox layoutX="31.0" layoutY="217.0" mnemonicParsing="false" text="启用" textFill="WHITE" AnchorPane.topAnchor="215.0" />
+                                 </children></AnchorPane>
+                              <Separator layoutX="3.0" layoutY="84.0" prefWidth="200.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" />
+                           </children>
+                           <padding>
+                              <Insets top="4.0" />
+                           </padding></AnchorPane>
+                     </content>
+                  </ScrollPane>
+               </children></AnchorPane>
+         </content>
+      </Tab>
+      <!--    <Tab text="  Sittings  ">-->
+      <!--      <content>-->
+      <!--        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">-->
+      <!--               <children>-->
+      <!--                  <Label alignment="CENTER" contentDisplay="CENTER" text="under construction..." textFill="#00000091" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">-->
+      <!--                     <font>-->
+      <!--                        <Font name="Arial" size="32.0" />-->
+      <!--                     </font>-->
+      <!--                  </Label>-->
+      <!--               </children>-->
+      <!--               <opaqueInsets>-->
+      <!--                  <Insets />-->
+      <!--               </opaqueInsets></AnchorPane>-->
+      <!--      </content>-->
+      <!--    </Tab>-->
+   </tabs>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</TabPane>
