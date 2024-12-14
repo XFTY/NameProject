@@ -39,7 +39,7 @@ public class Flush2v {
             }
 
             Random random = new Random();
-            long stopTime = 100 + random.nextLong(201); // 设置随机停止时间
+            long stopTime = 300 + random.nextLong(201); // 设置随机停止时间
             System.out.println("StopTime = " + stopTime);
 
             long sleepTime = 100; // 初始睡眠时间
