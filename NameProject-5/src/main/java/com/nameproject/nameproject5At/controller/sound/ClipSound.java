@@ -1,7 +1,8 @@
 package com.nameproject.nameproject5At.controller.sound;
 
-
 import javafx.concurrent.Task;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.sound.sampled.*;
 import java.io.BufferedInputStream;
@@ -9,14 +10,17 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class ClipSound {
+    private static final Logger logger = LogManager.getLogger(ClipSound.class);
+
     public void play(InputStream in) {
-        try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new BufferedInputStream(in));
+        try (AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new BufferedInputStream(in))) {
             AudioFormat format = audioInputStream.getFormat();
             if (!AudioSystem.isLineSupported(new DataLine.Info(Clip.class, format))) {
-                System.err.println("Line not supported for this audio format.");
-            } else {
-                Clip clip = AudioSystem.getClip();
+                logger.error("Line not supported for this audio format: {}", format);
+                return;
+            }
+
+            try (Clip clip = AudioSystem.getClip()) {
                 clip.open(audioInputStream);
 
                 // 获取音频格式
@@ -35,36 +39,32 @@ public class ClipSound {
                 float totalSeconds = frameLength / frameRate;
 
                 clip.start();
-                //开始后睡眠播放时间秒
+                // 开始后睡眠播放时间秒
                 Thread.sleep((long) (totalSeconds * 1000L));
-                //关闭
-                clip.close();
+                logger.info("Audio played successfully for {} seconds.", totalSeconds);
             }
         } catch (UnsupportedAudioFileException e) {
-            e.printStackTrace();
+            logger.error("Unsupported audio file format.", e);
         } catch (LineUnavailableException e) {
-            e.printStackTrace();
+            logger.error("Line unavailable for audio playback.", e);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("IO error while playing audio.", e);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            logger.error("Thread interrupted while playing audio.", e);
+            Thread.currentThread().interrupt(); // 重新设置中断状态
         }
     }
+
     public void start(InputStream in) {
-        try {
-            Task<Void> task = new Task<Void>() {
-                @Override
-                protected Void call() throws Exception {
-                    play(in);
-                    return null;
-                }
-            };
+        Task<Void> task = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                play(in);
+                return null;
+            }
+        };
 
-            new Thread(task).start();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        new Thread(task).start();
+        logger.info("Audio playback started in a new thread.");
     }
 }
-

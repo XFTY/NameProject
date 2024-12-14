@@ -3,6 +3,8 @@ package com.nameproject.nameproject5At.flusher;
 import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,6 +12,8 @@ import java.util.List;
 import java.util.Random;
 
 public class Flush2v {
+
+    private static final Logger logger = LogManager.getLogger(Flush2v.class);
 
     private static volatile boolean stopFlushUi = false; // 控制是否停止刷新UI的标志
     private static volatile boolean finalStopFlushUi = false; // 这个是针对while循环终止的标志
@@ -27,6 +31,7 @@ public class Flush2v {
             btc.get(0).setDisable(true); // 禁用开始按钮
             btc.get(1).setDisable(false); // 启用停止按钮
             welcomeTitle.setText("正在滚动姓名...");
+            logger.info("Starting to flush UI...");
         });
 
         new Thread(() -> {
@@ -34,13 +39,13 @@ public class Flush2v {
             Collections.shuffle(nameList);
 
             if (labelController.size() != 3) {
-                System.err.println("Controller ERROR: " + labelController.size());
+                logger.error("Controller ERROR: {}", labelController.size());
                 return;
             }
 
             Random random = new Random();
             long stopTime = 300 + random.nextLong(201); // 设置随机停止时间
-            System.out.println("StopTime = " + stopTime);
+            logger.debug("StopTime = {}", stopTime);
 
             long sleepTime = 100; // 初始睡眠时间
 
@@ -58,7 +63,7 @@ public class Flush2v {
                             break;
                         }
                         sleepTime = sleepTime + 20; // 增加睡眠时间
-                        System.out.println("SleepTime = " + sleepTime);
+                        logger.debug("SleepTime = {}", sleepTime);
                     }
 
                     int counting = 0;
@@ -74,12 +79,14 @@ public class Flush2v {
                         // 循环运行在多线程环境中，UI控件不会出现忙等待
                         Thread.sleep(sleepTime);
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        logger.error("Thread interrupted: ", e);
+                        Thread.interrupted();
+                        break;
                     }
                 }
                 if (finalStopFlushUi) {
                     finalStopFlushUi = false; // 重置循环终止标志
-                    btc.get(0).setDisable(false); // 可选：启用第一个按钮
+                    // btc.get(0).setDisable(false); // 可选：启用第一个按钮
                     break; // 终止循环
                 }
             }
@@ -103,6 +110,7 @@ public class Flush2v {
         String finally_node;
 
         finally_node = String.format("点名结果：%s", nameList.get(finalI - 1));
+        logger.info("The finally name is {}", finally_node);
 
         Platform.runLater(() ->{
             welcomeTitle.setText(finally_node);
@@ -114,7 +122,7 @@ public class Flush2v {
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                logger.error("Thread interrupted: ", e);
             }
 
             // 更新按钮状态
@@ -132,9 +140,10 @@ public class Flush2v {
         switch (random.nextInt(10)) {
             case 1:
                 Sp_event1();
+                break;
             case 2:
                 Sp_event2();
-
+                break;
         }
 
         // 更新按钮状态
@@ -146,11 +155,11 @@ public class Flush2v {
     }
 
     private void Sp_event1() {
-
+        logger.info("Special event 1 triggered.");
     }
 
     private void Sp_event2() {
-
+        logger.info("Special event 2 triggered.");
     }
 
     private void TestThread(Label clns) {
@@ -163,7 +172,7 @@ public class Flush2v {
                 try {
                     Thread.sleep(200);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    logger.error("Thread interrupted: ", e);
                 }
             }
         }).start();

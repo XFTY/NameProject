@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration status="OFF">
+<configuration status="WARN">
 
     <properties>
         <!-- 日志打印级别 -->
-        <property name="LOG_LEVEL">INFO</property>
+        <property name="LOG_LEVEL">DEBUG</property>
         <!-- APP名称 -->
         <property name="APP_NAME" value="framework_project"/>
         <!-- 日志文件存储路径 -->
@@ -19,7 +19,6 @@
         <!-- 日志文件名 -->
         <property name="LOG_FILE_NAME" value="${LOG_HOME}"/>
         <property name="FILE_NAME_PATTERN" value="${LOG_HOME}/%d{yyyy-MM-dd}"/>
-
 
         <!--日志输出格式-控制台彩色打印-->
         <property name="ENCODER_PATTERN_CONSOLE">%blue{%d{yyyy-MM-dd HH:mm:ss.SSS}} | %highlight{%-5level}{ERROR=Bright

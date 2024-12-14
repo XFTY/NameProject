@@ -74,6 +74,7 @@ public class NameProjectApplication extends Application {
 
         // 监听窗口关闭事件
         stage.setOnCloseRequest(event -> {
+            logger.info("user clicked 'closed' button");
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("退出程序");
             alert.setHeaderText("您正在尝试退出程序...");
