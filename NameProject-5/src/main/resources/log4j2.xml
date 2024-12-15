@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Log4j2 Configuration File -->
+
+<!-- 感谢CSDN大佬。 -->
+
 <configuration status="WARN">
 
     <properties>

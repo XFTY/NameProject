@@ -60,7 +60,7 @@ public class ClipSound {
             @Override
             protected Void call() throws Exception {
                 play(in);
-                return null;
+                return null; // 慢慢的爬起来
             }
         };
 

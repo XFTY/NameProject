@@ -1,8 +1,10 @@
 package com.nameproject.nameproject5At.flusher;
 
+import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.util.Duration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -106,33 +108,39 @@ public class Flush2v {
         }
     }
 
-    private void normal_event(List<Label> labelController, List<Button> btc, Label welcomeTitle, List<String> nameList, int finalI){
+    private void normal_event(List<Label> labelController, List<Button> btc, Label welcomeTitle, List<String> nameList, int finalI) {
         String finally_node;
 
-        finally_node = String.format("点名结果：%s", nameList.get(finalI - 1));
+        finally_node = String.format(" 点名结果：%s ", nameList.get(finalI - 1));
         logger.info("The finally name is {}", finally_node);
 
-        Platform.runLater(() ->{
+        Platform.runLater(() -> {
             welcomeTitle.setText(finally_node);
+            // 设置初始透明度为0
+            welcomeTitle.setOpacity(0);
+            // 设置背景颜色为绿色
+            // welcomeTitle.setStyle("-fx-background-color: #19caad; -fx-background-radius: 20");
         });
 
-        new Thread(() -> {
-            // 暂停3秒并显示结果，随后恢复“开始抽取”控件
+        // 创建 FadeTransition 来控制透明度变化
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(2), welcomeTitle);
+        fadeTransition.setFromValue(0);
+        fadeTransition.setToValue(1);
+        fadeTransition.setAutoReverse(true);
+        fadeTransition.setCycleCount(3);
 
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                logger.error("Thread interrupted: ", e);
-            }
+        // 播放 FadeTransition
+        fadeTransition.play();
 
-            // 更新按钮状态
-            Platform.runLater(() ->{
+        // 在 FadeTransition 结束后恢复按钮状态和透明度
+        fadeTransition.setOnFinished(event -> {
+            Platform.runLater(() -> {
                 btc.get(0).setDisable(false);
                 btc.get(1).setDisable(true);
+                welcomeTitle.setOpacity(1);
+                welcomeTitle.setStyle("-fx-background-color: transparent");
             });
-
-        }).start();
-
+        });
     }
 
     private void specal_event(List<Label> labelController, List<Button> btc, Label welcomeTitle, List<String> nameList){

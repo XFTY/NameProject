@@ -1,7 +1,7 @@
 package com.nameproject.nameproject5At;
 
 import com.nameproject.nameproject5At.conf.ConfManager;
-import com.nameproject.nameproject5At.orginAWT.toast4j;
+import com.nameproject.nameproject5At.exception.ConfigVersionNotSupportException;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,10 +15,11 @@ import javafx.scene.effect.GaussianBlur;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -35,6 +36,42 @@ public class NameProjectApplication extends Application {
         // 获取系统信息和用户信息
         Map<String, Object> sysinfo = ConfManager.ReturnSysInfo();
         Map<String, Object> usrinfo = ConfManager.ReturnUsrInfo();
+
+        // 判断配置文件版本号
+        try {
+
+
+            List<Float> supportConfigVersionList = null;
+
+            if (sysinfo != null) {
+                Object supportConfigVersionObj = sysinfo.get("supportConfigVersion");
+                if (supportConfigVersionObj instanceof List<?>) {
+                    supportConfigVersionList = (List<Float>) supportConfigVersionObj;
+                } else {
+                    logger.error("supportConfigVersion is not a List");
+                }
+            } else {
+                logger.error("sysinfo is null");
+            }
+
+            for (int i = 0; i < supportConfigVersionList.size(); i++) {
+                if (usrinfo.get("config-version").equals(supportConfigVersionList.get(i))) {
+                    logger.info("Config version is supported");
+                    break;
+                } else {
+                    logger.error("Config version is not supported");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("配置文件版本不支持");
+                    alert.setHeaderText("软件无法运行");
+                    alert.setContentText("配置文件版本不支持，必要时检查配置文件版本。");
+                    alert.showAndWait();
+                    throw new ConfigVersionNotSupportException("Config version is not supported");
+                }
+            }
+        } catch (Exception e) {
+            logger.error("Failed to check config version", e);
+            System.exit(-1);
+        }
 
         // 加载FXML文件
         FXMLLoader fxmlLoader = new FXMLLoader(NameProjectApplication.class.getResource("fxml/mainWindow-classic.fxml"));

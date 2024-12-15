@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="800.0" style="-fx-background-color: #2a3642;" stylesheets="@../css/tabPaneT1s.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nameproject.nameproject5At.controller.MainWindowController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="800.0" style="-fx-background-color: #2a3642;" stylesheets="@../css/tabPaneT1s.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nameproject.nameproject5At.controller.MainWindowController">
   <tabs>
     <Tab text="  NameProject 3 标准模式  ">
       <content>
@@ -129,7 +129,7 @@
                         <Font name="Microsoft YaHei" size="37.0" />
                      </font>
                   </Label>
-                  <Label fx:id="sittingsSubTitle" layoutX="14.0" layoutY="62.0" text="设置，应用，起耶！" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="60.0">
+                  <Label fx:id="sittingsSubTitle" layoutX="14.0" layoutY="62.0" text="rid:50v0a" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="60.0">
                      <font>
                         <Font name="Microsoft YaHei" size="15.0" />
                      </font>
@@ -147,9 +147,9 @@
                   <Separator prefWidth="200.0" style="-fx-background-color: brown;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0" />
                   <ScrollPane layoutY="93.0" prefHeight="200.0" prefWidth="200.0" style="-fx-hbar-policy: never; -fx-border-width: 0; -fx-padding: 0; -fx-background-insets: 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="10000.0" prefHeight="600.0" style="-fx-background-color: #2a3642; -fx-border-color: #2a3642;">
+                      <AnchorPane minHeight="0.0" minWidth="10000.0" prefHeight="800.0" style="-fx-background-color: #2a3642; -fx-border-color: #2a3642;">
                            <children>
-                              <AnchorPane fx:id="conf" layoutX="2.0" prefHeight="70.0" prefWidth="200.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="conf" layoutX="5.0" layoutY="246.0" prefHeight="70.0" prefWidth="200.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="246.0">
                                  <children>
                                     <TextField prefWidth="600.0" promptText="目前该选项不可用" style="-fx-background-color: #2a3642; -fx-border-color: white; -fx-border-radius: 10px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="105.0" />
                                     <Label text="导入配置文件" textFill="WHITE" AnchorPane.leftAnchor="25.0">
@@ -165,7 +165,7 @@
                                     </Label>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="3.0" layoutY="96.0" prefHeight="291.0" prefWidth="789.0">
+                              <AnchorPane layoutX="5.0" layoutY="6.0" prefHeight="240.0" prefWidth="789.0">
                                  <children>
                                     <Label text="功能设置" textFill="WHITE" AnchorPane.topAnchor="0.0">
                                        <font>
@@ -197,18 +197,31 @@
                                     <Label layoutX="27.0" layoutY="194.0" text="独门妙用：NameProject应用程序将不会被其他应用程序覆盖。" textFill="WHITE" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="195.0" />
                                     <CheckBox layoutX="31.0" layoutY="217.0" mnemonicParsing="false" text="启用" textFill="WHITE" AnchorPane.topAnchor="215.0" />
                                  </children></AnchorPane>
-                              <Separator layoutX="3.0" layoutY="84.0" prefWidth="200.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" />
+                              <Separator layoutY="249.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" />
+                              <AnchorPane layoutX="14.0" layoutY="336.0" prefHeight="500.0" prefWidth="789.0" AnchorPane.leftAnchor="0.0">
+                                 <children>
+                                    <Label text="NameProject 名单" textFill="WHITE">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="21.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="14.0" layoutY="36.0" text="在这里修改点名名单" textFill="WHITE" AnchorPane.leftAnchor="14.0">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <TextArea layoutY="67.0" prefHeight="270.0" prefWidth="200.0" promptText="名字都删完了点个集贸的名啊？？？" wrapText="true" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="17.0" />
+                                       </font></TextArea>
+                                 </children>
+                              </AnchorPane>
                            </children>
                            <padding>
                               <Insets top="4.0" />
                            </padding></AnchorPane>
                     </content>
                   </ScrollPane>
-                  <Label alignment="CENTER" text="看什么看，看我长得帅？" textFill="#2a3642" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                     <font>
-                        <Font size="28.0" />
-                     </font>
-                  </Label>
                </children></AnchorPane>
         </content>
      </Tab>
