@@ -1,4 +1,6 @@
 # NameProject 
+
+![image](https://github.com/user-attachments/assets/07ca5bfd-1ebb-444e-b828-b55a46b6373e)
 让我们一同进步！
 
 欢迎使用 NameProject 点名器项目，该项目旨在为需要 **随机点名的场合** 提供一个良好地解决方案。

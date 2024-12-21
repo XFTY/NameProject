@@ -1,7 +1,9 @@
 package com.nameproject.nameproject5At;
 
+import com.nameproject.nameproject5At.Listener.KeyListener;
 import com.nameproject.nameproject5At.conf.ConfManager;
 import com.nameproject.nameproject5At.exception.ConfigVersionNotSupportException;
+import com.nameproject.nameproject5At.pptToast.miniToastWindow;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -27,7 +29,9 @@ import java.util.Optional;
 
 public class NameProjectApplication extends Application {
     private Parent root;
+    // private Parent root2;
 
+    // 日志记录器
     private static final Logger logger = LogManager.getLogger(NameProjectApplication.class);
 
     @Override
@@ -45,8 +49,6 @@ public class NameProjectApplication extends Application {
 
         // 判断配置文件版本号
         try {
-
-
             List<Float> supportConfigVersionList = null;
 
             if (sysinfo != null) {
@@ -99,7 +101,8 @@ public class NameProjectApplication extends Application {
         // 加载FXML文件
         FXMLLoader fxmlLoader = new FXMLLoader(NameProjectApplication.class.getResource("fxml/mainWindow-classic.fxml"));
         root = fxmlLoader.load();
-        logger.info("FXML file loaded successfully");
+        logger.info("main window FXML file loaded successfully");
+
 
         // 初始化窗口动画（加载完成前）
         AnchorPane classicPane = (AnchorPane) root.lookup("#ClassicPane");
@@ -121,6 +124,13 @@ public class NameProjectApplication extends Application {
         stage.setScene(scene);
         stage.show();
         logger.info("Stage displayed");
+
+        // 键盘事件监听器
+        new KeyListener();
+
+        // 初始化miniToastWindow
+        miniToastWindow.sc();
+
 
         // 在软件窗口内设置版本号
         try {

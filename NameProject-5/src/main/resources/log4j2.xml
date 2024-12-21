@@ -160,7 +160,10 @@
 
     <!--只有定义了logger并引入以上Appenders，Appender才会生效-->
     <Loggers>
-        <root level="${LOG_LEVEL}">
+        <Logger name="org.jnativehook" level="WARN" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <root level="DEBUG">
             <appender-ref ref="Console"/>
             <appender-ref ref="RollingFileAll"/>
             <appender-ref ref="RollingFileDebug"/>

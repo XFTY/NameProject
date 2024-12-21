@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.nameproject.nameproject5At.fxml.MiniWindow"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #2A3642FF;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nameproject.nameproject5At.controller.miniWindowController">
+   <children>
+      <Label fx:id="resultNameLabel" layoutX="74.0" layoutY="57.0" text="点名姓名" textFill="WHITE">
+         <font>
+            <Font name="Microsoft YaHei" size="63.0" />
+         </font>
+      </Label>
+      <Label layoutX="120.0" layoutY="178.0" text="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;" textFill="WHITE">
+         <font>
+            <Font name="Microsoft JhengHei" size="12.0" />
+         </font></Label>
+      <Label layoutX="8.0" layoutY="6.0" text="点名结果" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
