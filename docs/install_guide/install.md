@@ -6,7 +6,9 @@
 ## 安装前须知
 目前，所有的 NameProject 版本均建议在 **Microsoft Windows** 环境下运行，如果您尝试在 **苹果电脑(Apple MacOS)、Linux** 上运行 NameProject，请你确保您拥有相关知识。  
 
-NameProject 所有版本 **均不支持** 32位操作系统，对于 4.0 及以下版本的NameProject，您可以通过更换 Python 版本来在不支持64位的操作系统上运行 NameProject。
+对于 4.0 及以下版本的NameProject，您可以通过更换 Python 版本来在不支持64位的操作系统上运行 NameProject。
+
+对于 5.0及以上的版本的 NameProject ， **均不支持** 32位及以下的操作系统。
 
 ## 第一步：下载 NameProject 发行版
 
