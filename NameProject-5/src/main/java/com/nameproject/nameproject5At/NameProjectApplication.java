@@ -4,6 +4,7 @@ import com.nameproject.nameproject5At.conf.ConfManager;
 import com.nameproject.nameproject5At.exception.ConfigVersionNotSupportException;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -19,6 +20,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -33,9 +35,13 @@ public class NameProjectApplication extends Application {
         // 记录软件启动日志
         logger.warn("Software start");
 
+        // stage.setAlwaysOnTop(true);
+
         // 获取系统信息和用户信息
         Map<String, Object> sysinfo = ConfManager.ReturnSysInfo();
         Map<String, Object> usrinfo = ConfManager.ReturnUsrInfo();
+
+        // 高兴地跳起来
 
         // 判断配置文件版本号
         try {
@@ -54,20 +60,37 @@ public class NameProjectApplication extends Application {
                 logger.error("sysinfo is null");
             }
 
+            List<Boolean> versionIsCurrent = null;
             for (int i = 0; i < supportConfigVersionList.size(); i++) {
+                versionIsCurrent = new ArrayList<>();
                 if (usrinfo.get("config-version").equals(supportConfigVersionList.get(i))) {
                     logger.info("Config version is supported");
                     break;
+                } else {
+                    versionIsCurrent.add(false);
+                }
+            }
+
+            if (versionIsCurrent != null) {
+
+                if (versionIsCurrent.isEmpty()) {
+                    // 如果versionIsCurrent 为空，那么就可以执行接下来的操作。
+                    // 如果不为空，说明配置文件版本不支持。
                 } else {
                     logger.error("Config version is not supported");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("配置文件版本不支持");
                     alert.setHeaderText("软件无法运行");
-                    alert.setContentText("配置文件版本不支持，必要时检查配置文件版本。");
+                    alert.setContentText(String.format("配置文件版本不支持，必要时检查配置文件版本。\n当前配置文件版本： %s \n需要的配置文件版本：>= %s", usrinfo.get("config-version"), supportConfigVersionList));
                     alert.showAndWait();
                     throw new ConfigVersionNotSupportException("Config version is not supported");
                 }
+
+            } else {
+                logger.error("Failed to get supportConfigVersionList, Label is null.");
+                System.exit(-1);
             }
+
         } catch (Exception e) {
             logger.error("Failed to check config version", e);
             System.exit(-1);
@@ -121,7 +144,9 @@ public class NameProjectApplication extends Application {
 
             if (result.get() == ButtonType.OK) {
                 logger.info("User confirmed exit, closing application");
-                System.exit(0); // 立刻结束NameProject java线程
+                Platform.exit(); // 关闭JavaFX应用程序
+                System.exit(0);
+                // System.exit(0); // 立刻结束NameProject java线程
             } else {
                 logger.info("User canceled exit, returning to application");
                 event.consume(); // 取消关闭事件

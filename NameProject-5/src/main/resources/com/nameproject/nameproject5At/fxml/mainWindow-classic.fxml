@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="800.0" style="-fx-background-color: #2a3642;" stylesheets="@../css/tabPaneT1s.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nameproject.nameproject5At.controller.MainWindowController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1200.0" prefWidth="800.0" style="-fx-background-color: #2a3642;" stylesheets="@../css/tabPaneT1s.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nameproject.nameproject5At.controller.MainWindowController">
   <tabs>
     <Tab text="  NameProject 3 标准模式  ">
       <content>
@@ -147,7 +147,7 @@
                   <Separator prefWidth="200.0" style="-fx-background-color: brown;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0" />
                   <ScrollPane layoutY="93.0" prefHeight="200.0" prefWidth="200.0" style="-fx-hbar-policy: never; -fx-border-width: 0; -fx-padding: 0; -fx-background-insets: 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="10000.0" prefHeight="800.0" style="-fx-background-color: #2a3642; -fx-border-color: #2a3642;">
+                      <AnchorPane minHeight="0.0" minWidth="10000.0" prefHeight="900.0" style="-fx-background-color: #2a3642; -fx-border-color: #2a3642;">
                            <children>
                               <AnchorPane fx:id="conf" layoutX="5.0" layoutY="246.0" prefHeight="70.0" prefWidth="200.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="246.0">
                                  <children>
@@ -177,7 +177,7 @@
                                           <Font name="Microsoft YaHei" size="16.0" />
                                        </font>
                                     </Label>
-                                    <CheckBox layoutX="32.0" layoutY="62.0" mnemonicParsing="false" text="启用" textFill="WHITE" AnchorPane.topAnchor="80.0" />
+                                    <CheckBox fx:id="ramdomEventChoser" layoutX="32.0" layoutY="62.0" mnemonicParsing="false" text="启用" textFill="WHITE" AnchorPane.topAnchor="80.0" />
                                     <Label layoutX="31.0" layoutY="65.0" text="独门妙用：在随机点名的过程中增加一些随机事件，在时间充裕的情况下可以大大提升您的氛围" textFill="WHITE" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="60.0" />
                                     <Label layoutX="17.0" layoutY="111.0" text="立即停止" textFill="WHITE" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="105.0">
                                        <font>
@@ -188,17 +188,16 @@
                                           <Font name="Microsoft YaHei" size="12.0" />
                                        </font>
                                     </Label>
-                                    <CheckBox layoutX="31.0" layoutY="147.0" mnemonicParsing="false" text="启用" textFill="WHITE" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="150.0" />
+                                    <CheckBox fx:id="stopNowChoser" layoutX="31.0" layoutY="147.0" mnemonicParsing="false" text="启用" textFill="WHITE" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="150.0" />
                                     <Label layoutX="17.0" layoutY="174.0" text="置顶窗口" textFill="WHITE" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="170.0">
                                        <font>
                                           <Font name="Microsoft YaHei" size="15.0" />
                                        </font>
                                     </Label>
                                     <Label layoutX="27.0" layoutY="194.0" text="独门妙用：NameProject应用程序将不会被其他应用程序覆盖。" textFill="WHITE" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="195.0" />
-                                    <CheckBox layoutX="31.0" layoutY="217.0" mnemonicParsing="false" text="启用" textFill="WHITE" AnchorPane.topAnchor="215.0" />
+                                    <CheckBox fx:id="topMostWindowChoser" layoutX="31.0" layoutY="217.0" mnemonicParsing="false" text="启用" textFill="WHITE" AnchorPane.topAnchor="215.0" />
                                  </children></AnchorPane>
-                              <Separator layoutY="249.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" />
-                              <AnchorPane layoutX="14.0" layoutY="336.0" prefHeight="500.0" prefWidth="789.0" AnchorPane.leftAnchor="0.0">
+                              <AnchorPane layoutX="14.0" layoutY="336.0" prefHeight="380.0" prefWidth="789.0" AnchorPane.leftAnchor="0.0">
                                  <children>
                                     <Label text="NameProject 名单" textFill="WHITE">
                                        <font>
@@ -210,7 +209,7 @@
                                           <Font name="Microsoft YaHei" size="16.0" />
                                        </font>
                                     </Label>
-                                    <TextArea layoutY="67.0" prefHeight="270.0" prefWidth="200.0" promptText="名字都删完了点个集贸的名啊？？？" wrapText="true" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+                                    <TextArea fx:id="nameListTextArea" layoutY="67.0" prefHeight="300.0" prefWidth="400.0" promptText="名字都删完了点个集贸的名啊？？？" wrapText="true" AnchorPane.leftAnchor="9.0" AnchorPane.topAnchor="70.0">
                                        <font>
                                           <Font name="Microsoft YaHei" size="17.0" />
                                        </font></TextArea>

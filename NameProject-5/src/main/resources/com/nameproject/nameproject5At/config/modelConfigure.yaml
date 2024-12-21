@@ -1,5 +1,17 @@
+# NameProject 5 配置文件
+# 版权所有：2023-2025 XFTY，保留所有权利。
+# 软件基于 Apache License 2.0 开源协议，请遵守协议。
 
-config-version: 5.0
+# 文件修改先知：
+# 1. 不建议用户在这里修改配置文件，而是在 NameProject 的 GUI 中修改。
+# 2. 配置文件修改不会立即生效，需要重启软件。
+# 3. 配置文件修改可能会导致软件崩溃，请谨慎修改。
+# 4. 该配置文件**不支持** NameProject 3 和 NameProject 4 ，
+
+# 5.8版本最少需要 NameProject 50v07a 才可以发挥全部作用
+# 注意：5.x系列的配置文件不支持 NameProject 3 和 NameProject 4 。
+# 若要使用 NameProject 3.x、4.x，请确保配置文件版本为 3.x
+config-version: 5.8
 
 name: [a, v, d, d, s, w]
 
@@ -11,3 +23,9 @@ welcomeTitle:
   - "测试标语3"
   - "测试标语4"
   - "测试标语5"
+
+# 随机事件
+# 软件将会在启动时随机选择一个事件。
+RamdomEvent: true
+StopNow: true
+TopMost: true
