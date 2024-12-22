@@ -1,5 +1,7 @@
 package com.nameproject.nameproject5At.flusher;
 
+import com.nameproject.nameproject5At.pptToast.miniToastWindow;
+
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.scene.control.Button;
@@ -193,6 +195,24 @@ public class Flush2v {
 
         Collections.addAll(testList, "1", "2", "3", "4", "5", "6", "7", "8", "9", "A");
         FlushUi(testList, labelController, buttonController, welcomeTitle);
+    }
+
+    public static void fastFlush() {
+        /*
+        * fastFlush 是给 pptToast 的。
+        * @param labelController
+        * @param buttonController
+        * @param welcomeTitle
+         */
+        List<String> testList = new ArrayList<>();
+
+        Collections.addAll(testList, "1", "2", "3", "4", "5", "6", "7", "8", "9", "A");
+        Collections.shuffle(testList);
+
+        Platform.runLater(() -> {
+            miniToastWindow.showMiniWindow(testList.get(0));
+        });
+
     }
 
     public void stopFlush() {

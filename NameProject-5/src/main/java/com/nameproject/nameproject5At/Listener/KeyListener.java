@@ -1,9 +1,13 @@
 package com.nameproject.nameproject5At.Listener;
 
-import org.jnativehook.GlobalScreen;
-import org.jnativehook.NativeHookException;
-import org.jnativehook.keyboard.NativeKeyEvent;
-import org.jnativehook.keyboard.NativeKeyListener;
+import com.nameproject.nameproject5At.flusher.Flush2v;
+import com.nameproject.nameproject5At.pptToast.miniToastWindow;
+
+import com.github.kwhat.jnativehook.GlobalScreen;
+import com.github.kwhat.jnativehook.NativeHookException;
+import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
+import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
+
 
 public class KeyListener implements NativeKeyListener {
 
@@ -29,21 +33,29 @@ public class KeyListener implements NativeKeyListener {
     @Override
     public void nativeKeyTyped(NativeKeyEvent nativeKeyEvent) {
         // 检查是否按下反引号键
-        if (nativeKeyEvent.getKeyCode() == NativeKeyEvent.VC_BACKQUOTE) {
-            System.out.println("反引号键被按下");
+        if (nativeKeyEvent.getKeyCode() == NativeKeyEvent.VC_F6) {
+            System.out.println("user pushed keyboard '`' .");
+            Flush2v.fastFlush();
         }
     }
 
     @Override
     public void nativeKeyPressed(NativeKeyEvent nativeKeyEvent) {
 //        System.out.println("Key pressed: " + nativeKeyEvent.getKeyText(nativeKeyEvent.getKeyCode()));
-        if (nativeKeyEvent.getKeyCode() == NativeKeyEvent.VC_BACKQUOTE) {
-            System.out.println("反引号键被按下");
+        if (nativeKeyEvent.getKeyCode() == NativeKeyEvent.VC_F6) {
+            // System.out.println("反引号键被按下");
+            System.out.println("user native keyboard '`' .");
+            Flush2v.fastFlush();
         }
     }
 
     @Override
     public void nativeKeyReleased(NativeKeyEvent nativeKeyEvent) {
+        if (nativeKeyEvent.getKeyCode() == NativeKeyEvent.VC_F6) {
+//            // System.out.println("反引号键被按下");
+//            System.out.println("user native keyboard '`' .");
+//            Flush2v.fastFlush();
+        }
 //        System.out.println("Key released: " + nativeKeyEvent.getKeyText(nativeKeyEvent.getKeyCode()));
     }
 

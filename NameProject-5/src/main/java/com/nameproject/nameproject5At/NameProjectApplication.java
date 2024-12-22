@@ -4,6 +4,7 @@ import com.nameproject.nameproject5At.Listener.KeyListener;
 import com.nameproject.nameproject5At.conf.ConfManager;
 import com.nameproject.nameproject5At.exception.ConfigVersionNotSupportException;
 import com.nameproject.nameproject5At.pptToast.miniToastWindow;
+//import com.nameproject.nameproject5At.pythonConnect.PythonConnecter;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -131,6 +132,8 @@ public class NameProjectApplication extends Application {
         // 初始化miniToastWindow
         miniToastWindow.sc();
 
+        // 初始化Python连接器
+//        PythonConnecter.initMethod();
 
         // 在软件窗口内设置版本号
         try {
@@ -186,6 +189,10 @@ public class NameProjectApplication extends Application {
     private void setGlassBlur() {
         GaussianBlur gaussianBlur = new GaussianBlur();
         // 实现玻璃模糊效果
+    }
+
+    public void PythonAndJavaConnectionTester() {
+        System.out.println("Hello, this is the NameProject 5 Java part");
     }
 
     /**
