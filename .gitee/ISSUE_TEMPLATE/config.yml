@@ -3,11 +3,11 @@ blank_issues_enabled: false
 contact_links:
   - name: NameProject Github 网站
     url: https://github.com/XFTY/NameProject
-    about: 访问国内镜像可以大大降低访问延迟
+    about: 您可以在 Github 获得软件最新动态。
 
   - name: NameProject Github issues
     url: https://github.com/XFTY/NameProject/issues
-    about: 访问国内镜像可以大大降低访问延迟
+    about: 在 Github 的 issues 可以被开发者更快注意到。
 
   - name: NameProject 网站
     url: https://xfty.github.io/NameProject
