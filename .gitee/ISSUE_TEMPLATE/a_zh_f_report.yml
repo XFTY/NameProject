@@ -1,0 +1,67 @@
+name: C - 新功能建议
+description: 向开发者建议软件的新功能
+title: "[Feature Request]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢您向我们提出宝贵的意见和建议！  
+        我们非常重视您的每一个建议，您的建议将帮助我们更好地改进 NameProject 。
+
+  - type: input
+    id: Feature-Idea
+    attributes:
+      label: 新功能建议
+      description: 请详细描述您希望我们加入的新功能。
+      placeholder: 请在这里输入
+    validations:
+      required: true
+
+  - type: textarea
+    id: Use-Cases
+    attributes:
+      label: 使用场景
+      description: 请描述一下您认为这个新功能将如何使用？有哪些具体的使用场景？
+      placeholder: 请在这里输入
+    validations:
+      required: true
+
+  - type: input
+    id: Benefits
+    attributes:
+      label: 带来的益处
+      description: 实现这个新功能后，将给用户带来哪些好处？
+      placeholder: 请在这里输入
+    validations:
+      required: true
+
+  - type: dropdown
+    id: Priority
+    attributes:
+      label: 功能优先级
+      description: 您认为这个功能的重要性如何？
+      options:
+        - 高
+        - 中
+        - 低
+    validations:
+      required: true
+
+  - type: input
+    id: Alternative-Solutions
+    attributes:
+      label: 替代方案
+      description: 是否存在其他方式或现有功能可以达到类似的效果？
+      placeholder: 请在这里输入
+    validations:
+      required: false
+
+  - type: textarea
+    id: Additional-Context
+    attributes:
+      label: 补充信息
+      description: 您是否还有其他相关信息想要补充？
+      placeholder: 请在这里输入
+    validations:
+      required: false

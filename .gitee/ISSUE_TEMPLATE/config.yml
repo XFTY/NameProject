@@ -1,12 +1,12 @@
 blank_issues_enabled: false
 
 contact_links:
-  - name: NameProject 国内镜像 | Chinese Mirror
-    url: https://gitee.com/XFTYC/NameProject
+  - name: NameProject Github 网站
+    url: https://github.com/XFTY/NameProject
     about: 访问国内镜像可以大大降低访问延迟
 
-  - name: NameProject 国内 issues | Chinese Mirror
-    url: https://gitee.com/XFTYC/NameProject/issues
+  - name: NameProject Github issues
+    url: https://github.com/XFTY/NameProject/issues
     about: 访问国内镜像可以大大降低访问延迟
 
   - name: NameProject 网站

@@ -1,0 +1,67 @@
+name: E - New Feature Suggestion
+description: Suggest a new feature for the software to the developers
+title: "[Feature Request]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for providing us with your valuable suggestions!  
+        We highly value each of your suggestions, and they will help us improve NameProject better.
+
+  - type: input
+    id: Feature-Idea
+    attributes:
+      label: New Feature Suggestion
+      description: Please describe in detail the new feature you would like us to add.
+      placeholder: Please enter here
+    validations:
+      required: true
+
+  - type: textarea
+    id: Use-Cases
+    attributes:
+      label: Use Cases
+      description: Please describe how you think this new feature will be used? What are the specific use cases?
+      placeholder: Please enter here
+    validations:
+      required: true
+
+  - type: input
+    id: Benefits
+    attributes:
+      label: Benefits
+      description: What benefits will users gain from implementing this new feature?
+      placeholder: Please enter here
+    validations:
+      required: true
+
+  - type: dropdown
+    id: Priority
+    attributes:
+      label: Feature Priority
+      description: How important do you think this feature is?
+      options:
+        - High
+        - Medium
+        - Low
+    validations:
+      required: true
+
+  - type: input
+    id: Alternative-Solutions
+    attributes:
+      label: Alternative Solutions
+      description: Are there other ways or existing features that can achieve similar results?
+      placeholder: Please enter here
+    validations:
+      required: false
+
+  - type: textarea
+    id: Additional-Context
+    attributes:
+      label: Additional Information
+      description: Is there any additional information you would like to provide?
+      placeholder: Please enter here
+    validations:
+      required: false
