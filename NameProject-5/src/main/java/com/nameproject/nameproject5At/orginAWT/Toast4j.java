@@ -2,7 +2,7 @@ package com.nameproject.nameproject5At.orginAWT;
 
 import java.awt.*;
 
-public class toast4j {
+public class Toast4j {
     public static void _displayToast(String title, String main) throws AWTException {
         //Obtain only one instance of the SystemTray object
         SystemTray tray = SystemTray.getSystemTray();

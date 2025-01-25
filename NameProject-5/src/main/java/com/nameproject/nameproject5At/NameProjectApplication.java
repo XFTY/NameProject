@@ -3,11 +3,11 @@ package com.nameproject.nameproject5At;
 import com.nameproject.nameproject5At.Listener.KeyListener;
 import com.nameproject.nameproject5At.conf.ConfManager;
 import com.nameproject.nameproject5At.exception.ConfigVersionNotSupportException;
-import com.nameproject.nameproject5At.pptToast.miniToastWindow;
-//import com.nameproject.nameproject5At.pythonConnect.PythonConnecter;
+import com.nameproject.nameproject5At.pptToast.MiniToastWindow;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.effect.GaussianBlur;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -23,10 +24,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class NameProjectApplication extends Application {
     private Parent root;
@@ -40,6 +38,61 @@ public class NameProjectApplication extends Application {
         // 记录软件启动日志
         logger.warn("Software start");
 
+        if (true) {
+            // 加载Setup文件
+            FXMLLoader fxmlLoader = new FXMLLoader(NameProjectApplication.class.getResource("fxml/setup/homePage.fxml"));
+            Parent homePageRoot = fxmlLoader.load();
+            logger.info("main window FXML file loaded successfully");
+
+            // 将所有在安装程序用到的fxml文件路径打包为列表
+            List<String> fxmlFilePaths = new ArrayList<>();
+            Collections.addAll(fxmlFilePaths,
+                    "fxml/setup/a1.fxml"
+                    );
+
+            // 设置 PageCounter 来确定页面
+            int pageCounter = 0;
+
+            // 设置场景
+            Scene scene = new Scene(homePageRoot, 800, 500);
+            stage.setMinWidth(800);
+            stage.setMinHeight(500);
+            logger.info("Scene created with dimensions 800x500");
+
+            // 设置窗口标题
+            String title = "NameProject 5 Personal User Setup";
+            stage.setTitle(title);
+            logger.info("Stage title set to: {}", title);
+
+            // 显示舞台
+            stage.setScene(scene);
+            stage.show();
+            logger.info("Stage displayed");
+
+            Button up = (Button) homePageRoot.lookup("#up");
+            Button down = (Button) homePageRoot.lookup("#down");
+            Button del = (Button) homePageRoot.lookup("#del");
+
+            up.setDisable(true);
+            del.setDisable(true);
+
+            up.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+
+                }
+            });
+
+            down.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+
+                }
+            });
+
+            return;
+        }
+
         // stage.setAlwaysOnTop(true);
 
         // 获取系统信息和用户信息
@@ -48,7 +101,7 @@ public class NameProjectApplication extends Application {
 
         // 高兴地跳起来
 
-        // 判断配置文件版本号
+        // 判断配置文件版本号是否支持
         try {
             List<Float> supportConfigVersionList = null;
 
@@ -63,35 +116,23 @@ public class NameProjectApplication extends Application {
                 logger.error("sysinfo is null");
             }
 
-            List<Boolean> versionIsCurrent = null;
-            for (int i = 0; i < supportConfigVersionList.size(); i++) {
-                versionIsCurrent = new ArrayList<>();
-                if (usrinfo.get("config-version").equals(supportConfigVersionList.get(i))) {
+            boolean isVersionSupported = false;
+            for (Float version : supportConfigVersionList) {
+                if (usrinfo.get("config-version").equals(version)) {
                     logger.info("Config version is supported");
+                    isVersionSupported = true;
                     break;
-                } else {
-                    versionIsCurrent.add(false);
                 }
             }
 
-            if (versionIsCurrent != null) {
-
-                if (versionIsCurrent.isEmpty()) {
-                    // 如果versionIsCurrent 为空，那么就可以执行接下来的操作。
-                    // 如果不为空，说明配置文件版本不支持。
-                } else {
-                    logger.error("Config version is not supported");
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("配置文件版本不支持");
-                    alert.setHeaderText("软件无法运行");
-                    alert.setContentText(String.format("配置文件版本不支持，必要时检查配置文件版本。\n当前配置文件版本： %s \n需要的配置文件版本：>= %s", usrinfo.get("config-version"), supportConfigVersionList));
-                    alert.showAndWait();
-                    throw new ConfigVersionNotSupportException("Config version is not supported");
-                }
-
-            } else {
-                logger.error("Failed to get supportConfigVersionList, Label is null.");
-                System.exit(-1);
+            if (!isVersionSupported) {
+                logger.error("Config version is not supported");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("配置文件版本不支持");
+                alert.setHeaderText("软件无法运行");
+                alert.setContentText(String.format("配置文件版本不支持，必要时检查配置文件版本。\n当前配置文件版本： %s \n需要的配置文件版本：>= %s", usrinfo.get("config-version"), supportConfigVersionList));
+                alert.showAndWait();
+                throw new ConfigVersionNotSupportException("Config version is not supported");
             }
 
         } catch (Exception e) {
@@ -126,11 +167,11 @@ public class NameProjectApplication extends Application {
         stage.show();
         logger.info("Stage displayed");
 
-        // 键盘事件监听器
+        // 注册键盘事件监听器
         new KeyListener();
 
         // 初始化miniToastWindow
-        miniToastWindow.sc();
+        MiniToastWindow.sc();
 
         // 初始化Python连接器
 //        PythonConnecter.initMethod();
@@ -159,7 +200,6 @@ public class NameProjectApplication extends Application {
                 logger.info("User confirmed exit, closing application");
                 Platform.exit(); // 关闭JavaFX应用程序
                 System.exit(0);
-                // System.exit(0); // 立刻结束NameProject java线程
             } else {
                 logger.info("User canceled exit, returning to application");
                 event.consume(); // 取消关闭事件
@@ -186,11 +226,13 @@ public class NameProjectApplication extends Application {
     /**
      * 设置玻璃模糊效果（未实现）
      */
+    @Deprecated
     private void setGlassBlur() {
         GaussianBlur gaussianBlur = new GaussianBlur();
         // 实现玻璃模糊效果
     }
 
+    @Deprecated
     public void PythonAndJavaConnectionTester() {
         System.out.println("Hello, this is the NameProject 5 Java part");
     }

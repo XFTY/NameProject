@@ -1,7 +1,6 @@
 package com.nameproject.nameproject5At.Listener;
 
 import com.nameproject.nameproject5At.flusher.Flush2v;
-import com.nameproject.nameproject5At.pptToast.miniToastWindow;
 
 import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.NativeHookException;

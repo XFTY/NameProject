@@ -1,6 +1,6 @@
 package com.nameproject.nameproject5At.flusher;
 
-import com.nameproject.nameproject5At.pptToast.miniToastWindow;
+import com.nameproject.nameproject5At.pptToast.MiniToastWindow;
 
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
@@ -210,7 +210,7 @@ public class Flush2v {
         Collections.shuffle(testList);
 
         Platform.runLater(() -> {
-            miniToastWindow.showMiniWindow(testList.get(0));
+            MiniToastWindow.showMiniWindow(testList.get(0));
         });
 
     }

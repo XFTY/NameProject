@@ -15,7 +15,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
-public class miniToastWindow {
+public class MiniToastWindow {
     private static Parent root2;
     private static Stage miniStage;
     private static double screenWidth;
@@ -23,7 +23,7 @@ public class miniToastWindow {
     // 设置窗口在屏幕右上方显示，并留出一些空隙
     private static final double offsetX = 20; // 空隙大小
     private static final double offsetY = 10; // 空隙大小
-    private static final Logger logger = LogManager.getLogger(miniToastWindow.class);
+    private static final Logger logger = LogManager.getLogger(MiniToastWindow.class);
 
     public static void sc() throws IOException {
         FXMLLoader fxmlLoader2 = new FXMLLoader(NameProjectApplication.class.getResource("fxml/miniWindow.fxml"));

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<AnchorPane prefHeight="378.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="231.0" layoutY="137.0" text="Welcome" textFill="#888888">
+         <font>
+            <Font name="Microsoft YaHei" size="75.0" />
+         </font>
+      </Label>
+      <Label layoutX="338.0" layoutY="243.0" text="点击“下一步”继续">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

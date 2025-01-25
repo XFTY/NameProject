@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nameproject.nameproject5At.controller.setup.HomePage">
+   <children>
+      <Pane prefHeight="60.0" prefWidth="600.0" style="-fx-background-color: #006ffd;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="10.0" layoutY="14.0" text="NameProject 5" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="29.0" />
+               </font>
+            </Label>
+            <Label layoutX="219.0" layoutY="10.0" text="配置程序" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei" size="29.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <AnchorPane fx:id="setupShowingArea" layoutY="60.0" prefHeight="378.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0" />
+      <AnchorPane fx:id="buttonControlArea" layoutY="438.0" prefHeight="60.0" prefWidth="800.0" style="-fx-background-color: #d1d1d1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Button fx:id="down" layoutX="731.0" layoutY="19.0" mnemonicParsing="false" text="下一步" />
+            <Button fx:id="up" layoutX="663.0" layoutY="19.0" mnemonicParsing="false" text="上一步" />
+            <Button fx:id="del" layoutX="14.0" layoutY="19.0" mnemonicParsing="false" text="删除配置文件" />
+            <Separator layoutX="2.0" layoutY="-1.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
