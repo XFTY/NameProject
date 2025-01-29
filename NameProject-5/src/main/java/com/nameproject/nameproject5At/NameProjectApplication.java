@@ -15,7 +15,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.effect.GaussianBlur;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -28,18 +27,34 @@ import java.util.*;
 
 public class NameProjectApplication extends Application {
     private Parent root;
+    private int pageCounter = 0;
     // private Parent root2;
 
     // 日志记录器
     private static final Logger logger = LogManager.getLogger(NameProjectApplication.class);
+
+    // FXML 载入生成器
+    private Parent loadFxml(String url) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(NameProjectApplication.class.getResource(url));
+
+            root = fxmlLoader.load();
+            logger.info("setup window FXML file loaded successfully");
+            return root;
+        } catch (IOException e) {
+            logger.error("Failed to load FXML file", e);
+
+            return null;
+        }
+    }
 
     @Override
     public void start(Stage stage) throws IOException {
         // 记录软件启动日志
         logger.warn("Software start");
 
-        if (true) {
-            // 加载Setup文件
+        if (false) {
+            // 加载Setup homePage文件
             FXMLLoader fxmlLoader = new FXMLLoader(NameProjectApplication.class.getResource("fxml/setup/homePage.fxml"));
             Parent homePageRoot = fxmlLoader.load();
             logger.info("main window FXML file loaded successfully");
@@ -47,11 +62,18 @@ public class NameProjectApplication extends Application {
             // 将所有在安装程序用到的fxml文件路径打包为列表
             List<String> fxmlFilePaths = new ArrayList<>();
             Collections.addAll(fxmlFilePaths,
-                    "fxml/setup/a1.fxml"
+                    "fxml/setup/a1.fxml",
+                    "fxml/setup/a2.fxml",
+                    "fxml/setup/a3.fxml"
                     );
 
+            List<Integer> fxmlndrStopList = new ArrayList<>();
+            Collections.addAll(fxmlndrStopList,
+                    1
+            );
+
             // 设置 PageCounter 来确定页面
-            int pageCounter = 0;
+            this.pageCounter = 0;
 
             // 设置场景
             Scene scene = new Scene(homePageRoot, 800, 500);
@@ -63,6 +85,13 @@ public class NameProjectApplication extends Application {
             String title = "NameProject 5 Personal User Setup";
             stage.setTitle(title);
             logger.info("Stage title set to: {}", title);
+
+            // 展示欢迎界面
+            // 手动加载第一页内容
+            Parent setupPageRoot = loadFxml(fxmlFilePaths.get(pageCounter));
+            AnchorPane setupShowingArea = (AnchorPane) homePageRoot.lookup("#setupShowingArea");
+            setupShowingArea.getChildren().clear();
+            setupShowingArea.getChildren().add(setupPageRoot);
 
             // 显示舞台
             stage.setScene(scene);
@@ -79,14 +108,45 @@ public class NameProjectApplication extends Application {
             up.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
+                    pageCounter--;
 
+                    down.setDisable(false);
+
+                    setupShowingArea.getChildren().clear();
+                    logger.info("PageCounter: {}", pageCounter);
+                    logger.info("fxmlFilePaths= {}", fxmlFilePaths.get(pageCounter));
+                    setupShowingArea.getChildren().add(loadFxml(fxmlFilePaths.get(pageCounter)));
+
+                    if (pageCounter == 0) {
+                        up.setDisable(true);
+                    }
                 }
             });
 
             down.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
+                    pageCounter++;
 
+                    for (int i: fxmlndrStopList) {
+                        if (pageCounter == i) {
+                            down.setDisable(true);
+                            break;
+                        }
+                    }
+
+
+
+                    up.setDisable(false);
+
+                    setupShowingArea.getChildren().clear();
+                    logger.info("PageCounter: {}", pageCounter);
+                    logger.info("fxmlFilePaths= {}", fxmlFilePaths.get(pageCounter));
+                    setupShowingArea.getChildren().add(loadFxml(fxmlFilePaths.get(pageCounter)));
+
+                    if (pageCounter == fxmlFilePaths.size() - 1) {
+                        down.setDisable(true);
+                    }
                 }
             });
 
@@ -103,12 +163,12 @@ public class NameProjectApplication extends Application {
 
         // 判断配置文件版本号是否支持
         try {
-            List<Float> supportConfigVersionList = null;
+            List<Double> supportConfigVersionList = new ArrayList<>();
 
             if (sysinfo != null) {
                 Object supportConfigVersionObj = sysinfo.get("supportConfigVersion");
                 if (supportConfigVersionObj instanceof List<?>) {
-                    supportConfigVersionList = (List<Float>) supportConfigVersionObj;
+                    supportConfigVersionList = (List<Double>) supportConfigVersionObj;
                 } else {
                     logger.error("supportConfigVersion is not a List");
                 }
@@ -117,11 +177,21 @@ public class NameProjectApplication extends Application {
             }
 
             boolean isVersionSupported = false;
-            for (Float version : supportConfigVersionList) {
-                if (usrinfo.get("config-version").equals(version)) {
-                    logger.info("Config version is supported");
-                    isVersionSupported = true;
-                    break;
+            try {
+                for (Double version : supportConfigVersionList) {
+                    if (usrinfo.get("config-version").equals(version)) {
+                        logger.info("Config version is supported");
+                        isVersionSupported = true;
+                        break;
+                    }
+                }
+            } catch (ClassCastException e) {
+                for (Double version : supportConfigVersionList) {
+                    if (usrinfo.get("config-version").equals(version)) {
+                        logger.info("Config version is supported");
+                        isVersionSupported = true;
+                        break;
+                    }
                 }
             }
 
@@ -221,15 +291,6 @@ public class NameProjectApplication extends Application {
 
         // 显示通知（可选）
         // toast4j.displayToast(String.format("NameProject Version %s", sysinfo.get("version")), "请稍后");
-    }
-
-    /**
-     * 设置玻璃模糊效果（未实现）
-     */
-    @Deprecated
-    private void setGlassBlur() {
-        GaussianBlur gaussianBlur = new GaussianBlur();
-        // 实现玻璃模糊效果
     }
 
     @Deprecated
