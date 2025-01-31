@@ -113,7 +113,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.nameproject.v5.nameproject5/com.nameproject.nameproject5At.NameProjectApplication</mainClass>
+                            <mainClass>com.nameproject.nameproject5At/com.nameproject.nameproject5At.NameProjectApplication</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

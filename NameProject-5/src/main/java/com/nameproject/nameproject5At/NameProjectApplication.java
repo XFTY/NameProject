@@ -30,6 +30,9 @@ public class NameProjectApplication extends Application {
     private int pageCounter = 0;
     // private Parent root2;
 
+    private Button up;
+    private static Button down;
+
     // 日志记录器
     private static final Logger logger = LogManager.getLogger(NameProjectApplication.class);
 
@@ -48,12 +51,19 @@ public class NameProjectApplication extends Application {
         }
     }
 
+    public static void doNext() {
+        down.setDisable(false);
+    }
+    public static void UnDoNext() {
+        down.setDisable(true);
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
         // 记录软件启动日志
         logger.warn("Software start");
 
-        if (false) {
+        if (true) {
             // 加载Setup homePage文件
             FXMLLoader fxmlLoader = new FXMLLoader(NameProjectApplication.class.getResource("fxml/setup/homePage.fxml"));
             Parent homePageRoot = fxmlLoader.load();
@@ -69,7 +79,8 @@ public class NameProjectApplication extends Application {
 
             List<Integer> fxmlndrStopList = new ArrayList<>();
             Collections.addAll(fxmlndrStopList,
-                    1
+                    1,
+                    2
             );
 
             // 设置 PageCounter 来确定页面
@@ -98,8 +109,8 @@ public class NameProjectApplication extends Application {
             stage.show();
             logger.info("Stage displayed");
 
-            Button up = (Button) homePageRoot.lookup("#up");
-            Button down = (Button) homePageRoot.lookup("#down");
+            up = (Button) homePageRoot.lookup("#up");
+            down = (Button) homePageRoot.lookup("#down");
             Button del = (Button) homePageRoot.lookup("#del");
 
             up.setDisable(true);

@@ -1,8 +1,11 @@
 package com.nameproject.nameproject5At.controller.setup;
 
+import com.nameproject.nameproject5At.NameProjectApplication;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.CheckBox;
 
-import java.awt.*;
+import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -19,6 +22,9 @@ public class a2 {
 
     @FXML
     private Label S2;
+
+    @FXML
+    private CheckBox agreeCheckBox;
 
     @FXML
     protected void onF_1Clicked() {
@@ -50,6 +56,15 @@ public class a2 {
                     e.printStackTrace();
                 }
             }
+        }
+    }
+
+    @FXML
+    protected void onAgreeCheckBoxClicked() {
+        if (agreeCheckBox.isSelected()) {
+            NameProjectApplication.doNext();
+        } else {
+            NameProjectApplication.UnDoNext();
         }
     }
 

@@ -1,4 +1,4 @@
-module com.nameproject.v5.nameproject5 {
+module com.nameproject.nameproject5At {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -9,6 +9,7 @@ module com.nameproject.v5.nameproject5 {
     requires org.apache.logging.log4j;
 //    requires py4j;
     requires com.github.kwhat.jnativehook;
+    requires org.jetbrains.annotations;
 
 
     opens com.nameproject.nameproject5At to javafx.fxml;

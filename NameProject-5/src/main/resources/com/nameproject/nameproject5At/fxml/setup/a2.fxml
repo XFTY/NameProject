@@ -19,6 +19,6 @@
       <Label layoutX="32.0" layoutY="165.0" text="NOTICE" />
       <Label layoutX="62.0" layoutY="181.0" onMouseClicked="#onS_1Clicked" text="https://github.com/XFTY/NameProject/blob/master/NOTICE.zip" textFill="#0077ff" underline="true" />
       <Label layoutX="62.0" layoutY="196.0" onMouseClicked="#onS_2Clicked" text="https://gitee.com/XFTYC/NameProject/blob/master/NOTICE.zip" textFill="#0077ff" underline="true" />
-      <CheckBox layoutX="32.0" layoutY="281.0" mnemonicParsing="false" text="我已认真阅读并同意《开源软件用户许可协议》和《软件通告》" />
+      <CheckBox fx:id="agreeCheckBox" layoutX="32.0" layoutY="281.0" mnemonicParsing="false" onMouseClicked="#onAgreeCheckBoxClicked" text="我已认真阅读并同意《开源软件用户许可协议》和《软件通告》" />
    </children>
 </AnchorPane>

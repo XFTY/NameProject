@@ -21,6 +21,7 @@ public class ConfigCreator {
 
     public Map<String, Object> getOrCreateConfigFile() {
         try {
+            System.out.println(System.getProperty("user.dir"));
             Path documentsDir = getDocumentsDir();
             Path npDir = documentsDir.resolve("NameProject");
             Path configFile = npDir.resolve("config.yaml");
