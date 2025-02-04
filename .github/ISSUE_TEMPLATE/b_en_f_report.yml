@@ -2,6 +2,8 @@ name: E - New Feature Suggestion
 description: Suggest a new feature for the software to the developers
 title: "[Feature Request]: "
 labels: ["enhancement", "新提交"]
+assignees:
+  - XFTY
 body:
   - type: markdown
     attributes:

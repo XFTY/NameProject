@@ -2,6 +2,8 @@ name: E - Software Bug Feedback
 description: Provide feedback on software errors to the developer
 title: "[Bug]: "
 labels: ["bug", "新提交"]
+assignees:
+  - XFTY
 body:
   - type: markdown
     attributes:

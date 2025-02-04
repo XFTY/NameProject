@@ -2,6 +2,8 @@ name: C - 软件 Bug 反馈
 description: 向开发者反馈软件错误
 title: "[Bug]: "
 labels: ["bug", "新提交"]
+assignees:
+  - XFTY
 body:
   - type: markdown
     attributes:
