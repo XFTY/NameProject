@@ -1,7 +1,7 @@
 name: E - Software Bug Feedback
 description: Provide feedback on software errors to the developer
 title: "[Bug]: "
-labels: ["bug"]
+labels: ["bug", "新提交"]
 body:
   - type: markdown
     attributes:
