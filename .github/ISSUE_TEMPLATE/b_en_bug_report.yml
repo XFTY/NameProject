@@ -80,8 +80,9 @@ body:
       options:
         - (Official Release) 3.0.2
         - (Official Release) 3.0.1
-        - (Snapshot) 50v06a
+        - (Snapshot) 50v07a
         - (Official Release - No Longer Maintained) 2.11
+        - (Snapshot - No Longer Maintained) 50v06a
         - (Snapshot - No Longer Maintained) 50v05a
         - (Snapshot - No Longer Maintained) 50v04a(Part 2)
         - (Snapshot - No Longer Maintained) 50v04a(Part 1)
