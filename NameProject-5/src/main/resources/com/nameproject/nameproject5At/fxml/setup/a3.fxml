@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="378.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nameproject.nameproject5At.controller.setup.a3">
+<AnchorPane prefHeight="378.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nameproject.nameproject5At.controller.setup.a3">
     <children>
         <Label layoutX="14.0" layoutY="12.0" text="导入姓名">
             <font>
@@ -32,7 +32,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <TextArea editable="false" layoutX="472.0" layoutY="88.0" prefHeight="242.0" prefWidth="318.0" text="注意：”性别预测“目前仅支持 简体中文 姓名&#10;键入完成后，请点击 ”检查输入“ 检查输入格式是否正确&#10;&#10;如果您打算使用软件中的一些特殊功能（只选择男生/女生 等），您需要在右边的文本框中输入性别&#10;&#10;  示例：&#10;    小明/男&#10;    小红/女&#10;(这应该是大家对于这两个名字的性别的普遍认为)&#10;&#10;当然，您也可以只输入名字，然后点击右下角的 ”性别预测“ 进行补充&#10;&#10;  示例：&#10;    小明&#10;    小红&#10;&#10; “性别预测”使用了 “贝叶斯公式” 对性别进行预测，正确率在 80% 左右(只要名字不删特别奇怪，您可能需要稍后调整)&#10;如果您需要使用，您可以点击右下角的 “性别预测” 按钮开始使用&#10;&#10;原理：&#10;  贝叶斯公式: P(Y|X) = P(X|Y) * P(Y) / P(X)&#10;  当X条件独立时, P(X|Y) = P(X1|Y) * P(X2|Y) * ...&#10;  &#10;为了方便后续开发，本项目使用了 NGender 作为姓名预测的模型，如果您对该项目感兴趣，您可以访问 &#10;&#10;  https://github.com/observerss/ngender &#10;&#10;获取更多信息" wrapText="true" AnchorPane.rightAnchor="13.600000000000023" AnchorPane.topAnchor="88.0" />
+      <TextArea editable="false" layoutX="472.0" layoutY="88.0" prefHeight="242.0" prefWidth="318.0" text="注意：”性别预测“目前仅支持 简体中文 姓名&#10;键入完成后，请点击 ”检查输入“ 检查输入格式是否正确&#10;输入示例：&#10;    小明&#10;    小红&#10;&#10;如果您希望使用高级功能，如只点名男生、女生，您可以点击“性别预测“按钮，程序会自动帮您预测名字性别。&#10;&#10; “性别预测”使用了 “贝叶斯公式” 对性别进行预测，正确率在 80% 左右(只要名字不删特别奇怪，您可能需要稍后调整)&#10;如果您需要使用，您可以点击右下角的 “性别预测” 按钮开始使用&#10;&#10;原理：&#10;  贝叶斯公式: P(Y|X) = P(X|Y) * P(Y) / P(X)&#10;  当X条件独立时, P(X|Y) = P(X1|Y) * P(X2|Y) * ...&#10;  &#10;为了方便后续开发，本项目使用了 NGender 作为姓名预测的模型，如果您对该项目感兴趣，您可以访问 &#10;&#10;  https://github.com/observerss/ngender &#10;&#10;获取更多信息" wrapText="true" AnchorPane.rightAnchor="13.600000000000023" AnchorPane.topAnchor="88.0" />
       <Label fx:id="noticeLabel" layoutX="14.0" layoutY="346.0" text="键入完成后，请点击 ”检查输入“ 检查输入格式是否正确" textFill="RED" />
     </children>
 </AnchorPane>
