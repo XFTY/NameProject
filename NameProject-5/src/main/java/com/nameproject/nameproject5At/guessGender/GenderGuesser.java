@@ -16,15 +16,15 @@ public class GenderGuesser {
     private static final Guesser guesser = new Guesser();
 
     public static class GuessResult {
-        private final String gender;
+        private final Boolean gender;
         private final double probability;
 
-        public GuessResult(String gender, double probability) {
+        public GuessResult(Boolean gender, double probability) {
             this.gender = gender;
             this.probability = probability;
         }
 
-        public String getGender() {
+        public Boolean getGender() {
             return gender;
         }
 
@@ -87,12 +87,12 @@ public class GenderGuesser {
 
         public GuessResult guess(String name) {
             if (name.length() < 1) {
-                throw new IllegalArgumentException("姓名不能为空");
+                throw new IllegalArgumentException("name can't be empty!");
             }
 
             for (char c : name.toCharArray()) {
                 if (!isChinese(c)) {
-                    throw new IllegalArgumentException("姓名必须为中文");
+                    throw new IllegalArgumentException("name must be Chinese!");
                 }
             }
 
@@ -101,11 +101,11 @@ public class GenderGuesser {
             double pm = probForGender(firstName, 1);
 
             if (pm > pf) {
-                return new GuessResult("male", pm / (pm + pf));
+                return new GuessResult(true, pm / (pm + pf));
             } else if (pm < pf) {
-                return new GuessResult("female", pf / (pm + pf));
+                return new GuessResult(false, pf / (pm + pf));
             } else {
-                return new GuessResult("unknown", 0.0);
+                return new GuessResult(null, 0.0);
             }
         }
 
@@ -125,5 +125,8 @@ public class GenderGuesser {
         // 示例用法
         GuessResult result = GenderGuesser.guess("张三");
         System.out.println("性别: " + result.getGender() + ", 概率: " + result.getProbability());
+
+        GuessResult eresult = GenderGuesser.guess("小芳");
+        System.out.println("性别: " + eresult.getGender() + ", 概率: " + eresult.getProbability());
     }
 }

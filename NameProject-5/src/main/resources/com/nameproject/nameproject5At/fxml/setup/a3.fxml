@@ -11,7 +11,7 @@
                 <Font name="Microsoft YaHei" size="25.0" />
             </font></Label>
         <Separator layoutY="53.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0" />
-      <AnchorPane layoutX="687.0" layoutY="340.0" prefHeight="27.0" prefWidth="100.0" style="-fx-border-color: #29903b; -fx-border-radius: 7;" AnchorPane.rightAnchor="13.600000000000023">
+      <AnchorPane layoutX="687.0" layoutY="340.0" onMouseClicked="#onGenderGuessButtonClicked" prefHeight="27.0" prefWidth="100.0" style="-fx-border-color: #29903b; -fx-border-radius: 7;" AnchorPane.rightAnchor="13.600000000000023">
          <children>
             <Label layoutX="61.0" layoutY="7.0" style="-fx-background-color: #29903b; -fx-background-radius: 7;" text=" Beta " textFill="WHITE" />
             <Label layoutX="7.0" layoutY="7.0" text="性别预测" />

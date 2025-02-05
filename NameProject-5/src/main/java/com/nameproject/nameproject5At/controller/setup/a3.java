@@ -5,13 +5,18 @@
 package com.nameproject.nameproject5At.controller.setup;
 
 import com.nameproject.nameproject5At.conf.NameWrapper;
+import com.nameproject.nameproject5At.controller.StringToListConverter;
+import com.nameproject.nameproject5At.guessGender.GenderGuesser;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.logging.Logger;
 
 public class a3 {
@@ -54,4 +59,70 @@ public class a3 {
             noticeLabel.setText("格式错误");
         }
     }
+
+    @FXML
+    protected void onGenderGuessButtonClicked() {
+        this.noticeLabel.setText("处理中......");
+        String nameListStringLabel = this.nameList.getText();
+
+        // 处理null条目
+        new Thread(() -> {
+            Platform.runLater(() -> this.noticeLabel.setText("数据打包中......"));
+            // 获取原始转换结果
+            final List<Map<String, Object>> converted = StringToListConverter.convert(nameListStringLabel);
+            //logger.info("converted value is:");
+            //converted.forEach(System.out::println);
+
+            // 提取null条目
+            List<Map<String, Object>> nullSexList = StringToListConverter.filterNullSexEntries(converted);
+            // 提取非null项目
+            List<Map<String, Object>> nonNullSexList = StringToListConverter.filterNonNullSexEntries(converted);
+
+            Platform.runLater(() -> this.noticeLabel.setText("计算中......"));
+
+            // 处理数据
+            for (Map<String, Object> s: nullSexList) {
+                // System.out.println(s.get("name"));
+                GenderGuesser.GuessResult guessResult = GenderGuesser.guess((String) s.get("name"));
+                // System.out.println(guessResult.getGender());
+                s.put("sex", guessResult.getGender());
+                try {
+                    Thread.sleep(100);
+                } catch (Exception e) {
+
+                }
+            }
+
+            nullSexList.addAll(nonNullSexList);
+
+            // nullSexList.forEach(System.out::println);
+
+            StringBuilder finallyResult = new StringBuilder();
+            Platform.runLater(() -> this.noticeLabel.setText("渲染中......"));
+
+            // 渲染结果
+            for (Map<String, Object> stringObjectMap : nullSexList) {
+                finallyResult.append(stringObjectMap.get("name"));
+                finallyResult.append("/");
+                if (Objects.equals(String.valueOf(stringObjectMap.get("sex")), "true")) {
+                    finallyResult.append("男");
+                } else if (!Objects.equals(String.valueOf(stringObjectMap.get("sex")), "true")) {
+                    finallyResult.append("女");
+                }
+                finallyResult.append("\n");
+            }
+
+            // 输出结果
+            nameList.setText(finallyResult.toString());
+
+            Platform.runLater(() -> {
+                this.noticeLabel.setTextFill(Color.GREEN);
+                this.noticeLabel.setText("性别预测成功！");
+            });
+
+        }).start();
+
+    }
+
+
 }
