@@ -117,7 +117,7 @@ public class a3 {
 
             Platform.runLater(() -> {
                 this.noticeLabel.setTextFill(Color.GREEN);
-                this.noticeLabel.setText("性别预测成功！");
+                this.noticeLabel.setText("成功！您可以修改预测不符的性别，然后，请点击“检查输入”。");
             });
 
         }).start();

@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="378.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="378.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="231.0" layoutY="108.0" text="Welcome" textFill="#888888">
          <font>
@@ -16,9 +16,14 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="272.0" layoutY="303.0" prefHeight="31.0" prefWidth="256.0" style="-fx-border-color: blue; -fx-border-radius: 10;">
+      <AnchorPane layoutX="272.0" layoutY="303.0" prefHeight="31.0" prefWidth="256.0" style="-fx-border-color: #4c9be8; -fx-border-radius: 10;">
          <children>
             <Label layoutX="22.0" layoutY="6.0" prefHeight="19.0" prefWidth="218.0" text="&gt;&gt;&gt;从 NameProject 3 快速导入">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="71.0" layoutY="6.0" style="-fx-background-color: #4c9be8;" text="NameProject 3" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>

@@ -21,6 +21,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.apache.logging.log4j.LogManager;
@@ -39,6 +40,9 @@ public class NameProjectApplication extends Application {
 
     // 日志记录器
     private static final Logger logger = LogManager.getLogger(NameProjectApplication.class);
+
+    Map<String, Object> sysinfo = ConfManager.ReturnSysInfo();
+    Map<String, Object> usrinfo = ConfManager.ReturnUsrInfo();
 
     // FXML 载入生成器
     private Parent loadFxml(String url) {
@@ -171,8 +175,6 @@ public class NameProjectApplication extends Application {
         // stage.setAlwaysOnTop(true);
 
         // 获取系统信息和用户信息
-        Map<String, Object> sysinfo = ConfManager.ReturnSysInfo();
-        Map<String, Object> usrinfo = ConfManager.ReturnUsrInfo();
 
         // 高兴地跳起来
 
@@ -268,7 +270,6 @@ public class NameProjectApplication extends Application {
             logger.info("Version label set to: Version: {}", sysinfo.get("version").toString());
         } catch (Exception e) {
             logger.error("Failed to set version label text", e);
-            e.printStackTrace();
         }
 
         // 监听窗口关闭事件
@@ -304,9 +305,85 @@ public class NameProjectApplication extends Application {
         fadeTransition.play();
         logger.info("Fade transition started for ClassicPane");
 
+        YOUHAVEBETTERRUN();
+
         // 显示通知（可选）
         // toast4j.displayToast(String.format("NameProject Version %s", sysinfo.get("version")), "请稍后");
     }
+
+    @Deprecated
+    public void YOUHAVEBETTERRUN() {
+        System.out.println("so put ");
+        System.out.println(this.sysinfo.get("version"));
+        System.out.println(this.sysinfo.get("version").equals("50v08a"));
+        if (this.sysinfo.get("version").equals("50v08a")) {
+            System.out.println("so put q3re");
+            new Thread(() -> {
+                try {
+                    Thread.sleep(30000);
+                } catch (Exception e) {
+                    logger.error("");
+                }
+
+                Platform.runLater(() -> {
+                    try {
+                        Label versionLabel = (Label) root.lookup("#versionLabel");
+                        versionLabel.setText("YOU HAVE BETTER RUN!!!");
+                        versionLabel.setTextFill(Color.RED);
+                    } catch (Exception e) {
+                        logger.error("");
+                    }
+                });
+
+                try {
+                    Thread.sleep(10000);
+                } catch (Exception e) {
+                    logger.error("");
+                }
+
+                Label clns = (Label) root.lookup("#clns");
+                Label ccns = (Label) root.lookup("#ccns");
+                Label crns = (Label) root.lookup("#crns");
+                Button startButtonV2 = (Button) root.lookup("#startButtonV2");
+                Button stopButton = (Button) root.lookup("#stopButton");
+
+                for (int i=0; i<=1000; i++){
+                    try {
+                        Thread.sleep(10);
+                    } catch (Exception e) {
+                        logger.error("");
+                    }
+                    Platform.runLater(() -> {
+                        clns.setText(shuffleString("L@qW�~S"));
+                        crns.setText(shuffleString("CN�-�="));
+                        ccns.setText(shuffleString("R{�}S"));
+                        startButtonV2.setText(shuffleString(startButtonV2.getText()));
+                        stopButton.setText(shuffleString(startButtonV2.getText()));
+                    });
+                }
+
+                System.exit(0x1abf8);
+            }).start();
+        }
+    }
+
+    public static String shuffleString(String input) {
+        // 将字符串转换为字符数组
+        char[] characters = input.toCharArray();
+        Random random = new Random();
+
+        // 随机交换字符数组中的元素
+        for (int i = 0; i < characters.length; i++) {
+            int randomIndex = random.nextInt(characters.length);
+            // 交换字符
+            char temp = characters[i];
+            characters[i] = characters[randomIndex];
+            characters[randomIndex] = temp;
+        }
+
+        return new String(characters);
+    }
+
 
     @Deprecated
     public void PythonAndJavaConnectionTester() {

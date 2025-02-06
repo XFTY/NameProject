@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1200.0" prefWidth="800.0" style="-fx-background-color: #2a3642;" stylesheets="@../css/tabPaneT1s.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nameproject.nameproject5At.controller.MainWindowController">
+  <tabs>
+    <Tab text="  NameProject 3 标准模式  ">
+      <content>
+        <AnchorPane fx:id="ClassicPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <top>
+                        <AnchorPane prefHeight="90.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label fx:id="welcomeTitle" text="你干嘛哈嗨哟" textFill="WHITE" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.5">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="45.0" />
+                                 </font>
+                              </Label>
+                              <Separator prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                              <Label fx:id="versionLabel" onMouseClicked="#onVersionLabelClick" text="Version: Unknown" textFill="#fffefe" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="60.0">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="main_title1" alignment="CENTER" contentDisplay="CENTER" text="NameProject 5" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+                                 <font>
+                                    <Font name="Arial" size="37.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </top>
+                     <left>
+                        <AnchorPane prefHeight="100.0" prefWidth="250.0" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets />
+                           </BorderPane.margin>
+                           <children>
+                              <Label fx:id="clns" alignment="CENTER" contentDisplay="CENTER" layoutX="110.0" layoutY="123.0" text="LNS" textFill="#fffcfc" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="35.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </left>
+                     <bottom>
+                        <AnchorPane prefHeight="120.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets />
+                           </BorderPane.margin>
+                           <padding>
+                              <Insets top="-108.0" />
+                           </padding>
+                           <children>
+                              <Button fx:id="stopButton" layoutX="425.0" layoutY="48.0" mnemonicParsing="false" onMouseClicked="#onStopButtonClickV2" stylesheets="@../css/button-stop.css" text="   停止   " AnchorPane.bottomAnchor="38.0" AnchorPane.rightAnchor="280.0">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="17.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor></Button>
+                              <Button fx:id="startButtonV2" layoutX="284.0" layoutY="47.0" mnemonicParsing="false" onMouseClicked="#onStartButtonClickV2" stylesheets="@../css/button.css" text="   开始   " AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="280.0">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="17.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </bottom>
+                     <center>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label fx:id="ccns" alignment="CENTER" text="CNS" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                                 <font>
+                                    <Font name="Microsoft YaHei Bold" size="60.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </center>
+                     <right>
+                        <AnchorPane prefHeight="200.0" prefWidth="250.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label fx:id="crns" alignment="CENTER" text="RNS" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="35.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </right></BorderPane>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+     <Tab text="   设置   ">
+        <content>
+            <AnchorPane>
+
+            </AnchorPane>
+        </content>
+     </Tab>
+<!--           <AnchorPane>-->
+<!--               <children>-->
+<!--                  <Label fx:id="sittingsWelcomeTitle" layoutX="14.0" layoutY="14.0" onMouseClicked="#onWelcomeLabelClick" text="欢迎来到设置界面！" textFill="#ffffffe0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="14.0">-->
+<!--                     <font>-->
+<!--                        <Font name="Microsoft YaHei" size="37.0" />-->
+<!--                     </font>-->
+<!--                  </Label>-->
+<!--                  <Label fx:id="sittingsSubTitle" layoutX="14.0" layoutY="62.0" text="rid:50v0a" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="60.0">-->
+<!--                     <font>-->
+<!--                        <Font name="Microsoft YaHei" size="15.0" />-->
+<!--                     </font>-->
+<!--                  </Label>-->
+<!--                  <Label layoutX="400.0" text="NameProject V5" textFill="WHITE" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="14.0">-->
+<!--                     <font>-->
+<!--                        <Font name="Arial" size="34.0" />-->
+<!--                     </font>-->
+<!--                  </Label>-->
+<!--                  <Label text="Codename:  Airplane Ticket" textFill="#fffcfc" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="60.0">-->
+<!--                     <font>-->
+<!--                        <Font name="Arial" size="15.0" />-->
+<!--                     </font>-->
+<!--                  </Label>-->
+<!--                  <Separator prefWidth="200.0" style="-fx-background-color: brown;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0" />-->
+<!--                  <ScrollPane layoutY="93.0" prefHeight="200.0" prefWidth="200.0" style="-fx-hbar-policy: never; -fx-border-width: 0; -fx-padding: 0; -fx-background-insets: 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">-->
+<!--                    <content>-->
+<!--                      <AnchorPane minHeight="0.0" minWidth="10000.0" prefHeight="900.0" style="-fx-background-color: #2a3642; -fx-border-color: #2a3642;">-->
+<!--                           <children>-->
+<!--                              <AnchorPane fx:id="conf" layoutX="5.0" layoutY="246.0" prefHeight="70.0" prefWidth="200.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="246.0">-->
+<!--                                 <children>-->
+<!--                                    <TextField prefWidth="600.0" promptText="目前该选项不可用" style="-fx-background-color: #2a3642; -fx-border-color: white; -fx-border-radius: 10px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="105.0" />-->
+<!--                                    <Label text="导入配置文件" textFill="WHITE" AnchorPane.leftAnchor="25.0">-->
+<!--                                       <font>-->
+<!--                                          <Font name="Microsoft YaHei Bold" size="15.0" />-->
+<!--                                       </font>-->
+<!--                                    </Label>-->
+<!--                                    <Button mnemonicParsing="false" prefWidth="80.0" stylesheets="@../css/button-normal.css" text="选择" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="25.0" />-->
+<!--                                    <Label layoutX="25.0" layoutY="28.0" text="如果您打算使用自己的配置文件，请在这里导入" textFill="WHITE" AnchorPane.topAnchor="21.0">-->
+<!--                                       <font>-->
+<!--                                          <Font size="15.0" />-->
+<!--                                       </font>-->
+<!--                                    </Label>-->
+<!--                                 </children>-->
+<!--                              </AnchorPane>-->
+<!--                              <AnchorPane layoutX="5.0" layoutY="6.0" prefHeight="240.0" prefWidth="789.0">-->
+<!--                                 <children>-->
+<!--                                    <Label text="功能设置" textFill="WHITE" AnchorPane.topAnchor="0.0">-->
+<!--                                       <font>-->
+<!--                                          <Font name="Microsoft YaHei" size="21.0" />-->
+<!--                                       </font>-->
+<!--                                    </Label>-->
+<!--                                    <Label layoutX="14.0" layoutY="41.0" text="随机事件" textFill="WHITE" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="35.0">-->
+<!--                                       <font>-->
+<!--                                          <Font name="Microsoft YaHei" size="16.0" />-->
+<!--                                       </font>-->
+<!--                                    </Label>-->
+<!--                                    <CheckBox fx:id="ramdomEventChoser" layoutX="32.0" layoutY="62.0" mnemonicParsing="false" text="启用" textFill="WHITE" AnchorPane.topAnchor="80.0" />-->
+<!--                                    <Label layoutX="31.0" layoutY="65.0" text="独门妙用：在随机点名的过程中增加一些随机事件，在时间充裕的情况下可以大大提升您的氛围" textFill="WHITE" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="60.0" />-->
+<!--                                    <Label layoutX="17.0" layoutY="111.0" text="立即停止" textFill="WHITE" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="105.0">-->
+<!--                                       <font>-->
+<!--                                          <Font name="Microsoft YaHei" size="15.0" />-->
+<!--                                       </font></Label>-->
+<!--                                    <Label layoutX="32.0" layoutY="125.0" text="独门妙用：大大减少每次点名所耗费的时间，但可能会导致随机性丢失" textFill="WHITE" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="130.0">-->
+<!--                                       <font>-->
+<!--                                          <Font name="Microsoft YaHei" size="12.0" />-->
+<!--                                       </font>-->
+<!--                                    </Label>-->
+<!--                                    <CheckBox fx:id="stopNowChoser" layoutX="31.0" layoutY="147.0" mnemonicParsing="false" text="启用" textFill="WHITE" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="150.0" />-->
+<!--                                    <Label layoutX="17.0" layoutY="174.0" text="置顶窗口" textFill="WHITE" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="170.0">-->
+<!--                                       <font>-->
+<!--                                          <Font name="Microsoft YaHei" size="15.0" />-->
+<!--                                       </font>-->
+<!--                                    </Label>-->
+<!--                                    <Label layoutX="27.0" layoutY="194.0" text="独门妙用：NameProject应用程序将不会被其他应用程序覆盖。" textFill="WHITE" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="195.0" />-->
+<!--                                    <CheckBox fx:id="topMostWindowChoser" layoutX="31.0" layoutY="217.0" mnemonicParsing="false" text="启用" textFill="WHITE" AnchorPane.topAnchor="215.0" />-->
+<!--                                 </children></AnchorPane>-->
+<!--                              <AnchorPane layoutX="14.0" layoutY="336.0" prefHeight="380.0" prefWidth="789.0" AnchorPane.leftAnchor="0.0">-->
+<!--                                 <children>-->
+<!--                                    <Label text="NameProject 名单" textFill="WHITE">-->
+<!--                                       <font>-->
+<!--                                          <Font name="Microsoft YaHei" size="21.0" />-->
+<!--                                       </font>-->
+<!--                                    </Label>-->
+<!--                                    <Label layoutX="14.0" layoutY="36.0" text="在这里修改点名名单" textFill="WHITE" AnchorPane.leftAnchor="14.0">-->
+<!--                                       <font>-->
+<!--                                          <Font name="Microsoft YaHei" size="16.0" />-->
+<!--                                       </font>-->
+<!--                                    </Label>-->
+<!--                                    <TextArea fx:id="nameListTextArea" layoutY="67.0" prefHeight="300.0" prefWidth="400.0" promptText="名字都删完了点个集贸的名啊？？？" wrapText="true" AnchorPane.leftAnchor="9.0" AnchorPane.topAnchor="70.0">-->
+<!--                                       <font>-->
+<!--                                          <Font name="Microsoft YaHei" size="17.0" />-->
+<!--                                       </font></TextArea>-->
+<!--                                 </children>-->
+<!--                              </AnchorPane>-->
+<!--                           </children>-->
+<!--                           <padding>-->
+<!--                              <Insets top="4.0" />-->
+<!--                           </padding></AnchorPane>-->
+<!--                    </content>-->
+<!--                  </ScrollPane>-->
+<!--               </children></AnchorPane>-->
+
+  </tabs>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</TabPane>
