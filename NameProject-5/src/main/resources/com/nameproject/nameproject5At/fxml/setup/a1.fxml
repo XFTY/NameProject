@@ -23,11 +23,6 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="71.0" layoutY="6.0" style="-fx-background-color: #4c9be8;" text="NameProject 3" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
    </children>

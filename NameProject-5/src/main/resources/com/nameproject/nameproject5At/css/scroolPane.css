@@ -1,0 +1,45 @@
+/* 定义整个ScrollPane的基础样式 */
+.scroll-pane > .viewport {
+    -fx-background-color: #2a3642; /* 背景颜色设置为深蓝色 */
+}
+
+.scroll-pane > .scroll-bar:vertical {
+    -fx-background-color: transparent; /* 设置滚动条背景透明 */
+}
+
+/* 滚动条轨道样式 */
+.scroll-pane > .scroll-bar:vertical > .track {
+    -fx-background-color: #404d5b; /* 深灰色轨道背景，比主背景稍亮 */
+    -fx-border-color: #303c4a; /* 边框颜色，较暗 */
+    -fx-padding: 0.2em; /* 内边距 */
+}
+
+/* 滑块（thumb）样式 */
+.scroll-pane > .scroll-bar:vertical > .thumb {
+    -fx-background-color: #b1bdc7; /* 浅灰色滑块，提供良好对比度 */
+    -fx-background-insets: 0, 0 5 0 5; /* 内部阴影或内部边框 */
+}
+
+/* 当鼠标悬停在滑块上时的样式 */
+.scroll-pane > .scroll-bar:vertical:hover > .thumb {
+    -fx-background-color: #d9e1e8; /* 悬停时更亮的滑块颜色 */
+}
+
+/* 滑块被拖动时的样式 */
+.scroll-pane > .scroll-bar:vertical > .thumb:focused,
+.scroll-pane > .scroll-bar:vertical > .thumb:pressed {
+    -fx-background-color: #a2adb7; /* 拖动或点击时的颜色，稍微加深 */
+}
+
+/* 上下箭头按钮隐藏或自定义 */
+.scroll-pane > .scroll-bar:vertical > .increment-button,
+.scroll-pane > .scroll-bar:vertical > .decrement-button {
+    -fx-background-color: transparent; /* 设置按钮背景透明 */
+    -fx-padding: 0; /* 移除默认内边距 */
+}
+
+.scroll-pane > .scroll-bar:vertical > .increment-arrow,
+.scroll-pane > .scroll-bar:vertical > .decrement-arrow {
+    -fx-shape: ""; /* 清空默认形状，可以自定义或留空以隐藏 */
+    -fx-background-color: transparent; /* 设置箭头背景透明 */
+}
