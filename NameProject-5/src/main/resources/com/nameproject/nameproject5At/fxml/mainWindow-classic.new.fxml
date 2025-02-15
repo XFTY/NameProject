@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<TabPane prefHeight="1000.0" prefWidth="820.0" stylesheets="@../css/tabPaneT1s.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nameproject.nameproject5At.controller.MainWindowController">
+<TabPane prefHeight="1200.0" prefWidth="820.0" stylesheets="@../css/tabPaneT1s.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nameproject.nameproject5At.controller.MainWindowController">
     <tabs>
         <Tab closable="false" text="   主界面    ">
             <content>
@@ -42,7 +42,7 @@
                                               </Label>
                                               <Label fx:id="main_title1" alignment="CENTER" contentDisplay="CENTER" text="NameProject-5" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
                                                   <font>
-                                                      <Font name="Arial" size="37.0" />
+                                                      <Font name="Microsoft YaHei" size="35.0" />
                                                   </font>
                                               </Label>
                                           </children>
@@ -129,14 +129,9 @@
                             <Font name="Arial" size="14.0" />
                         </font>
                     </Label>
-                    <Label alignment="CENTER" contentDisplay="CENTER" text="NameProject-设置" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
-                        <font>
-                            <Font name="Microsoft YaHei" size="37.0" />
-                        </font>
-                    </Label>
                <ScrollPane fitToWidth="true" layoutY="90.0" prefHeight="794.0" prefWidth="817.0" style="-fx-hbar-policy: never; -fx-background-color: #2a3642;" stylesheets="@../css/scroolPane.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
                  <content>
-                   <AnchorPane prefHeight="792.0" prefWidth="809.0" style="-fx-background-color: #2a3642; -fx-translate-x: never;">
+                   <AnchorPane prefHeight="1006.0" prefWidth="815.0" style="-fx-background-color: #2a3642; -fx-translate-x: never;">
                         <padding>
                            <Insets right="10.0" />
                         </padding>
@@ -153,19 +148,21 @@
                                        <Font name="Microsoft YaHei" size="15.0" />
                                     </font>
                                  </Label>
-                                 <Label layoutX="21.0" layoutY="41.0" text="向我们发送           或许可以解决">
+                                 <Label layoutX="21.0" layoutY="52.0" text="向我们发送           或许可以解决">
                                     <font>
                                        <Font name="Microsoft YaHei" size="12.0" />
                                     </font>
                                  </Label>
-                                 <Label layoutX="83.0" layoutY="42.0" text="issues" textFill="#005aff" underline="true">
+                                 <Label layoutX="83.0" layoutY="52.0" text="issues" textFill="#005aff" underline="true">
                                     <font>
                                        <Font name="Arial" size="12.0" />
                                     </font>
                                  </Label>
+                                 <Label layoutX="21.0" layoutY="37.0" text="您可以浏览               以获取帮助" />
+                                 <Label layoutX="83.0" layoutY="37.0" text="软件 wiki" textFill="#005aff" underline="true" />
                               </children>
                            </AnchorPane>
-                           <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="109.0" prefWidth="528.0" style="-fx-background-color: #4d637b; -fx-background-radius: 20;" AnchorPane.topAnchor="10.0">
+                           <AnchorPane layoutX="12.0" layoutY="211.66666666666666" prefHeight="109.0" prefWidth="528.0" style="-fx-background-color: #4d637b; -fx-background-radius: 20;" AnchorPane.topAnchor="211.66666666666666">
                               <children>
                                  <Label layoutX="57.666666666666664" layoutY="14.0" text="修改-点名器名单" textFill="WHITE" AnchorPane.leftAnchor="57.666666666666664" AnchorPane.topAnchor="14.0">
                                     <font>
@@ -199,7 +196,7 @@
                                  </Label>
                               </children>
                            </AnchorPane>
-                           <AnchorPane layoutX="14.0" layoutY="147.0" prefHeight="419.0" prefWidth="528.0" style="-fx-background-color: #708fb5; -fx-background-radius: 20;" AnchorPane.topAnchor="140.0">
+                           <AnchorPane layoutX="14.0" layoutY="339.0" prefHeight="419.0" prefWidth="528.0" style="-fx-background-color: #708fb5; -fx-background-radius: 20;" AnchorPane.topAnchor="339.0">
                               <children>
                                  <Label layoutX="59.0" layoutY="14.0" text="软件设置" textFill="WHITE" AnchorPane.leftAnchor="57.666666666666664" AnchorPane.topAnchor="14.0">
                                     <font>
@@ -265,7 +262,7 @@
                                              <Font name="System Bold" size="15.0" />
                                           </font>
                                        </Label>
-                                       <Label layoutX="46.0" layoutY="68.0" text="保持软件处于最新状态，您可以及时应用最新功能和漏洞补丁，建议打开" textFill="WHITE" />
+                                       <Label layoutX="21.0" layoutY="68.0" text="保持软件处于最新状态，您可以及时应用最新功能和漏洞补丁，建议打开" textFill="WHITE" />
                                        <Label layoutX="21.0" layoutY="84.0" text="需要注意：如果 该产品寿命尽，您可能无法获取最新安全支持" textFill="WHITE" />
                                        <AnchorPane layoutX="15.0" layoutY="39.0" prefHeight="21.0" prefWidth="45.0" style="-fx-background-color: green; -fx-background-radius: 50;">
                                           <children>
@@ -281,7 +278,7 @@
                                        </ImageView>
                                     </children>
                                  </AnchorPane>
-                                 <AnchorPane layoutX="121.0" layoutY="377.0" prefHeight="22.0" prefWidth="286.0">
+                                 <AnchorPane layoutX="121.0" layoutY="377.0" prefHeight="27.0" prefWidth="188.0">
                                     <children>
                                        <ImageView fitHeight="19.0" fitWidth="24.0" layoutX="51.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                                           <image>
@@ -297,7 +294,7 @@
                                  </AnchorPane>
                               </children>
                            </AnchorPane>
-                           <AnchorPane layoutX="12.0" layoutY="588.0" prefHeight="184.0" prefWidth="532.0" style="-fx-border-color: #b42b2d; -fx-border-radius: 20;">
+                           <AnchorPane layoutX="12.0" layoutY="782.0" prefHeight="184.0" prefWidth="532.0" style="-fx-border-color: #b42b2d; -fx-border-radius: 20;">
                               <children>
                                  <Label layoutX="54.0" layoutY="13.666666666666668" text="危险区域" textFill="RED" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="14.0">
                                     <font>
@@ -382,10 +379,97 @@
                                  <ChoiceBox fx:id="updateChannelChoiceBox" layoutX="21.0" layoutY="229.0" prefHeight="23.0" prefWidth="193.0" style="-fx-background-color: #708fb5; -fx-text-fill: white;" />
                               </children>
                            </AnchorPane>
+                           <AnchorPane layoutX="12.0" layoutY="10.0" prefHeight="185.0" prefWidth="528.0" style="-fx-background-color: #4d637b; -fx-background-radius: 20;">
+                              <children>
+                                 <Label layoutX="57.666666666666664" layoutY="14.0" text="关于 NameProject" textFill="WHITE" AnchorPane.leftAnchor="57.666666666666664" AnchorPane.topAnchor="14.0">
+                                    <font>
+                                       <Font name="Microsoft YaHei" size="19.0" />
+                                    </font>
+                                 </Label>
+                                 <ImageView fitHeight="27.0" fitWidth="143.0" layoutX="16.333333333333336" layoutY="13.333333333333334" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="16.333333333333336" AnchorPane.topAnchor="13.333333333333334">
+                                    <image>
+                                       <Image url="@../icon/about.png" />
+                                    </image>
+                                 </ImageView>
+                                 <Separator layoutY="46.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                 <Label layoutX="28.0" layoutY="60.0" text="版本：" textFill="WHITE">
+                                    <font>
+                                       <Font name="Microsoft YaHei" size="12.0" />
+                                    </font>
+                                 </Label>
+                                 <Label layoutX="64.0" layoutY="60.0" text="Unknown" textFill="WHITE">
+                                    <font>
+                                       <Font name="Microsoft YaHei" size="12.0" />
+                                    </font>
+                                 </Label>
+                                 <Label layoutX="26.0" layoutY="77.0" text="开发代号：Airplane Ticket" textFill="WHITE">
+                                    <font>
+                                       <Font name="Microsoft YaHei" size="12.0" />
+                                    </font>
+                                 </Label>
+                                 <AnchorPane layoutX="17.0" layoutY="105.0" prefHeight="66.0" prefWidth="177.0">
+                                    <children>
+                                       <AnchorPane prefHeight="31.0" prefWidth="177.0">
+                                          <children>
+                                             <ImageView fitHeight="19.0" fitWidth="24.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                   <Image url="@../icon/transfer.png" />
+                                                </image>
+                                             </ImageView>
+                                             <Label layoutX="24.0" layoutY="9.0" text="发行说明" textFill="WHITE" underline="true">
+                                                <font>
+                                                   <Font name="Microsoft YaHei" size="12.0" />
+                                                </font>
+                                             </Label>
+                                          </children>
+                                       </AnchorPane>
+                                       <AnchorPane layoutY="23.0" prefHeight="31.0" prefWidth="177.0">
+                                          <children>
+                                             <ImageView fitHeight="19.0" fitWidth="24.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                   <Image url="@../icon/transfer.png" />
+                                                </image>
+                                             </ImageView>
+                                             <Label layoutX="24.0" layoutY="9.0" text="项目仓库及源代码" textFill="WHITE" underline="true">
+                                                <font>
+                                                   <Font name="Microsoft YaHei" size="12.0" />
+                                                </font>
+                                             </Label>
+                                          </children>
+                                       </AnchorPane>
+                                    </children>
+                                 </AnchorPane>
+                                 <ImageView fitHeight="52.0" fitWidth="49.0" layoutX="457.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@../icon/cloud.png" />
+                                    </image>
+                                 </ImageView>
+                                 <ImageView fitHeight="53.0" fitWidth="82.0" layoutX="398.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@../icon/cloud.png" />
+                                    </image>
+                                 </ImageView>
+                                 <ImageView fitHeight="52.0" fitWidth="49.0" layoutX="335.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@../icon/cloud.png" />
+                                    </image>
+                                 </ImageView>
+                                 <Label layoutX="406.0" layoutY="85.0" text="5" textFill="#64bcff">
+                                    <font>
+                                       <Font name="System Bold" size="69.0" />
+                                    </font>
+                                 </Label>
+                              </children>
+                           </AnchorPane>
                         </children>
                      </AnchorPane>
                  </content>
                </ScrollPane>
+               <Label fx:id="main_title11" alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="11.0" text="NameProject-设置" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+                  <font>
+                     <Font name="Microsoft YaHei" size="35.0" />
+                  </font>
+               </Label>
                 </children>
             </AnchorPane>
         </Tab>

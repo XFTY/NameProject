@@ -85,6 +85,8 @@ public class MainWindowController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        // 添加频道
         String[] channel = {"Release [正式版更新，新功能的稳定版会进入正式版，通常软件运行稳定]", "Release-LTS [正式版的长期支持版本，该版本仅会推送相关的安全补丁，注意：版本需要为长期支持版，长期支持不意味着永久支持]", "Beta [测试版更新，SnapShot新功能的完整测试版本，软件运行可能不稳定]", "SnapShot [快照版更新，您可以了解软件最新功能，但功能不完善，软件运行极不稳定]"};
         updateChannelChoiceBox.getItems().addAll(channel);
     }

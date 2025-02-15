@@ -1,0 +1,84 @@
+
+name: C - 软件漏洞/威胁
+description: 我们非常重视软件安全问题。如果您发现了软件漏洞，请您选择此项进行报告，感谢您的支持与合作！
+title: "[软件漏洞/威胁]: "
+labels: ["漏洞/威胁", "新提交"]
+assignees:
+  - XFTY
+body:
+  - type: markdown
+    attributes:
+      value: |        
+        您好！  
+        我们非常重视软件安全问题。为了能够快速、有效地处理您发现的安全漏洞，请提供以下详细信息。感谢您的支持与合作！
+
+  - type: textarea
+    id: Vul-Description
+    attributes:
+      label: 漏洞概述
+      description: 请详细描述您发现的问题，包括它是如何被发现的，以及为什么这是一个安全风险。
+      placeholder: 请在此处输入详细的漏洞描述
+    validations:
+      required: true
+
+  - type: input
+    id: Vul-id
+    attributes:
+      label: 漏洞代号
+      description: 如果该漏洞有官方或内部代号（如CVE-2025-xxx、WS-2025-xxx），请填写；如果没有，请注明“无”。
+      placeholder: 请在此处输入漏洞代号或“无”
+    validations:
+      required: true
+
+  - type: dropdown
+    id: Vul-level
+    attributes:
+      label: 威胁等级
+      description: |        
+        请评估并选择该漏洞的威胁等级：
+        
+        - 低：影响较小，修复优先级较低（评分0~3）  
+        - 中：有一定影响，需要及时关注和修复（评分4~7）  
+        - 高：严重影响系统安全，需立即处理（评分8~10）
+      options:
+        - 低
+        - 中
+        - 高
+    validations:
+      required: true
+
+  - type: textarea
+    id: Reproduction-Steps
+    attributes:
+      label: 复现步骤
+      description: 请提供详细的复现步骤，以便我们能够准确重现问题。
+      placeholder: 请在此处输入复现步骤
+    validations:
+      required: true
+
+  - type: input
+    id: Affected-Versions
+    attributes:
+      label: 影响版本
+      description: |
+        请列出受影响的软件版本。  
+        或者，您发现此漏洞的NameProject版本。
+      placeholder: 请在此处输入受影响的版本号
+    validations:
+      required: true
+
+  - type: input
+    id: Environment
+    attributes:
+      label: 运行环境
+      description: 请提供漏洞出现时的运行环境信息（如操作系统、硬件配置等）。
+      placeholder: 请在此处输入运行环境信息
+    validations:
+      required: true
+
+  - type: textarea
+    id: Additional-Information
+    attributes:
+      label: 其他信息
+      description: 如果有任何其他相关信息或建议，请在此处补充说明。
+      placeholder: 请在此处输入其他信息或建议

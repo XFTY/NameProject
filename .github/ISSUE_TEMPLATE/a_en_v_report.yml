@@ -1,0 +1,85 @@
+
+name: C - Software Vulnerability/Threat
+description: We take software security issues very seriously. If you have discovered a software vulnerability, please select this option to report it. Thank you for your support and cooperation!
+
+title: "[Security Vulnerability/Threat]: "
+labels: ["Vulnerability/Threat", "New Submission"]
+assignees:
+  - XFTY
+body:
+  - type: markdown
+    attributes:
+      value: |        
+        Hello!  
+        We take software security issues very seriously. To help us address the security vulnerability you have found quickly and effectively, please provide the following detailed information. Thank you for your support and cooperation!
+
+  - type: textarea
+    id: Vul-Description
+    attributes:
+      label: Vulnerability Description
+      description: Please describe the issue you found in detail, including how it was discovered and why it is a security risk.
+      placeholder: Please enter a detailed vulnerability description here
+    validations:
+      required: true
+
+  - type: input
+    id: Vul-id
+    attributes:
+      label: Vulnerability ID
+      description: If this vulnerability has an official or internal ID (e.g., CVE-2025-xxx, WS-2025-xxx), please fill it in; otherwise, write "None".
+      placeholder: Please enter the vulnerability ID or "None"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: Vul-level
+    attributes:
+      label: Threat Level
+      description: |        
+        Please evaluate and select the threat level of this vulnerability:
+        
+        - Low: Minimal impact, lower priority for fixing (score 0~3)  
+        - Medium: Some impact, timely attention and fix needed (score 4~7)  
+        - High: Severe impact on system security, immediate action required (score 8~10)
+      options:
+        - Low
+        - Medium
+        - High
+    validations:
+      required: true
+
+  - type: textarea
+    id: Reproduction-Steps
+    attributes:
+      label: Steps to Reproduce
+      description: Please provide detailed steps to reproduce the issue so we can accurately replicate it.
+      placeholder: Please enter the reproduction steps here
+    validations:
+      required: true
+
+  - type: input
+    id: Affected-Versions
+    attributes:
+      label: Affected Versions
+      description: |        
+        Please list the affected software versions.  
+        Or, the NameProject version where you found this vulnerability.
+      placeholder: Please enter the affected version numbers here
+    validations:
+      required: true
+
+  - type: input
+    id: Environment
+    attributes:
+      label: Running Environment
+      description: Please provide information about the environment where the vulnerability occurred (e.g., operating system, hardware configuration).
+      placeholder: Please enter the running environment information here
+    validations:
+      required: true
+
+  - type: textarea
+    id: Additional-Information
+    attributes:
+      label: Additional Information
+      description: If there is any other relevant information or suggestions, please provide them here.
+      placeholder: Please enter any additional information or suggestions here
