@@ -1,4 +1,4 @@
-name: E - Software Bug Feedback
+name: Software Bug Feedback
 description: Provide feedback on software errors to the developer
 title: "[Bug]: "
 labels: ["bug", "新提交"]
