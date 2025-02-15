@@ -9,21 +9,21 @@ import com.nameproject.nameproject5At.controller.sound.ClipSound;
 import com.nameproject.nameproject5At.flusher.Flush;
 import com.nameproject.nameproject5At.flusher.Flush2v;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.yaml.snakeyaml.Yaml;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.net.URL;
+import java.util.*;
 
 /**
  * 主窗口控制器类，负责处理主窗口的事件和逻辑。
  */
-public class MainWindowController {
+public class MainWindowController implements Initializable {
     private static final Logger logger = LogManager.getLogger(MainWindowController.class);
 
     @FXML
@@ -57,6 +57,9 @@ public class MainWindowController {
     @FXML
     private Button stopButton; // 停止按钮
 
+    @FXML
+    private ChoiceBox updateChannelChoiceBox;
+
     // 上面三货打包成列表
     private final List<Label> labelController = new ArrayList<>();
 
@@ -79,6 +82,12 @@ public class MainWindowController {
 
     // 初始化Flush2v
     private final Flush2v flush2v = new Flush2v();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        String[] channel = {"Release [正式版更新，新功能的稳定版会进入正式版，通常软件运行稳定]", "Release-LTS [正式版的长期支持版本，该版本仅会推送相关的安全补丁，注意：版本需要为长期支持版，长期支持不意味着永久支持]", "Beta [测试版更新，SnapShot新功能的完整测试版本，软件运行可能不稳定]", "SnapShot [快照版更新，您可以了解软件最新功能，但功能不完善，软件运行极不稳定]"};
+        updateChannelChoiceBox.getItems().addAll(channel);
+    }
 
     /**
      * 版本标签点击事件处理方法。

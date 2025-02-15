@@ -16,7 +16,11 @@
         <Separator layoutY="53.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0" />
       <ScrollPane layoutX="90.0" layoutY="76.0" prefHeight="241.0" prefWidth="365.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="54.0">
         <content>
-          <AnchorPane prefHeight="475.0" prefWidth="782.0" />
+          <AnchorPane prefHeight="475.0" prefWidth="782.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="稍后，您可以在软件的“设置”界面调整设置" />
+                  <Label layoutX="14.0" layoutY="445.0" text="别扒拉！真没东西（其实是开发者懒得写了......）" />
+               </children></AnchorPane>
         </content>
       </ScrollPane>
     </children>

@@ -71,7 +71,7 @@ public class NameProjectApplication extends Application {
         // 记录软件启动日志
         logger.warn("Software start");
 
-        if (true) {
+        if (false) {
             // 加载Setup homePage文件
             FXMLLoader fxmlLoader = new FXMLLoader(NameProjectApplication.class.getResource("fxml/setup/homePage.fxml"));
             Parent homePageRoot = fxmlLoader.load();
@@ -228,7 +228,7 @@ public class NameProjectApplication extends Application {
         }
 
         // 加载FXML文件
-        FXMLLoader fxmlLoader = new FXMLLoader(NameProjectApplication.class.getResource("fxml/mainWindow-classic.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(NameProjectApplication.class.getResource("fxml/mainWindow-classic.new.fxml"));
         root = fxmlLoader.load();
         logger.info("main window FXML file loaded successfully");
 
@@ -239,8 +239,8 @@ public class NameProjectApplication extends Application {
         logger.debug("ClassicPane opacity set to 0");
 
         // 设置场景
-        Scene scene = new Scene(root, 800, 500);
-        stage.setMinWidth(800);
+        Scene scene = new Scene(root, 820, 500);
+        stage.setMinWidth(820);
         stage.setMinHeight(500);
         logger.info("Scene created with dimensions 800x500");
 
@@ -305,7 +305,7 @@ public class NameProjectApplication extends Application {
         fadeTransition.play();
         logger.info("Fade transition started for ClassicPane");
 
-        YOUHAVEBETTERRUN();
+        //YOUHAVEBETTERRUN();
 
         // 显示通知（可选）
         // toast4j.displayToast(String.format("NameProject Version %s", sysinfo.get("version")), "请稍后");
