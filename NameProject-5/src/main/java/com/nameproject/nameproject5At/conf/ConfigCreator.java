@@ -77,17 +77,10 @@ public class ConfigCreator {
 
     private Path getDocumentsDir() {
         // 获取用户主目录
-        String userHome = System.getProperty("user.home");
-        Path documentsDir;
+        String userHome = System.getProperty("user.dir");
 
-        if (isWindows()) {
-            documentsDir = Paths.get(userHome, "Documents");
-        } else {
-            documentsDir = Paths.get(userHome, "Documents"); // 根据实际情况修改这里
-        }
-
-        logger.debug("Documents directory: " + documentsDir);
-        return documentsDir;
+         logger.debug("Documents directory: " + userHome);
+        return Path.of(userHome);
     }
 
     private static boolean isWindows() {

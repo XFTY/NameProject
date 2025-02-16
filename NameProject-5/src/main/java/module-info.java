@@ -10,6 +10,9 @@ module com.nameproject.nameproject5At {
 //    requires py4j;
     requires com.github.kwhat.jnativehook;
     requires org.jetbrains.annotations;
+    requires okhttp3;
+    requires okhttp3.logging;
+    requires org.json;
 
 
     opens com.nameproject.nameproject5At to javafx.fxml;
