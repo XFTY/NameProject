@@ -6,9 +6,11 @@ package com.nameproject.nameproject5At.controller.setup;
 
 import com.nameproject.nameproject5At.conf.NameWrapper;
 import com.nameproject.nameproject5At.controller.StringToListConverter;
+import com.nameproject.nameproject5At.exception.GetException;
 import com.nameproject.nameproject5At.guessGender.GenderGuesser;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.paint.Color;
@@ -78,19 +80,41 @@ public class a3 {
             // 提取非null项目
             List<Map<String, Object>> nonNullSexList = StringToListConverter.filterNonNullSexEntries(converted);
 
+            // 是否有异常
+            boolean hasException = false;
+
             Platform.runLater(() -> this.noticeLabel.setText("计算中......"));
 
             // 处理数据
             for (Map<String, Object> s: nullSexList) {
                 // System.out.println(s.get("name"));
-                GenderGuesser.GuessResult guessResult = GenderGuesser.guess((String) s.get("name"));
-                // System.out.println(guessResult.getGender());
-                s.put("sex", guessResult.getGender());
+                try {
+                    GenderGuesser.GuessResult guessResult = GenderGuesser.guess((String) s.get("name"));
+                    // System.out.println(guessResult.getGender());
+                    s.put("sex", guessResult.getGender());
+                } catch (Exception e) {
+                    hasException = true;
+                    Platform.runLater(() -> {
+                        this.noticeLabel.setTextFill(Color.RED);
+                        this.noticeLabel.setText(String.format("发生异常！ %s", e.getMessage()));
+
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("发生错误！");
+                        alert.setHeaderText("发生错误！");
+                        alert.setContentText(GetException.getExceptionSrintStackTrace(e));
+                        alert.showAndWait();
+                    });
+                }
                 try {
                     Thread.sleep(100);
                 } catch (Exception e) {
 
                 }
+            }
+
+            // 如果出现异常，则不进行后续操作
+            if (hasException) {
+                return;
             }
 
             nullSexList.addAll(nonNullSexList);

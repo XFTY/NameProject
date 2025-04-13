@@ -41,29 +41,28 @@ public class NameProjectApplication extends Application {
     // 日志记录器
     private static final Logger logger = LogManager.getLogger(NameProjectApplication.class);
 
-    Map<String, Object> sysinfo = ConfManager.ReturnSysInfo();
-    Map<String, Object> usrinfo = ConfManager.ReturnUsrInfo();
+    Map<String, Object> sysinfo = ConfManager.ReturnSysInfo(); // 系统信息
+    Map<String, Object> usrinfo = ConfManager.ReturnUsrInfo(); // 用户信息
 
     // FXML 载入生成器
     private Parent loadFxml(String url) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(NameProjectApplication.class.getResource(url));
-
             root = fxmlLoader.load();
-            logger.info("setup window FXML file loaded successfully");
+            logger.info("setup window FXML file loaded successfully"); // 日志：FXML文件加载成功
             return root;
         } catch (IOException e) {
-            logger.error("Failed to load FXML file", e);
-
+            logger.error("Failed to load FXML file", e); // 日志：加载FXML文件失败
             return null;
         }
     }
 
     public static void doNext() {
-        down.setDisable(false);
+        down.setDisable(false); // 启用“下一步”按钮
     }
+
     public static void UnDoNext() {
-        down.setDisable(true);
+        down.setDisable(true); // 禁用“下一步”按钮
     }
 
     @Override
@@ -71,114 +70,117 @@ public class NameProjectApplication extends Application {
         // 记录软件启动日志
         logger.warn("Software start");
 
-        if (false) {
-            // 加载Setup homePage文件
-            FXMLLoader fxmlLoader = new FXMLLoader(NameProjectApplication.class.getResource("fxml/setup/homePage.fxml"));
-            Parent homePageRoot = fxmlLoader.load();
-            logger.info("main window FXML file loaded successfully");
-
-            // 将所有在安装程序用到的fxml文件路径打包为列表
-            List<String> fxmlFilePaths = new ArrayList<>();
-            Collections.addAll(fxmlFilePaths,
-                    "fxml/setup/a1.fxml",
-                    "fxml/setup/a2.fxml",
-                    "fxml/setup/a3.fxml"
-                    );
-
-            List<Integer> fxmlndrStopList = new ArrayList<>();
-            Collections.addAll(fxmlndrStopList,
-                    1,
-                    2
-            );
-
-            // 设置 PageCounter 来确定页面
-            this.pageCounter = 0;
-
-            // 设置场景
-            Scene scene = new Scene(homePageRoot, 800, 500);
-            stage.setMinWidth(800);
-            stage.setMinHeight(500);
-            logger.info("Scene created with dimensions 800x500");
-
-            // 设置窗口标题
-            String title = "NameProject 5 Personal User Setup";
-            stage.setTitle(title);
-            logger.info("Stage title set to: {}", title);
-
-            // 展示欢迎界面
-            // 手动加载第一页内容
-            Parent setupPageRoot = loadFxml(fxmlFilePaths.get(pageCounter));
-            AnchorPane setupShowingArea = (AnchorPane) homePageRoot.lookup("#setupShowingArea");
-            setupShowingArea.getChildren().clear();
-            setupShowingArea.getChildren().add(setupPageRoot);
-
-            // 显示舞台
-            stage.setScene(scene);
-            stage.show();
-            logger.info("Stage displayed");
-
-            up = (Button) homePageRoot.lookup("#up");
-            down = (Button) homePageRoot.lookup("#down");
-            Button del = (Button) homePageRoot.lookup("#del");
-
-            up.setDisable(true);
-            del.setDisable(true);
-
-            up.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    pageCounter--;
-
-                    down.setDisable(false);
-
-                    setupShowingArea.getChildren().clear();
-                    logger.info("PageCounter: {}", pageCounter);
-                    logger.info("fxmlFilePaths= {}", fxmlFilePaths.get(pageCounter));
-                    setupShowingArea.getChildren().add(loadFxml(fxmlFilePaths.get(pageCounter)));
-
-                    if (pageCounter == 0) {
-                        up.setDisable(true);
-                    }
-                }
-            });
-
-            down.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    pageCounter++;
-
-                    for (int i: fxmlndrStopList) {
-                        if (pageCounter == i) {
-                            down.setDisable(true);
-                            break;
-                        }
-                    }
-
-
-
-                    up.setDisable(false);
-
-                    setupShowingArea.getChildren().clear();
-                    logger.info("PageCounter: {}", pageCounter);
-                    logger.info("fxmlFilePaths= {}", fxmlFilePaths.get(pageCounter));
-                    setupShowingArea.getChildren().add(loadFxml(fxmlFilePaths.get(pageCounter)));
-
-                    if (pageCounter == fxmlFilePaths.size() - 1) {
-                        down.setDisable(true);
-                    }
-                }
-            });
-
+        if (true) {
+            initializeSetupPage(stage); // 初始化安装页面
             return;
         }
 
-        // stage.setAlwaysOnTop(true);
-
-        // 获取系统信息和用户信息
-
-        // 高兴地跳起来
-
         // 判断配置文件版本号是否支持
+        checkConfigVersion();
+
+        // 加载FXML文件
+        FXMLLoader fxmlLoader = new FXMLLoader(NameProjectApplication.class.getResource("fxml/mainWindow-classic.new.fxml"));
+        root = fxmlLoader.load();
+        logger.info("main window FXML file loaded successfully"); // 日志：主窗口FXML文件加载成功
+
+        // 初始化主页面
+        initializeMainPage(stage);
+    }
+
+    private void initializeSetupPage(Stage stage) throws IOException {
+        // 加载安装程序的主页FXML文件
+        FXMLLoader fxmlLoader = new FXMLLoader(NameProjectApplication.class.getResource("fxml/setup/homePage.fxml"));
+        Parent homePageRoot = fxmlLoader.load();
+        logger.info("main window FXML file loaded successfully");
+
+        // 将所有安装程序用到的FXML文件路径打包为列表
+        List<String> fxmlFilePaths = new ArrayList<>();
+        Collections.addAll(fxmlFilePaths,
+                "fxml/setup/a1.fxml",
+                "fxml/setup/a2.fxml",
+                "fxml/setup/a3.fxml"
+        );
+
+        // 定义需要停止的页面索引
+        List<Integer> fxmlndrStopList = new ArrayList<>();
+        Collections.addAll(fxmlndrStopList, 1, 2);
+
+        // 初始化页面计数器
+        this.pageCounter = 0;
+
+        // 设置场景
+        Scene scene = new Scene(homePageRoot, 800, 500);
+        stage.setMinWidth(800);
+        stage.setMinHeight(500);
+        logger.info("Scene created with dimensions 800x500");
+
+        // 设置窗口标题
+        String title = "NameProject 5 Personal User Setup";
+        stage.setTitle(title);
+        logger.info("Stage title set to: {}", title);
+
+        // 手动加载第一页内容
+        Parent setupPageRoot = loadFxml(fxmlFilePaths.get(pageCounter));
+        AnchorPane setupShowingArea = (AnchorPane) homePageRoot.lookup("#setupShowingArea");
+        setupShowingArea.getChildren().clear();
+        setupShowingArea.getChildren().add(setupPageRoot);
+
+        // 显示舞台
+        stage.setScene(scene);
+        stage.show();
+        logger.info("Stage displayed");
+
+        // 初始化按钮
+        up = (Button) homePageRoot.lookup("#up");
+        down = (Button) homePageRoot.lookup("#down");
+        Button del = (Button) homePageRoot.lookup("#del");
+
+        up.setDisable(true); // 禁用“上一步”按钮
+        del.setDisable(true); // 禁用“删除”按钮
+
+        // 设置“上一步”按钮点击事件
+        up.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                pageCounter--; // 页面计数器减1
+                down.setDisable(false); // 启用“下一步”按钮
+
+                setupShowingArea.getChildren().clear();
+                logger.info("PageCounter: {}", pageCounter);
+                logger.info("fxmlFilePaths= {}", fxmlFilePaths.get(pageCounter));
+                setupShowingArea.getChildren().add(loadFxml(fxmlFilePaths.get(pageCounter)));
+
+                if (pageCounter == 0) {
+                    up.setDisable(true); // 如果是第一页，禁用“上一步”按钮
+                }
+            }
+        });
+
+        // 设置“下一步”按钮点击事件
+        down.setOnMouseClicked(mouseEvent -> {
+            pageCounter++; // 页面计数器加1
+
+            for (int i : fxmlndrStopList) {
+                if (pageCounter == i) {
+                    down.setDisable(true); // 如果到达停止页面，禁用“下一步”按钮
+                    break;
+                }
+            }
+
+            up.setDisable(false); // 启用“上一步”按钮
+
+            setupShowingArea.getChildren().clear();
+            logger.info("PageCounter: {}", pageCounter);
+            logger.info("fxmlFilePaths= {}", fxmlFilePaths.get(pageCounter));
+            setupShowingArea.getChildren().add(loadFxml(fxmlFilePaths.get(pageCounter)));
+
+            if (pageCounter == fxmlFilePaths.size() - 1) {
+                down.setDisable(true); // 如果是最后一页，禁用“下一步”按钮
+            }
+        });
+    }
+
+    private void checkConfigVersion() {
         try {
             List<Double> supportConfigVersionList = new ArrayList<>();
 
@@ -226,13 +228,9 @@ public class NameProjectApplication extends Application {
             logger.error("Failed to check config version", e);
             System.exit(-1);
         }
+    }
 
-        // 加载FXML文件
-        FXMLLoader fxmlLoader = new FXMLLoader(NameProjectApplication.class.getResource("fxml/mainWindow-classic.new.fxml"));
-        root = fxmlLoader.load();
-        logger.info("main window FXML file loaded successfully");
-
-
+    private void initializeMainPage(Stage stage) throws IOException {
         // 初始化窗口动画（加载完成前）
         AnchorPane classicPane = (AnchorPane) root.lookup("#ClassicPane");
         classicPane.setOpacity(0); // 内容不可见
@@ -260,9 +258,6 @@ public class NameProjectApplication extends Application {
         // 初始化miniToastWindow
         MiniToastWindow.sc();
 
-        // 初始化Python连接器
-//        PythonConnecter.initMethod();
-
         // 在软件窗口内设置版本号
         try {
             Label versionLabel = (Label) root.lookup("#versionLabel");
@@ -273,6 +268,16 @@ public class NameProjectApplication extends Application {
         }
 
         // 监听窗口关闭事件
+        setupCloseRequestHandler(stage);
+
+        // 禁用停止按钮
+        disableStopButton();
+
+        // 设置窗口启动动画
+        setupFadeTransition(classicPane);
+    }
+
+    private void setupCloseRequestHandler(Stage stage) {
         stage.setOnCloseRequest(event -> {
             logger.info("user clicked 'closed' button");
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -291,24 +296,21 @@ public class NameProjectApplication extends Application {
                 event.consume(); // 取消关闭事件
             }
         });
+    }
 
-        // 禁用停止按钮
+    private void disableStopButton() {
         Button stopButton = (Button) root.lookup("#stopButton");
         stopButton.setDisable(true);
         logger.debug("Stop button disabled");
+    }
 
-        // 设置窗口启动动画
+    private void setupFadeTransition(AnchorPane classicPane) {
         FadeTransition fadeTransition = new FadeTransition(Duration.seconds(2), classicPane);
         fadeTransition.setFromValue(0.0);
         fadeTransition.setToValue(1.0);
         fadeTransition.setCycleCount(1);
         fadeTransition.play();
         logger.info("Fade transition started for ClassicPane");
-
-        //YOUHAVEBETTERRUN();
-
-        // 显示通知（可选）
-        // toast4j.displayToast(String.format("NameProject Version %s", sysinfo.get("version")), "请稍后");
     }
 
     @Deprecated
@@ -347,7 +349,7 @@ public class NameProjectApplication extends Application {
                 Button startButtonV2 = (Button) root.lookup("#startButtonV2");
                 Button stopButton = (Button) root.lookup("#stopButton");
 
-                for (int i=0; i<=1000; i++){
+                for (int i = 0; i <= 1000; i++) {
                     try {
                         Thread.sleep(10);
                     } catch (Exception e) {
@@ -383,7 +385,6 @@ public class NameProjectApplication extends Application {
 
         return new String(characters);
     }
-
 
     @Deprecated
     public void PythonAndJavaConnectionTester() {

@@ -1,3 +1,5 @@
 jpackage --name NameProject5 --type app-image -m com.nameproject.v5.nameproject5/com.nameproject.nameproject5At.NameProjectApplication --runtime-image .\app\
 
 jpackage --type msi -n NameProject5 --app-image .\NameProject5\ --dest .\Install --win-dir-chooser --win-menu --win-menu-group NameProject5 --win-shortcut --app-version 5.0.
+
+jpackage --name homeWorkChecker --type app-image -m com.example.homeworkchecker/com.example.homeworkchecker.HelloApplication --runtime-image .\app\
