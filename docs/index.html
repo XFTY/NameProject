@@ -3,107 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>开源随机点名器 - 简洁高效、免费使用</title>
-    <!-- 链入自定义CSS文件 -->
-    <link rel="stylesheet" href="styles.css">
-
-    <!-- 引入开源库或框架（例如Bootstrap）时需添加相应链接 -->
-    <!-- ... -->
-
-    <!-- 开源许可信息 -->
-    <meta name="author" content="XFTY">
-    <meta name="license" content="Apache-License">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>the NameProject Services</title>
+    <link rel="stylesheet" href="static/mainPageStyle.css">
 </head>
 <body>
-    <!-- 项目LOGO及标题区 -->
-    <header class="header">
-        <!--<div class="logo-container">
-            <img src="open-source-logo.png" alt="开源随机点名器Logo">
-        </div>-->
-        <h1>NameProject 随机点名器</h1>
-        <p>一个适用于班级、社区、公司点名的 公平高效 解决方案。</p>
-        <div class="btn-container-padding">
-        <div>
-            <a href="https://github.com/XFTY/NameProject/releases" class="gradient-btn">下载最新版</a>
-            <!--<a href="https://github.com/yourteam/random-name-picker/wiki" target="_blank" class="gradient-btn">用户手册与API文档</a>-->
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1>NameProject Services</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#introduction">介绍</a></li>
+                    <li><a href="#features">功能</a></li>
+                    <li><a href="#usage">使用方法</a></li>
+                    <li><a onclick="openDownloadModal()">下载</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <section id="screenshots">
-        <div class="feature-card">
-            <h1>软件截图</h1>
-            <div class="screenshot-container">
-                <img src="web_image/index/319426818-46a8213f-840a-44af-8734-bc6987dd45c1.png" alt="Screenshot 1">
-            </div>
-           <!-- <div class="screenshot-container">
-                <img src="web_image/index/319427066-2c124884-4a23-4360-9219-a34ffcc7d754.png" alt="Screenshot 2">
-            </div> -->
+    <section id="showcase">
+        <div class="container">
+            <h1 id="dynamicTitle"></h1>
+            <p>使用Java开发的点名器，让您的课堂管理更加轻松</p>
         </div>
     </section>
 
+    <section id="introduction">
+        <div class="container">
+            <div class="introduction-box">
+                <h2 class="introduction-title">
+                    <svg t="1745025525285" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5556" width="30" height="30" style="vertical-align: middle;">
+                        <path d="M512 97.52381c228.912762 0 414.47619 185.563429 414.47619 414.47619s-185.563429 414.47619-414.47619 414.47619S97.52381 740.912762 97.52381 512 283.087238 97.52381 512 97.52381z m0 73.142857C323.486476 170.666667 170.666667 323.486476 170.666667 512s152.81981 341.333333 341.333333 341.333333 341.333333-152.81981 341.333333-341.333333S700.513524 170.666667 512 170.666667z m36.571429 268.190476v292.571428h-73.142858V438.857143h73.142858z m0-121.904762v73.142857h-73.142858v-73.142857h73.142858z" p-id="5557" fill="#2c2c2c"></path>
+                    </svg>
+                    项目介绍
+                </h2>
+                <p class="introduction-content">NameProject 是一款基于 Java 开发的随机点名器，旨在简化课堂管理流程。</p>
+                <ul class="introduction-list">
+                    <li>支持导入学生名单</li>
+                    <li>随机点名功能</li>
+                    <li>导出点名记录</li>
+                    <li>自定义点名顺序</li>
+                    <li>随机事件增加课堂氛围</li>
+                    <li>显示欢迎语缓解紧张气氛</li>
+                </ul>
+                <p class="introduction-content">无论是教师还是学生，都能从中获得便捷高效的体验。</p>
+            </div>
+        </div>
+    </section>
 
-    <!-- 项目介绍 -->
+    <section id="download">
+        <div class="container">
+            <div class="download-box">
+                <h2 class="download-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    下载软件
+                </h2>
+                <div class="download-content">
+                    <p>您可以从以下链接下载最新版本的NameProject点名器：</p>
+                    <a onclick="openDownloadModal()" class="latest-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        &nbsp;下载最新版本
+                    </a>
+                    <h3>下载项目源代码</h3>
+                    <p>获取NameProject的完整源代码，以便进行二次开发或学习。</p>
+                    <a href="https://github.com/XFTY/NameProject/archive/refs/heads/master.zip" class="latest-button">
+                        <svg t="1745025109609" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3189" width="24" height="24"><path d="M920.405333 35.328H103.594667a68.266667 68.266667 0 0 0-68.266667 68.266667v816.810666a68.266667 68.266667 0 0 0 68.266667 68.266667h816.810666a68.266667 68.266667 0 0 0 68.266667-68.266667V103.594667a68.266667 68.266667 0 0 0-68.266667-68.266667z m-580.266666 633.856a22.698667 22.698667 0 0 1-31.914667 0l-142.165333-141.994667a22.528 22.528 0 0 1 0-31.744l142.165333-141.994666a22.528 22.528 0 0 1 31.914667 31.744L213.674667 512l126.464 126.122667a22.528 22.528 0 0 1 0 31.061333z m332.629333-426.666667L392.533333 804.352a23.552 23.552 0 1 1-40.618666-23.552L631.466667 219.648a23.552 23.552 0 1 1 40.618666 23.552z m185.173333 284.672l-142.336 141.994667a22.528 22.528 0 0 1-31.744-31.744l126.293334-125.44-126.293334-126.122667a22.528 22.528 0 0 1 0-31.744 22.186667 22.186667 0 0 1 31.744 0L857.941333 494.933333a22.528 22.528 0 0 1 0 32.256z" fill="#ffffff" p-id="3190"></path></svg>
+                        &nbsp;&nbsp;下载源代码
+                    </a>
+                    <p class="warning"></p>
+                    <div class="archive-section">
+                        <h3>软件档案馆</h3>
+                        <p class="warning" style="color: red">注意：旧版本安全性无法保证，且部分版本停止维护。</p>
+                        <a href="https://github.com/XFTY/NameProject/blob/master/docs/park/readme.md" class="archive-button">
+                            <svg t="1745025228513" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4409" width="24" height="24"><path d="M256.5 0.5H64c-35.3 0-64 28.6-64 64v895c0 35.3 28.7 64 64 64H256.5c35.3 0 64-28.7 64-64v-895c0-35.4-28.7-64-64-64zM128.5 864c0-8.8 3.6-16.8 9.4-22.6 5.8-5.8 13.8-9.4 22.6-9.4s16.8 3.6 22.6 9.4c5.8 5.8 9.4 13.8 9.4 22.6s-3.6 16.8-9.4 22.6c-5.8 5.8-13.8 9.4-22.6 9.4-17.7 0-32-14.3-32-32z m64-232c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V136c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v496zM608.5 0.5H416c-35.3 0-64 28.6-64 64v895c0 35.3 28.7 64 64 64H608.5c35.3 0 64-28.7 64-64v-895c0-35.4-28.7-64-64-64zM480.5 864c0-8.8 3.6-16.8 9.4-22.6 5.8-5.8 13.8-9.4 22.6-9.4s16.8 3.6 22.6 9.4c5.8 5.8 9.4 13.8 9.4 22.6s-3.6 16.8-9.4 22.6c-5.8 5.8-13.8 9.4-22.6 9.4-17.7 0-32-14.3-32-32z m64-232c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V136c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v496zM960.5 0.5H768c-35.3 0-64 28.6-64 64v895c0 35.3 28.7 64 64 64H960.5c35.3 0 64-28.7 64-64v-895c0-35.4-28.7-64-64-64zM832.5 864c0-8.8 3.6-16.8 9.4-22.6 5.8-5.8 13.8-9.4 22.6-9.4s16.8 3.6 22.6 9.4c5.8 5.8 9.4 13.8 9.4 22.6s-3.6 16.8-9.4 22.6c-5.8 5.8-13.8 9.4-22.6 9.4-17.7 0-32-14.3-32-32z m64-232c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V136c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v496z" p-id="4410" fill="#ffffff"></path></svg>
+                            &nbsp;&nbsp;进入软件档案馆
+                        </a>
+                    </div>
+                    <h3>安装说明书</h3>
+                    <p>查看详细的安装步骤和配置指南，确保您能够顺利安装和使用NameProject。</p>
+                    <a href="https://github.com/XFTY/NameProject/blob/master/docs/install_guide/install.md" class="latest-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                        &nbsp;链接到安装说明书
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="features">
-        <div class="feature-card">
-            <h1>为什么选择NameProject？</h1>
-            <div class="feature-item">
-                <i class="fas fa-code"></i>
-                <h2>软件开源</h2>
-                <p>NameProject是开源的，使用python语言编写，任何人可以参考软件源代码。</p>
-            </div>
-
-            <div class="feature-item">
-                <i class="fas fa-user-friends"></i>
-                <h2>易用性强</h2>
-                <p>简单直观的操作界面，支持一键导入名单进行随机点名。</p>
-                <!--<img src="interface-screenshot.jpg" alt="用户界面截图">-->
-            </div>
-
-            <div class="feature-item">
-                <i class="fas fa-globe-americas"></i>
-                <h2>活跃氛围</h2>
-                <p>通过设定好的一些随机事件，你可以以一种更加轻松愉悦的方式点名。</p>
-            </div>
-
-            <div class="feature-item">
-                <i class="fas fa-globe-americas"></i>
-                <h2>跨平台支持</h2>
-                <p>支持Windows、MacOS、Linux三个主流电脑操作系统，如果你愿意，他甚至支持树莓派！</p>
-            </div>
+        <div class="container">
+            <h2>
+                <svg style="vertical-align: middle;" t="1745025687894" class="icon" viewBox="0 0 1062 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7637" width="24" height="24"><path d="M0 0m98.282574 0l245.699918 0q98.282574 0 98.282574 98.282574l0 245.699918q0 98.282574-98.282574 98.282574l-245.699918 0q-98.282574 0-98.282574-98.282574l0-245.699918q0-98.282574 98.282574-98.282574Z" p-id="7638"></path><path d="M0 548.028637m98.282574 0l245.699918 0q98.282574 0 98.282574 98.282574l0 245.699919q0 98.282574-98.282574 98.282574l-245.699918 0q-98.282574 0-98.282574-98.282574l0-245.699919q0-98.282574 98.282574-98.282574Z" p-id="7639"></path><path d="M562.456274 0m98.282574 0l245.699919 0q98.282574 0 98.282574 98.282574l0 245.699918q0 98.282574-98.282574 98.282574l-245.699919 0q-98.282574 0-98.282574-98.282574l0-245.699918q0-98.282574 98.282574-98.282574Z" p-id="7640"></path><path d="M1054.468667 977.495204l-96.014816-96.014815a213.299643 213.299643 0 1 0-33.886048 43.11348l91.427165 91.427166a27.241776 27.241776 0 0 0 38.525831-38.525831z m-279.286206-45.707066a160.307076 160.307076 0 1 1 160.307076-160.241911 160.241911 160.241911 0 0 1-160.307076 160.241911z" p-id="7641"></path></svg>
+                功能
+            </h2>
+            <ul>
+                <li>支持导入学生名单</li>
+                <li>随机点名功能</li>
+                <li>导出点名记录</li>
+                <li>自定义点名顺序</li>
+                <li>随机事件增加课堂氛围</li>
+                <li>显示欢迎语缓解紧张气氛</li>
+            </ul>
         </div>
     </section>
 
-    <!-- 图片展示区 -->
-
-
-
-    <!-- 使用指南与文档链接 -->
-    <section id="docs" class="feature-card">
-        <h2>开始使用</h2>
-        <div class="btn-container">
-            <a href="https://github.com/XFTY/NameProject/releases" class="gradient-btn">下载最新版</a>
-            <!--<a href="https://github.com/yourteam/random-name-picker/wiki" target="_blank" class="gradient-btn">用户手册与API文档</a>-->
-            <a href="https://github.com/XFTY/NameProject/issues" target="_blank" class="gradient-btn">提交问题与建议</a>
+    <section id="usage">
+        <div class="container">
+            <h2>
+                <svg t="1745025525285" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5556" width="30" height="30" style="vertical-align: middle;">
+                <path d="M512 97.52381c228.912762 0 414.47619 185.563429 414.47619 414.47619s-185.563429 414.47619-414.47619 414.47619S97.52381 740.912762 97.52381 512 283.087238 97.52381 512 97.52381z m0 73.142857C323.486476 170.666667 170.666667 323.486476 170.666667 512s152.81981 341.333333 341.333333 341.333333 341.333333-152.81981 341.333333-341.333333S700.513524 170.666667 512 170.666667z m36.571429 268.190476v292.571428h-73.142858V438.857143h73.142858z m0-121.904762v73.142857h-73.142858v-73.142857h73.142858z" p-id="5557" fill="#2c2c2c"></path>
+            </svg>
+                使用方法
+            </h2>
+            <ol>
+                <li>启动NameProject点名器应用程序</li>
+                <li>导入学生名单</li>
+                <li>点击“开始抽取”按钮</li>
+                <li>点击“停止抽取”按钮结束点名</li>
+                <li>查看点名结果并进行记录</li>
+                <li>在设置界面中开启或关闭随机事件和欢迎语功能</li>
+            </ol>
         </div>
     </section>
 
-    <!-- 社区互动与贡献指南 -->
-    <section id="community" class="feature-card">
-        <h2>加入我们</h2>
-        <p>欢迎加入我们的开源社区，一起讨论改进和分享经验：</p>
-        <!-- 将链接改为按钮样式 -->
-        <a href="https://github.com/XFTY/NameProject" class="gradient-btn" target="_blank">访问GitHub项目地址</a>
-    </section>
 
-    <!-- 底部版权声明与联系信息 -->
     <footer>
-        <p>本项目遵循<a href="https://opensource.org/license/apache-2-0">Apache-License</a>开源许可协议。所有贡献者享有署名权。</p>
-        <nav>
-            <a href="http://github.com/XFTY/NameProject">关于项目</a>
-            <a href="https://github.com/XFTY">联系我们</a>
-        </nav>
+        <a href="https://github.com/XFTY" style="color: white; text-decoration: none">
+            <p style="line-height: 30px;">
+            <img src="https://avatars.githubusercontent.com/u/109122206?v=4" alt="GitHub User Avatar" style="width: 30px; height: 30px; border-radius: 50%; vertical-align: middle; margin-right: 10px;">
+            XFTY/NameProject &copy; 2025
+        </p>
+        </a>
     </footer>
-    <script src="script.js"></script>
-    </body>
+    <script src="static/mainPageStyle.js"></script>
+
+    <div id="downloadModal" class="modal">
+        <div class="modal-content">
+            <h3>选择下载源</h3>
+            <p>请选择您希望下载的源：</p>
+            <div class="buttons">
+                <div style="display: flex; align-items: center;">
+                    <p style="margin-left: 10px;">GitHub 提供最新版本，可能下载速度较慢</p>
+                </div>
+                <a href="https://github.com/XFTY/NameProject/releases/latest" target="_blank" class="latest-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    &nbsp;GitHub
+                </a>
+                <div style="display: flex; align-items: center;">
+                    <p style="margin-left: 10px;">Gitee 提供快速下载，但可能不是最新版本</p>
+                </div>
+                <a href="https://gitee.com/XFTYC/NameProject/releases" target="_blank" class="latest-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    &nbsp;Gitee
+                </a>
+            </div>
+            <p class="source-description">
+                GitHub 提供最新版本，可能下载速度较慢；Gitee 提供快速下载，但可能不是最新版本。
+            </p>
+            <button onclick="closeDownloadModal()">取消</button>
+        </div>
+    </div>
+</body>
 </html>
